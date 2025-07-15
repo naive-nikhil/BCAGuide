@@ -13,7 +13,15 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="previous-year-questions" element={<PYQ />} />
+          <Route path="previous-year-question-papers" element={<PYQ />} />
+          <Route
+            path="previous-year-question-papers/:courseCode"
+            element={<PYQ />}
+          />
+          <Route
+            path="previous-year-question-papers/:courseCode/:year?"
+            element={<PYQ />}
+          />
           <Route path="assignments" element={<Assignments />} />
           <Route path="study-materials" element={<StudyMaterials />} />
           <Route path="ebooks-and-pdfs" element={<EBooks />} />

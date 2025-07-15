@@ -12,8 +12,8 @@ const menu = [
     link: "#",
     submenu: [
       {
-        title: "Previous Year Question Paper",
-        link: "previous-year-questions",
+        title: "Previous Year Question Papers",
+        link: "previous-year-question-papers",
       },
       { title: "Assignments", link: "assignments" },
       { title: "Study Materials", link: "study-materials" },

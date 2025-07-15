@@ -1,16 +1,44 @@
 import bcs012June2024 from "../assets/BCS012_JUNE2024.jpg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import backIcon from "../assets/back.png";
 import HeroCarousel from "../components/HeroCarousel";
 import FeaturedCarousel from "../components/FeaturedCarousel";
 import { useAppContext } from "../context/AppContext";
+import { Link } from "react-router-dom";
 
 import semesters from "../data/data.json";
+import { useParams } from "react-router-dom";
 
 const PYQ = () => {
   const [selectedSession, setSelectedSession] = useState("june");
   const [selectedYear, setSelectedYear] = useState("");
-  const { setPage, selectedSemester, selectedCourse } = useAppContext();
+  const { setPage, selectedSemester, setSelectedCourse, selectedCourse } =
+    useAppContext();
+
+  const { courseCode } = useParams();
+  const { year } = useParams();
+
+  console.log(year);
+
+  useEffect(() => {
+    if (!courseCode && !year) {
+      setPage(1);
+    } else if (courseCode && !year) {
+      setSelectedCourse(courseCode.toUpperCase());
+      setPage(2);
+    } else if (courseCode && year) {
+      setSelectedCourse(courseCode.toUpperCase());
+      setSelectedYear(formatYear(year));
+      setPage(3);
+    }
+  }, [courseCode, year]);
+
+  const formatYear = (yearParam) => {
+    return yearParam
+      .split("-") // ["june", "2015"]
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // ["June", "2015"]
+      .join(" "); // "June 2015"
+  };
 
   const selectedCourseTitle = semesters
     .find((sem) => sem.title === selectedSemester)
@@ -40,12 +68,12 @@ const PYQ = () => {
       >
         {/* Page - 2 */}
         <>
-          <button
+          <Link
+            to={-1}
             className="absolute p-2 bottom-4 left-1/2 -translate-x-1/2 cursor-pointer border rounded-full border-b-3 border-r-2 bg-violet-50 border-violet-500 hover:-translate-y-1 transition-all duration-300 ease"
-            onClick={() => setPage(1)}
           >
             <img src={backIcon} width={20} className="brightness-20" />
-          </button>
+          </Link>
           <div className="flex items-center justify-between p-3 border border-gray-200 rounded border-b-3 cursor-pointer mb-4 text-gray-700">
             <div>
               <h2 className="text-lg">
@@ -81,16 +109,13 @@ const PYQ = () => {
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {selectedCoursePapers &&
               selectedCoursePapers.map((paper, index) => (
-                <li
-                  onClick={() => {
-                    setSelectedYear(paper.year);
-                    setPage(3);
-                  }}
+                <Link
+                  to={paper.year.toLowerCase().replace(/\s+/g, "-")}
                   key={index}
                   className="border p-2 border-gray-200 hover:-translate-y-1 transition-all duration-300 ease rounded border-b-3 text-blue-600 cursor-pointer"
                 >
                   {paper.year}
-                </li>
+                </Link>
               ))}
           </ul>
         </>
@@ -98,15 +123,12 @@ const PYQ = () => {
         {/* Page - 3 */}
         <div className="flex justify-between gap-4">
           <div className="w-full flex flex-col justify-between">
-            <button
+            <Link
+              to={-1}
               className="p-2 w-fit cursor-pointer border rounded-full border-b-3 border-r-2 bg-violet-50 border-violet-500 hover:-translate-y-1 transition-all duration-300 ease"
-              onClick={() => {
-                setPage(2);
-                setSelectedYear(false);
-              }}
             >
               <img src={backIcon} width={20} className="brightness-20" />
-            </button>
+            </Link>
             <div>
               <h1 className="text-lg flex items-center gap-2">
                 {selectedCourse}

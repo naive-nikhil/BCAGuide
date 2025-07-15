@@ -2,6 +2,7 @@ import semesters from "../data/data.json";
 import { useAppContext } from "../context/AppContext";
 import heroImg from "../assets/hero.jpg";
 import { Children, useState } from "react";
+import { Link } from "react-router-dom";
 
 const HeroCarousel = ({
   sectionHeading,
@@ -32,20 +33,23 @@ const HeroCarousel = ({
         <div className="flex w-full">
           <div className="text-lg text-gray-700 cursor-pointer overflow-hidden bg-violet-100 relative z-10">
             {semesters.map((semester, index) => (
-              <h1
-                key={index}
-                onClick={() => {
-                  setPage(1);
-                  setSelectedSemester(semester.title);
-                }}
-                className={`p-4 flex text-nowrap hover:bg-violet-200 border-b-2 border-violet-200 transition-all duration-200 ease ${
-                  selectedSemester === semester.title
-                    ? "bg-violet-200 border-violet-300"
-                    : ""
-                }`}
-              >
-                {semester.title}
-              </h1>
+              <Link to="/previous-year-question-papers">
+                {" "}
+                <h1
+                  key={index}
+                  onClick={() => {
+                    setPage(1);
+                    setSelectedSemester(semester.title);
+                  }}
+                  className={`p-4 flex text-nowrap hover:bg-violet-200 border-b-2 border-violet-200 transition-all duration-200 ease ${
+                    selectedSemester === semester.title
+                      ? "bg-violet-200 border-violet-300"
+                      : ""
+                  }`}
+                >
+                  {semester.title}
+                </h1>
+              </Link>
             ))}
           </div>
 
@@ -70,17 +74,14 @@ const HeroCarousel = ({
                   {semesters
                     .find((sem) => sem.title === selectedSemester)
                     .subjects.map((sub, index) => (
-                      <li
+                      <Link
+                        to={sub.code.toLowerCase()}
                         key={index}
-                        onClick={() => {
-                          setPage(2);
-                          setSelectedCourse(sub.code);
-                        }}
                         className="p-3 border border-gray-200 rounded border-b-3 cursor-pointer hover:-translate-y-1 transition-all duration-300 ease"
                       >
                         <h2 className="text-blue-600">{sub.code}</h2>
                         <p className=" text-text-primary/60">{sub.title}</p>
-                      </li>
+                      </Link>
                     ))}
                 </ul>
               </div>
