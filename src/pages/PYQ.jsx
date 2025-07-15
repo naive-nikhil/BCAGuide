@@ -69,7 +69,7 @@ const PYQ = () => {
         {/* Page - 2 */}
         <>
           <Link
-            to={-1}
+            to={"/previous-year-question-papers"}
             className="absolute p-2 bottom-4 left-1/2 -translate-x-1/2 cursor-pointer border rounded-full border-b-3 border-r-2 bg-violet-50 border-violet-500 hover:-translate-y-1 transition-all duration-300 ease"
           >
             <img src={backIcon} width={20} className="brightness-20" />
@@ -124,7 +124,7 @@ const PYQ = () => {
         <div className="flex justify-between gap-4">
           <div className="w-full flex flex-col justify-between">
             <Link
-              to={-1}
+              to={`/previous-year-question-papers/${courseCode}`}
               className="p-2 w-fit cursor-pointer border rounded-full border-b-3 border-r-2 bg-violet-50 border-violet-500 hover:-translate-y-1 transition-all duration-300 ease"
             >
               <img src={backIcon} width={20} className="brightness-20" />

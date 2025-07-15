@@ -10,7 +10,7 @@ const Layout = () => {
       <main className="p-4 flex gap-4 h-[calc(100dvh-60px)]">
         <div className="min-w-[calc(100%-336px)]">
           <SearchBar />
-          {/* <Outlet /> */}
+          <Outlet />
         </div>
         <div className="bg-gray-200 rounded-full w-6"></div>
         <Sidebar />
