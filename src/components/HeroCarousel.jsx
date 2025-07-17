@@ -3,6 +3,7 @@ import { useAppContext } from "../context/AppContext";
 import heroImg from "../assets/hero.jpg";
 import { Children, useState } from "react";
 import { Link } from "react-router-dom";
+import downIcon from "../assets/down.png";
 
 const HeroCarousel = ({
   sectionHeading,
@@ -28,7 +29,24 @@ const HeroCarousel = ({
 
   return (
     <div className="flex flex-col max-h-[409px] w-full justify-between ">
-      <h1 className="text-xl text-text-primary mb-2">{sectionHeading}</h1>
+      <div className="flex justify-between mb-2">
+        <h1 className="text-xl text-text-primary">{sectionHeading}</h1>
+        {/* <div className="relative text-gray-700 cursor-pointer">
+          <h2 className="flex items-center gap-4 bg-white px-2 rounded-md border border-gray-300">
+            Select Session{" "}
+            <img src={downIcon} className="brightness-30 mb-1" width={15} />
+          </h2>
+          <ul className="absolute top-full right-0 bg-white z-10 shadow-2xl">
+            <li className="px-4 py-2 text-nowrap hover:bg-green-200">
+              June 2024 & January 2025
+            </li>
+            <li className="px-4 py-2 text-nowrap hover:bg-green-200">
+              June 2023 & January 2024
+            </li>
+          </ul>
+        </div> */}
+      </div>
+
       <div className="flex w-full justify-between overflow-hidden rounded-md">
         <div className="flex w-full">
           <div className="text-lg text-gray-700 cursor-pointer overflow-hidden bg-violet-100 relative z-10">
