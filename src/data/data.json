@@ -117,7 +117,10 @@
             ]
           }
         },
-        "assignments": [],
+        "assignments": {
+          "2024-25": "https://res.cloudinary.com/dinzuxodt/image/upload/BCS011-2024-25_mvhlm3.pdf",
+          "2023-24": "#"
+        },
         "material": []
       },
       {
