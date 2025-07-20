@@ -15,7 +15,7 @@ const menu = [
         title: "Previous Year Question Papers",
         link: "previous-year-question-papers",
       },
-      { title: "Assignments", link: "assignments" },
+      { title: "Assignments", link: "assignments/2024-25" },
       { title: "Study Materials", link: "study-materials" },
       { title: "eBooks & PDFs", link: "ebooks-and-pdfs" },
       {
@@ -58,32 +58,29 @@ const Navbar = () => {
       </h1>
       <ul className="flex [&_li]:cursor-pointer [&_li]:p-4 [&_li]:hover:bg-accent-tertiary [&_li]:flex [&_li]:items-center [&_li]:gap-2 text-text-primary text-lg">
         {menu.map((item, index) => (
-          <Link key={index} to={item.link}>
-            <li
-              onMouseEnter={() => setDropdownMenu(index)}
-              onMouseLeave={() => setDropdownMenu(null)}
-              className="relative"
-            >
-              {item.title}
-              {item.submenu && <span>•</span>}
-              <span
-                className={`absolute bottom-0 left-0 w-0 h-[2px] bg-green-700 transition-all duration-400 ease ${
-                  dropdownMenu === index ? "w-full" : ""
-                }`}
-              ></span>
-              {dropdownMenu === index && item.submenu && (
-                <ul className="absolute top-full left-0 bg-white text-nowrap shadow-2xl flex flex-col">
-                  {item.submenu.map((subItem, subIndex) => (
-                    <Link to={subItem.link}>
-                      <li key={subIndex} className="relative">
-                        {subItem.title}
-                      </li>
-                    </Link>
-                  ))}
-                </ul>
-              )}
-            </li>
-          </Link>
+          <li
+            key={index}
+            onMouseEnter={() => setDropdownMenu(index)}
+            onMouseLeave={() => setDropdownMenu(null)}
+            className="relative"
+          >
+            {item.title}
+            {item.submenu && <span>•</span>}
+            <span
+              className={`absolute bottom-0 left-0 w-0 h-[2px] bg-green-700 transition-all duration-400 ease ${
+                dropdownMenu === index ? "w-full" : ""
+              }`}
+            ></span>
+            {dropdownMenu === index && item.submenu && (
+              <ul className="absolute top-full left-0 bg-white text-nowrap shadow-2xl flex flex-col">
+                {item.submenu.map((subItem, subIndex) => (
+                  <Link key={subIndex} to={subItem.link}>
+                    <li className="relative">{subItem.title}</li>
+                  </Link>
+                ))}
+              </ul>
+            )}
+          </li>
         ))}
       </ul>
     </nav>

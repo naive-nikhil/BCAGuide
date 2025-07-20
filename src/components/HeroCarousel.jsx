@@ -52,8 +52,9 @@ const HeroCarousel = ({
             />
           </h2>
           {openSessionSelect && (
-            <ul className="absolute top-full right-0 bg-white z-10 shadow-2xl border border-gray-300">
-              <li
+            <ul className="absolute top-full right-0 bg-white z-10 shadow-2xl border border-gray-300 flex flex-col">
+              <Link
+                to={"/assignments/2024-25"}
                 onClick={() => {
                   setOpenSessionSelect(false);
                   setSelectedSession("July 2024 & January 2025");
@@ -61,8 +62,9 @@ const HeroCarousel = ({
                 className="px-4 py-2 text-nowrap hover:bg-green-200"
               >
                 July 2024 & January 2025
-              </li>
-              <li
+              </Link>
+              <Link
+                to={"/assignments/2023-24"}
                 onClick={() => {
                   setOpenSessionSelect(false);
                   setSelectedSession("July 2023 & January 2024");
@@ -70,7 +72,7 @@ const HeroCarousel = ({
                 className="px-4 py-2 text-nowrap hover:bg-green-200"
               >
                 July 2023 & January 2024
-              </li>
+              </Link>
             </ul>
           )}
         </div>
@@ -80,10 +82,9 @@ const HeroCarousel = ({
         <div className="flex w-full">
           <div className="text-lg text-gray-700 cursor-pointer overflow-hidden bg-violet-100 relative z-10">
             {semesters.map((semester, index) => (
-              <Link to="/previous-year-question-papers">
+              <Link key={index} to="/previous-year-question-papers">
                 {" "}
                 <h1
-                  key={index}
                   onClick={() => {
                     setPage(1);
                     setSelectedSemester(semester.title);

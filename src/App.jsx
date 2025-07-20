@@ -23,6 +23,11 @@ const App = () => {
             element={<PYQ />}
           />
           <Route path="assignments" element={<Assignments />} />
+          <Route path="assignments/:session" element={<Assignments />} />
+          <Route
+            path="assignments/:session/:courseCode"
+            element={<Assignments />}
+          />
           <Route path="study-materials" element={<StudyMaterials />} />
           <Route path="ebooks-and-pdfs" element={<EBooks />} />
           <Route path="project-synopsis-and-report" element={<Project />} />

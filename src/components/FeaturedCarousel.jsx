@@ -21,7 +21,7 @@ const FeaturedCarousel = () => {
       </div>
       <div className="flex gap-2 text-text-primary mt-2 overflow-x-scroll scroll-container pb-2">
         {cards.map((card, idx) => (
-          <Card index={idx} img={card.img} />
+          <Card key={idx} index={idx} img={card.img} />
         ))}
       </div>
     </div>

@@ -63,7 +63,7 @@ const PYQ = () => {
     <div className="flex flex-col">
       <HeroCarousel
         sectionHeading={"Previous Year Question Papers With Solutions"}
-        sectionDesc={"eBooks & PDFs"}
+        sectionDesc={"previous year question papers"}
         totalPages={3}
       >
         {/* Page - 2 */}

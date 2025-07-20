@@ -15,6 +15,9 @@ const Assignments = () => {
   const { setPage, selectedSemester, setSelectedCourse, selectedCourse } =
     useAppContext();
 
+  const { session } = useParams();
+
+  console.log(session);
   const { courseCode } = useParams();
   const { year } = useParams();
 
@@ -63,67 +66,13 @@ const Assignments = () => {
       <HeroCarousel
         sectionHeading={"Assignments With Solution"}
         sectionDesc={"assignments"}
-        totalPages={3}
+        totalPages={2}
       >
         {/* Page - 2 */}
-        <>
-          <Link
-            to={"/previous-year-question-papers"}
-            className="absolute p-2 bottom-4 left-1/2 -translate-x-1/2 cursor-pointer border rounded-full border-b-3 border-r-2 bg-violet-50 border-violet-500 hover:-translate-y-1 transition-all duration-300 ease"
-          >
-            <img src={backIcon} width={20} className="brightness-20" />
-          </Link>
-          <div className="flex items-center justify-between p-3 border border-gray-200 rounded border-b-3 cursor-pointer mb-4 text-gray-700">
-            <div>
-              <h2 className="text-lg">
-                {selectedCourse} - {selectedCourseTitle}
-              </h2>
-              <p className=" text-text-primary/60">
-                Papers are organised session wise (June & December)
-              </p>
-            </div>
-            <div className="flex gap-4">
-              <div
-                onClick={() => setSelectedSession("june")}
-                className={`hover:text-blue-600 ${
-                  selectedSession === "june"
-                    ? "text-blue-600"
-                    : "text-text-primary/60 "
-                }`}
-              >
-                June
-              </div>
-              <div
-                onClick={() => setSelectedSession("december")}
-                className={`hover:text-blue-600 ${
-                  selectedSession === "december"
-                    ? "text-blue-600"
-                    : "text-text-primary/60"
-                }`}
-              >
-                December
-              </div>
-            </div>
-          </div>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {selectedCoursePapers &&
-              selectedCoursePapers.map((paper, index) => (
-                <Link
-                  to={paper.year.toLowerCase().replace(/\s+/g, "-")}
-                  key={index}
-                  className="border p-2 border-gray-200 hover:-translate-y-1 transition-all duration-300 ease rounded border-b-3 text-blue-600 cursor-pointer"
-                >
-                  {paper.year}
-                </Link>
-              ))}
-          </ul>
-        </>
-
-        {/* Page - 3 */}
         <div className="flex justify-between gap-4">
           <div className="w-full flex flex-col justify-between">
             <Link
-              to={`/previous-year-question-papers/${courseCode}`}
+              to={`/assignments/${session}`}
               className="p-2 w-fit cursor-pointer border rounded-full border-b-3 border-r-2 bg-violet-50 border-violet-500 hover:-translate-y-1 transition-all duration-300 ease"
             >
               <img src={backIcon} width={20} className="brightness-20" />
@@ -136,7 +85,7 @@ const Assignments = () => {
                 </p>
               </h1>
               <h2>{selectedCourseTitle}</h2>
-              <h3>Previous Year Question Paper - {selectedYear}</h3>
+              <h3>Assignments - {session}</h3>
 
               <div className="flex w-full gap-1 mt-4">
                 <a
@@ -145,7 +94,7 @@ const Assignments = () => {
                   href={selectedCoursePaperLink}
                 >
                   {" "}
-                  Download Paper
+                  Download Assignment
                 </a>
 
                 <br />
