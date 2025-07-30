@@ -65,6 +65,7 @@ const PYQ = () => {
         sectionHeading={"Previous Year Question Papers With Solutions"}
         sectionDesc={"previous year question papers"}
         totalPages={3}
+        baseUrl={"/previous-year-question-papers"}
       >
         {/* Page - 2 */}
         <>

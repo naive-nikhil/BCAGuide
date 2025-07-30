@@ -10,6 +10,7 @@ const HeroCarousel = ({
   sectionDesc,
   totalPages,
   children,
+  baseUrl,
 }) => {
   const [selectedSession, setSelectedSession] = useState(
     "July 2024 & January 2025"
@@ -37,52 +38,54 @@ const HeroCarousel = ({
     <div className="flex flex-col max-h-[409px] w-full justify-between ">
       <div className="flex justify-between mb-2">
         <h1 className="text-xl text-text-primary">{sectionHeading}</h1>
-        <div className="relative text-gray-700 cursor-pointer select-none">
-          <h2
-            onClick={() => setOpenSessionSelect(!openSessionSelect)}
-            className="flex items-center gap-4 bg-white px-2 rounded-md border border-gray-300"
-          >
-            {selectedSession}
-            <img
-              src={downIcon}
-              className={`brightness-10 mb-1 transition-all duration-300 ease ${
-                openSessionSelect ? "rotate-180" : ""
-              }`}
-              width={12}
-            />
-          </h2>
-          {openSessionSelect && (
-            <ul className="absolute top-full right-0 bg-white z-10 shadow-2xl border border-gray-300 flex flex-col">
-              <Link
-                to={"/assignments/2024-25"}
-                onClick={() => {
-                  setOpenSessionSelect(false);
-                  setSelectedSession("July 2024 & January 2025");
-                }}
-                className="px-4 py-2 text-nowrap hover:bg-green-200"
-              >
-                July 2024 & January 2025
-              </Link>
-              <Link
-                to={"/assignments/2023-24"}
-                onClick={() => {
-                  setOpenSessionSelect(false);
-                  setSelectedSession("July 2023 & January 2024");
-                }}
-                className="px-4 py-2 text-nowrap hover:bg-green-200"
-              >
-                July 2023 & January 2024
-              </Link>
-            </ul>
-          )}
-        </div>
+        {baseUrl && baseUrl.includes("assignments") && (
+          <div className="relative text-gray-700 cursor-pointer select-none">
+            <h2
+              onClick={() => setOpenSessionSelect(!openSessionSelect)}
+              className="flex items-center gap-4 bg-white px-2 rounded-md border border-gray-300"
+            >
+              {selectedSession}
+              <img
+                src={downIcon}
+                className={`brightness-10 mb-1 transition-all duration-300 ease ${
+                  openSessionSelect ? "rotate-180" : ""
+                }`}
+                width={12}
+              />
+            </h2>
+            {openSessionSelect && (
+              <ul className="absolute top-full right-0 bg-white z-10 shadow-2xl border border-gray-300 flex flex-col">
+                <Link
+                  to={"/assignments/2024-25"}
+                  onClick={() => {
+                    setOpenSessionSelect(false);
+                    setSelectedSession("July 2024 & January 2025");
+                  }}
+                  className="px-4 py-2 text-nowrap hover:bg-green-200"
+                >
+                  July 2024 & January 2025
+                </Link>
+                <Link
+                  to={"/assignments/2023-24"}
+                  onClick={() => {
+                    setOpenSessionSelect(false);
+                    setSelectedSession("July 2023 & January 2024");
+                  }}
+                  className="px-4 py-2 text-nowrap hover:bg-green-200"
+                >
+                  July 2023 & January 2024
+                </Link>
+              </ul>
+            )}
+          </div>
+        )}
       </div>
 
       <div className="flex w-full justify-between overflow-hidden rounded-md">
         <div className="flex w-full">
           <div className="text-lg text-gray-700 cursor-pointer overflow-hidden bg-violet-100 relative z-10">
             {semesters.map((semester, index) => (
-              <Link key={index} to="/previous-year-question-papers">
+              <Link key={index} to={baseUrl}>
                 {" "}
                 <h1
                   onClick={() => {

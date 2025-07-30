@@ -16,57 +16,38 @@ const Assignments = () => {
     useAppContext();
 
   const { session } = useParams();
-
-  console.log(session);
   const { courseCode } = useParams();
-  const { year } = useParams();
-
-  console.log(year);
+  console.log(session);
+  console.log(courseCode);
 
   useEffect(() => {
-    if (!courseCode && !year) {
+    if (!courseCode && session) {
+      setSelectedSession(session);
       setPage(1);
-    } else if (courseCode && !year) {
+    } else if (courseCode && session) {
       setSelectedCourse(courseCode.toUpperCase());
       setPage(2);
-    } else if (courseCode && year) {
-      setSelectedCourse(courseCode.toUpperCase());
-      setSelectedYear(formatYear(year));
-      setPage(3);
     }
-  }, [courseCode, year]);
-
-  const formatYear = (yearParam) => {
-    return yearParam
-      .split("-") // ["june", "2015"]
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // ["June", "2015"]
-      .join(" "); // "June 2015"
-  };
+  }, [courseCode, session]);
 
   const selectedCourseTitle = semesters
     .find((sem) => sem.title === selectedSemester)
     .subjects.find((sub) => sub.code === selectedCourse)?.title;
 
-  const selectedCoursePapers = semesters
+  const selectedSessionCourseAssignmentLink = semesters
     .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === selectedCourse)?.papers.session?.[
+    .subjects.find((sub) => sub.code === selectedCourse)?.assignments?.[
     selectedSession
   ];
 
-  const selectedCoursePaperLink = semesters
-    .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === selectedCourse)
-    ?.papers.session?.[selectedSession].find(
-      (paper) => paper.year === selectedYear
-    )?.link;
-
-  console.log(selectedCoursePaperLink);
+  console.log(selectedSessionCourseAssignmentLink);
   return (
     <div className="flex flex-col">
       <HeroCarousel
         sectionHeading={"Assignments With Solution"}
         sectionDesc={"assignments"}
         totalPages={2}
+        baseUrl={"/assignments/2024-25"}
       >
         {/* Page - 2 */}
         <div className="flex justify-between gap-4">
@@ -91,7 +72,7 @@ const Assignments = () => {
                 <a
                   className="w-full text-center rounded py-2 cursor-pointer bg-blue-200 mt-2 hover:-translate-y-1 transition duration-300 ease-in-out text-blue-600"
                   target="_blank"
-                  href={selectedCoursePaperLink}
+                  href={selectedSessionCourseAssignmentLink}
                 >
                   {" "}
                   Download Assignment

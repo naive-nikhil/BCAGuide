@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import PYQ from "./pages/PYQ";
 import Assignments from "./pages/Assignments";
 import StudyMaterials from "./pages/StudyMaterials";
-import EBooks from "./pages/EBooks";
 import Project from "./pages/Project";
 
 const App = () => {
@@ -29,7 +28,7 @@ const App = () => {
             element={<Assignments />}
           />
           <Route path="study-materials" element={<StudyMaterials />} />
-          <Route path="ebooks-and-pdfs" element={<EBooks />} />
+          <Route path="study-materials/:courseCode" element={<StudyMaterials />} />
           <Route path="project-synopsis-and-report" element={<Project />} />
         </Route>
       </Routes>

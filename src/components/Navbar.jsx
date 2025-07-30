@@ -17,7 +17,6 @@ const menu = [
       },
       { title: "Assignments", link: "assignments/2024-25" },
       { title: "Study Materials", link: "study-materials" },
-      { title: "eBooks & PDFs", link: "ebooks-and-pdfs" },
       {
         title: "Project Synopsis & Report",
         link: "project-synopsis-and-report",
@@ -64,8 +63,14 @@ const Navbar = () => {
             onMouseLeave={() => setDropdownMenu(null)}
             className="relative"
           >
-            {item.title}
-            {item.submenu && <span>•</span>}
+            {item.link !== "#" ? (
+              <Link to={item.link} className="flex items-center gap-2 w-full h-full">
+                {item.title}
+                {item.submenu && <span>•</span>}
+              </Link>
+            ) : (
+              <span className="flex items-center gap-2 w-full h-full">{item.title}{item.submenu && <span>•</span>}</span>
+            )}
             <span
               className={`absolute bottom-0 left-0 w-0 h-[2px] bg-green-700 transition-all duration-400 ease ${
                 dropdownMenu === index ? "w-full" : ""
