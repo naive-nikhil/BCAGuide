@@ -121,7 +121,11 @@
           "2024-25": "https://res.cloudinary.com/dinzuxodt/image/upload/BCS011-2024-25_mvhlm3.pdf",
           "2023-24": "#"
         },
-        "material": []
+        "material": [
+          {"id": "Block 1", "title": "Basics of Computer Hardware", "link": "#"},
+          {"id": "Block 2", "title": "Basics of Computer Software", "link": "#"},
+          {"id": "Block 3", "title": "Internet Technologies", "link": "#"}
+        ]
       },
       {
         "code": "BCS012",
