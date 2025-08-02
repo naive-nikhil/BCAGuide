@@ -40,10 +40,6 @@ const StudyMaterials = () => {
     .find((sem) => sem.title === selectedSemester)
     .subjects.find((sub) => sub.code === selectedCourse)?.material;
 
-  const selectedCourseMaterialLink = semesters
-    .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === selectedCourse)?.material.link;
-
   const selectedCourseMaterialDescription =
     semesters
       .find((sem) => sem.title === selectedSemester)
@@ -52,6 +48,15 @@ const StudyMaterials = () => {
         (mat) => mat.id.toLowerCase().replace(/\s/g, "") === block
       )
       ?.description || "No description available";
+
+        const selectedCourseMaterialLink =
+    semesters
+      .find((sem) => sem.title === selectedSemester)
+      .subjects.find((sub) => sub.code === selectedCourse)
+      ?.material.find(
+        (mat) => mat.id.toLowerCase().replace(/\s/g, "") === block
+      )
+      ?.link || "#";
 
   return (
     <div className="flex flex-col">
@@ -115,7 +120,7 @@ const StudyMaterials = () => {
                     .replace(/^./, (char) => char.toUpperCase())
                     .replace(/(\D)(\d)/, "$1 $2")}
               </h3>
-              <h5 className="text-sm text-gray-500"
+              <h5 className="text-sm text-gray-500 mt-4"
                 dangerouslySetInnerHTML={{
                   __html: selectedCourseMaterialDescription.replace(
                     /\n/g,
@@ -128,7 +133,7 @@ const StudyMaterials = () => {
                 <a
                   className="w-full text-center rounded py-2 cursor-pointer bg-green-200 mt-2 hover:-translate-y-1 transition duration-300 ease-in-out text-green-600"
                   target="_blank"
-                  href=""
+                  href={selectedCourseMaterialLink}
                 >
                   {" "}
                   Download Block
