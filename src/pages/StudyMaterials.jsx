@@ -99,7 +99,8 @@ const StudyMaterials = () => {
                         </p>
                       </h1>
                       <h2>{selectedCourseTitle}</h2>
-                      <h3>Previous Year Question Paper - {}</h3>
+                      <h3>Study Material for  - {block.replace(/^./, (char) => char.toUpperCase())  // Capitalize first letter
+  .replace(/(\D)(\d)/, "$1 $2")}</h3>
         
                       <div className="flex w-full gap-1 mt-4">
                         <a
