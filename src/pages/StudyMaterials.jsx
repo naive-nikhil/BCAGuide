@@ -20,13 +20,15 @@ const StudyMaterials = () => {
   console.log(block)
 
   useEffect(() => {
-    if (!courseCode) {
+    if (!courseCode && !block) {
       setPage(1);
-    } else if (courseCode) {
+    } else if (courseCode && !block) {
       setSelectedCourse(courseCode.toUpperCase());
       setPage(2);
+    } else if (courseCode && block) {
+      setPage(3);
     }
-  }, [courseCode]);
+  }, [courseCode, block]);
 
   const selectedCourseTitle = semesters
     .find((sem) => sem.title === selectedSemester)
@@ -40,13 +42,6 @@ const StudyMaterials = () => {
 
     console.log(selectedCourseMaterial);
 
-  // const selectedSessionCourseAssignmentLink = semesters
-  //   .find((sem) => sem.title === selectedSemester)
-  //   .subjects.find((sub) => sub.code === selectedCourse)?.assignments?.[
-  //   selectedSession
-  // ];
-
-  // console.log(selectedSessionCourseAssignmentLink);
   return (
     <div className="flex flex-col">
       <HeroCarousel
