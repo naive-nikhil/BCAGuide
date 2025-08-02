@@ -34,13 +34,19 @@ const StudyMaterials = () => {
     .find((sem) => sem.title === selectedSemester)
     .subjects.find((sub) => sub.code === selectedCourse)?.title || "Select a Course";
 
-    console.log(selectedCourseTitle);
-
   const selectedCourseMaterial = semesters
     .find((sem) => sem.title === selectedSemester)
     .subjects.find((sub) => sub.code === selectedCourse)?.material;
 
-    console.log(selectedCourseMaterial);
+      const selectedCourseMaterialLink = semesters
+    .find((sem) => sem.title === selectedSemester)
+    .subjects.find((sub) => sub.code === selectedCourse)?.material.link;
+
+      const selectedCourseMaterialDescription = semesters
+    .find((sem) => sem.title === selectedSemester)
+    .subjects.find((sub) => sub.code === selectedCourse)?.material.find((mat) => mat.id.toLowerCase().replace(/\s/g, "") === block)?.description.replace(/\n/g, "<br>") || "No description available" ;
+
+
 
   return (
     <div className="flex flex-col">
@@ -98,6 +104,7 @@ const StudyMaterials = () => {
                       <h2>{selectedCourseTitle}</h2>
                       <h3>Study Material  - {block && block.replace(/^./, (char) => char.toUpperCase()).replace(/(\D)(\d)/, "$1 $2")}</h3>
                       <h4>Description</h4>
+                      <h5>{selectedCourseMaterialDescription}</h5>
         
                       <div className="flex w-full gap-1 mt-4">
                         <a

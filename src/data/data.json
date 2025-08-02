@@ -122,7 +122,7 @@
           "2023-24": "#"
         },
         "material": [
-          {"id": "Block 1", "title": "Basics of Computer Hardware", "link": "#"},
+          {"id": "Block 1", "title": "Basics of Computer Hardware", "link": "#", "description": "Unit 1: Computer their origin and applications\nUnit 2: Functioning of a Computer"},
           {"id": "Block 2", "title": "Basics of Computer Software", "link": "#"},
           {"id": "Block 3", "title": "Internet Technologies", "link": "#"}
         ]
