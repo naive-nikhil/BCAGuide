@@ -1,5 +1,4 @@
 import heroImg from "../assets/hero.jpg";
-import Card from "../components/Card";
 import bcs012June2024 from "../assets/BCS012_JUNE2024.jpg";
 import bcs054June2024 from "../assets/BCS054_JUNE2024.webp";
 import FeaturedCarousel from "../components/FeaturedCarousel";
