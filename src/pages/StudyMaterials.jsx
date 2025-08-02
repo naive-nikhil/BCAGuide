@@ -93,31 +93,21 @@ const StudyMaterials = () => {
                     </Link>
                     <div>
                       <h1 className="text-lg flex items-center gap-2">
-                        {}
-                        <p className="bg-green-100 text-green-600 text-sm w-fit px-2 rounded">
-                          Solved
-                        </p>
+                        {selectedCourse}
                       </h1>
                       <h2>{selectedCourseTitle}</h2>
-                      <h3>Study Material for  - {block.replace(/^./, (char) => char.toUpperCase())  // Capitalize first letter
-  .replace(/(\D)(\d)/, "$1 $2")}</h3>
+                      <h3>Study Material  - {block && block.replace(/^./, (char) => char.toUpperCase()).replace(/(\D)(\d)/, "$1 $2")}</h3>
+                      <h4>Description</h4>
         
                       <div className="flex w-full gap-1 mt-4">
                         <a
-                          className="w-full text-center rounded py-2 cursor-pointer bg-blue-200 mt-2 hover:-translate-y-1 transition duration-300 ease-in-out text-blue-600"
+                          className="w-full text-center rounded py-2 cursor-pointer bg-green-200 mt-2 hover:-translate-y-1 transition duration-300 ease-in-out text-green-600"
                           target="_blank"
                           href=""
                         >
                           {" "}
-                          Download Paper
+                          Download Block
                         </a>
-        
-                        <br />
-                        <button
-                          className={`w-full rounded py-2 cursor-pointer bg-green-200 mt-2 hover:-translate-y-1 transition duration-300 ease-in-out text-green-600`}
-                        >
-                          Download Solution
-                        </button>
                       </div>
                     </div>
                   </div>
