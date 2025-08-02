@@ -17,7 +17,7 @@ const StudyMaterials = () => {
 
   const { courseCode, block } = useParams();
 
-  console.log(block)
+  console.log(block);
 
   useEffect(() => {
     if (!courseCode && !block) {
@@ -30,23 +30,28 @@ const StudyMaterials = () => {
     }
   }, [courseCode, block]);
 
-  const selectedCourseTitle = semesters
-    .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === selectedCourse)?.title || "Select a Course";
+  const selectedCourseTitle =
+    semesters
+      .find((sem) => sem.title === selectedSemester)
+      .subjects.find((sub) => sub.code === selectedCourse)?.title ||
+    "Select a Course";
 
   const selectedCourseMaterial = semesters
     .find((sem) => sem.title === selectedSemester)
     .subjects.find((sub) => sub.code === selectedCourse)?.material;
 
-      const selectedCourseMaterialLink = semesters
+  const selectedCourseMaterialLink = semesters
     .find((sem) => sem.title === selectedSemester)
     .subjects.find((sub) => sub.code === selectedCourse)?.material.link;
 
-      const selectedCourseMaterialDescription = semesters
-    .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === selectedCourse)?.material.find((mat) => mat.id.toLowerCase().replace(/\s/g, "") === block)?.description.replace(/\n/g, "<br>") || "No description available" ;
-
-
+  const selectedCourseMaterialDescription =
+    semesters
+      .find((sem) => sem.title === selectedSemester)
+      .subjects.find((sub) => sub.code === selectedCourse)
+      ?.material.find(
+        (mat) => mat.id.toLowerCase().replace(/\s/g, "") === block
+      )
+      ?.description || "No description available";
 
   return (
     <div className="flex flex-col">
@@ -67,7 +72,8 @@ const StudyMaterials = () => {
           <div className="flex items-center justify-between p-3 border border-gray-200 rounded border-b-3 cursor-pointer mb-4 text-gray-700">
             <div>
               <h2 className="text-lg">
-                {courseCode&& courseCode.toUpperCase()} - {selectedCourseTitle || "Select a Course"}
+                {courseCode && courseCode.toUpperCase()} -{" "}
+                {selectedCourseTitle || "Select a Course"}
               </h2>
               <p className=" text-text-primary/60">
                 Syllabus is organized block wise
@@ -89,42 +95,54 @@ const StudyMaterials = () => {
         </>
 
         {/* Page - 3 */}
-                <div className="flex justify-between gap-4">
-                  <div className="w-full flex flex-col justify-between">
-                    <Link
-                      to={`/study-materials/${courseCode}`}
-                      className="p-2 w-fit cursor-pointer border rounded-full border-b-3 border-r-2 bg-violet-50 border-violet-500 hover:-translate-y-1 transition-all duration-300 ease"
-                    >
-                      <img src={backIcon} width={20} className="brightness-20" />
-                    </Link>
-                    <div>
-                      <h1 className="text-lg flex items-center gap-2">
-                        {selectedCourse}
-                      </h1>
-                      <h2>{selectedCourseTitle}</h2>
-                      <h3>Study Material  - {block && block.replace(/^./, (char) => char.toUpperCase()).replace(/(\D)(\d)/, "$1 $2")}</h3>
-                      <h4>Description</h4>
-                      <h5>{selectedCourseMaterialDescription}</h5>
-        
-                      <div className="flex w-full gap-1 mt-4">
-                        <a
-                          className="w-full text-center rounded py-2 cursor-pointer bg-green-200 mt-2 hover:-translate-y-1 transition duration-300 ease-in-out text-green-600"
-                          target="_blank"
-                          href=""
-                        >
-                          {" "}
-                          Download Block
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="relative h-82 border rounded-md border-gray-300 bg-blue-200 w-full overflow-hidden group">
-                    <img
-                      src={bcs012June2024}
-                      className="absolute object-cover -rotate-25 shadow-2xl right-0 -bottom-4 translate-y-1/2 translate-x-1/3 group-hover:scale-105 transition-transform duration-300 ease-in-out"
-                    />
-                  </div>
-                </div>
+        <div className="flex justify-between gap-4">
+          <div className="w-full flex flex-col justify-between">
+            <Link
+              to={`/study-materials/${courseCode}`}
+              className="p-2 w-fit cursor-pointer border rounded-full border-b-3 border-r-2 bg-violet-50 border-violet-500 hover:-translate-y-1 transition-all duration-300 ease"
+            >
+              <img src={backIcon} width={20} className="brightness-20" />
+            </Link>
+            <div>
+              <h1 className="text-lg flex items-center gap-2">
+                {selectedCourse}
+              </h1>
+              <h2>{selectedCourseTitle}</h2>
+              <h3>
+                Study Material -{" "}
+                {block &&
+                  block
+                    .replace(/^./, (char) => char.toUpperCase())
+                    .replace(/(\D)(\d)/, "$1 $2")}
+              </h3>
+              <h5 className="text-sm text-gray-500"
+                dangerouslySetInnerHTML={{
+                  __html: selectedCourseMaterialDescription.replace(
+                    /\n/g,
+                    "<br>"
+                  ),
+                }}
+              />
+
+              <div className="flex w-full gap-1 mt-4">
+                <a
+                  className="w-full text-center rounded py-2 cursor-pointer bg-green-200 mt-2 hover:-translate-y-1 transition duration-300 ease-in-out text-green-600"
+                  target="_blank"
+                  href=""
+                >
+                  {" "}
+                  Download Block
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="relative h-82 border rounded-md border-gray-300 bg-blue-200 w-full overflow-hidden group">
+            <img
+              src={bcs012June2024}
+              className="absolute object-cover -rotate-25 shadow-2xl right-0 -bottom-4 translate-y-1/2 translate-x-1/3 group-hover:scale-105 transition-transform duration-300 ease-in-out"
+            />
+          </div>
+        </div>
       </HeroCarousel>
       <FeaturedCarousel />
     </div>
