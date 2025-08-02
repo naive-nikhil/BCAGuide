@@ -15,7 +15,9 @@ const StudyMaterials = () => {
   const { setPage, selectedSemester, setSelectedCourse, selectedCourse } =
     useAppContext();
 
-  const { courseCode } = useParams();
+  const { courseCode, block } = useParams();
+
+  console.log(block)
 
   useEffect(() => {
     if (!courseCode) {
@@ -75,7 +77,7 @@ const StudyMaterials = () => {
             {selectedCourseMaterial &&
               selectedCourseMaterial.map((material, index) => (
                 <Link
-                  to={material.link}
+                  to={`${material.id.toLowerCase().replace(/\s/g, "")}`}
                   key={index}
                   className="border p-2 border-gray-200 hover:-translate-y-1 transition-all duration-300 ease rounded border-b-3 text-blue-600 cursor-pointer"
                 >

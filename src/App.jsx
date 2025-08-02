@@ -29,6 +29,8 @@ const App = () => {
           />
           <Route path="study-materials" element={<StudyMaterials />} />
           <Route path="study-materials/:courseCode" element={<StudyMaterials />} />
+          <Route path="study-materials/:courseCode/:block" element={<StudyMaterials />} />
+
           <Route path="project-synopsis-and-report" element={<Project />} />
         </Route>
       </Routes>
