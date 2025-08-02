@@ -241,7 +241,13 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Algebra I", "link": "#"},
+          {"id": "Block 2", "title": "Algebra II", "link": "#"},
+          {"id": "Block 3", "title": "Calculus", "link": "#"},
+          {"id": "Block 4", "title": "Vectors and Three Dimensional Geometry", "link": "#"}
+        ]
       },
       {
         "code": "ECO01",
@@ -357,7 +363,14 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Basic Concepts and Forms of Business Organization", "link": "#"},
+          {"id": "Block 2", "title": "Financing of Business", "link": "#"},
+          {"id": "Block 3", "title": "Marketing", "link": "#"},
+          {"id": "Block 4", "title": "Business Services", "link": "#"},
+          {"id": "Block 5", "title": "Government and Business", "link": "#"}
+        ]
       },
       {
         "code": "FEG02",
@@ -473,7 +486,13 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "English II Part 1", "link": "#"},
+          {"id": "Block 2", "title": "English II Part 2", "link": "#"},
+          {"id": "Block 3", "title": "English II Part 3", "link": "#"},
+          {"id": "Block 4", "title": "English II Part 4", "link": "#"}
+        ]
       },
       {
         "code": "BCSL013",
@@ -545,7 +564,10 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Lab Course", "link": "#"}
+        ]
       }
     ]
   },
@@ -570,7 +592,12 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "An Introduction to C", "link": "#"},
+          {"id": "Block 2", "title": "Control Statements, Arrays and Functions", "link": "#"},
+          {"id": "Block 3", "title": "Structures, Pointers and File Handling", "link": "#"}
+        ]
       },
       {
         "code": "MCS012",
@@ -590,7 +617,13 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Introduction to Digital Circuits", "link": "#"},
+          {"id": "Block 2", "title": "Basic Computer Organization", "link": "#"},
+          {"id": "Block 3", "title": "The Central Processing Unit", "link": "#"},
+          {"id": "Block 4", "title": "Assembly Language Programming", "link": "#"}
+        ]
       },
       {
         "code": "MCS013",
@@ -610,7 +643,11 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Elementary Logic", "link": "#"},
+          {"id": "Block 2", "title": "Basic Combinatorics", "link": "#"}
+        ]
       },
       {
         "code": "MCS015",
@@ -630,7 +667,11 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Skills Needed at the Work Place I", "link": "#"},
+          {"id": "Block 2", "title": "Skills Needed at the Work Place II", "link": "#"}
+        ]
       },
       {
         "code": "ECO2",
@@ -650,7 +691,14 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Accounting Fundamentals", "link": "#"},
+          {"id": "Block 2", "title": "Final Accounts", "link": "#"},
+          {"id": "Block 3", "title": "Consignment and Joint Ventures", "link": "#"},
+          {"id": "Block 4", "title": "Accounts from Incomplete Records", "link": "#"},
+          {"id": "Block 5", "title": "Accountancy I", "link": "#"}
+        ]
       },
       {
         "code": "BCSL21",
@@ -670,7 +718,10 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Lab Course", "link": "#"}
+        ]
       },
       {
         "code": "BCSL22",
@@ -690,7 +741,10 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Lab Course", "link": "#"}
+        ]
       }
     ]
   },
@@ -715,7 +769,13 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Introduction to System Development", "link": "#"},
+          {"id": "Block 2", "title": "Planning and Designing Systems", "link": "#"},
+          {"id": "Block 3", "title": "More Design Issues and CASE Tools", "link": "#"},
+          {"id": "Block 4", "title": "Implementation and Security of System & MIS", "link": "#"}
+        ]
       },
       {
         "code": "MCS021",
@@ -735,7 +795,13 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Introduction to Algorithms and Data Structures", "link": "#"},
+          {"id": "Block 2", "title": "Stacks, Queues and Trees", "link": "#"},
+          {"id": "Block 3", "title": "Graph Algorithms and Searching Techniques", "link": "#"},
+          {"id": "Block 4", "title": "File Structures and Advanced Data", "link": "#"}
+        ]
       },
       {
         "code": "MCS023",
@@ -755,7 +821,13 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "The Database Management System Concepts", "link": "#"},
+          {"id": "Block 2", "title": "Structured Query Language and Transaction Management", "link": "#"},
+          {"id": "Block 3", "title": "Application Development : Development of a Hospital Management System", "link": "#"},
+          {"id": "Block 4", "title": "Study Centre Management System : A Case Study", "link": "#"}
+        ]
       },
       {
         "code": "BCS031",
@@ -775,7 +847,12 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Basics of Object Oriented Programming & C++", "link": "#"},
+          {"id": "Block 2", "title": "Inheritance and Polymorphism in C++", "link": "#"},
+          {"id": "Block 3", "title": "Advanced Features of C++", "link": "#"}
+        ]
       },
       {
         "code": "BCSL032",
@@ -795,7 +872,10 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Lab Course", "link": "#"}
+        ]
       },
       {
         "code": "BCSL033",
@@ -815,7 +895,10 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Lab Course", "link": "#"}
+        ]
       },
       {
         "code": "BCSL034",
@@ -835,7 +918,10 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Lab Course", "link": "#"}
+        ]
       }
     ]
   },
@@ -860,7 +946,13 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Object Oriented Technology and Java", "link": "#"},
+          {"id": "Block 2", "title": "Object Oriented Concepts and Exceptions Handling", "link": "#"},
+          {"id": "Block 3", "title": "Multithreading, I/O and String Handling", "link": "#"},
+          {"id": "Block 4", "title": "Applets Programming and Advanced Java Concepts", "link": "#"}
+        ]
       },
       {
         "code": "BCS040",
@@ -880,7 +972,13 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Statistics and Probability", "link": "#"},
+          {"id": "Block 2", "title": "Statistical Inferences", "link": "#"},
+          {"id": "Block 3", "title": "Applied Statistical Methods", "link": "#"},
+          {"id": "Block 4", "title": "Sampling", "link": "#"}
+        ]
       },
       {
         "code": "BCS041",
@@ -900,7 +998,13 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Concepts of Communication and Networking", "link": "#"},
+          {"id": "Block 2", "title": "Networks and Devices", "link": "#"},
+          {"id": "Block 3", "title": "Network Transport and Application Layer", "link": "#"},
+          {"id": "Block 4", "title": "Network Design and Security", "link": "#"}
+        ]
       },
       {
         "code": "BCS042",
@@ -920,7 +1024,11 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Introduction to Algorithm", "link": "#"},
+          {"id": "Block 2", "title": "Design Techniques", "link": "#"}
+        ]
       },
       {
         "code": "BCSL043",
@@ -940,7 +1048,10 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Lab Course", "link": "#"}
+        ]
       },
       {
         "code": "BCSL044",
@@ -960,7 +1071,10 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Lab Course", "link": "#"}
+        ]
       },
       {
         "code": "BCSL045",
@@ -980,7 +1094,10 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Lab Course", "link": "#"}
+        ]
       },
       {
         "code": "MCSL016",
@@ -1000,7 +1117,10 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Lab Course", "link": "#"}
+        ]
       }
     ]
   },
@@ -1025,7 +1145,12 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Development of SRS", "link": "#"},
+          {"id": "Block 2", "title": "Design and Testing", "link": "#"},
+          {"id": "Block 3", "title": "Software Engineering Concepts", "link": "#"}
+        ]
       },
       {
         "code": "BCS052",
@@ -1045,7 +1170,12 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "TCP/IP Protocols", "link": "#"},
+          {"id": "Block 2", "title": "Fundamentals of TCP/IP Programming", "link": "#"},
+          {"id": "Block 3", "title": "Network Administration with Linux", "link": "#"}
+        ]
       },
       {
         "code": "BCS053",
@@ -1065,7 +1195,11 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Client Side", "link": "#"},
+          {"id": "Block 2", "title": "Server Side", "link": "#"}
+        ]
       },
       {
         "code": "BCS054",
@@ -1085,7 +1219,12 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Computer Arithmetic and Solution of Linear and Non-Linear Equations", "link": "#"},
+          {"id": "Block 2", "title": "Interpolation", "link": "#"},
+          {"id": "Block 3", "title": "Differentiation, Integration and Differential Equations", "link": "#"}
+        ]
       },
       {
         "code": "BCS055",
@@ -1105,7 +1244,13 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Business Social Skills and the Recruitment Process", "link": "#"},
+          {"id": "Block 2", "title": "Interviews", "link": "#"},
+          {"id": "Block 3", "title": "Business Writing", "link": "#"},
+          {"id": "Block 4", "title": "Cross Cultural Communication", "link": "#"}
+        ]
       },
       {
         "code": "BCSL056",
@@ -1125,7 +1270,10 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Lab Course", "link": "#"}
+        ]
       },
       {
         "code": "BCSL057",
@@ -1145,7 +1293,10 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Lab Course", "link": "#"}
+        ]
       },
       {
         "code": "BCSL058",
@@ -1165,7 +1316,10 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Lab Course", "link": "#"}
+        ]
       }
     ]
   },
@@ -1283,6 +1437,13 @@
             ]
           }
         }
+        ,
+        "material": [
+          {"id": "Block 1", "title": "Operating System and Fundamentals Networking", "link": "#"},
+          {"id": "Block 2", "title": "Linux Operating System", "link": "#"},
+          {"id": "Block 3", "title": "Windows 2000", "link": "#"},
+          {"id": "Block 4", "title": "Security and Management", "link": "#"}
+        ]
       },
       {
         "code": "BCS062",
@@ -1303,6 +1464,11 @@
             ]
           }
         }
+        ,
+        "material": [
+          {"id": "Block 1", "title": "E-Commerce Concepts and Models", "link": "#"},
+          {"id": "Block 2", "title": "Practices in E-Commerce", "link": "#"}
+        ]
       },
       {
         "code": "BCSL063",
@@ -1322,7 +1488,10 @@
               }
             ]
           }
-        }
+        },
+        "material": [
+          {"id": "Block 1", "title": "Lab Course", "link": "#"}
+        ]
       }
     ]
   }
