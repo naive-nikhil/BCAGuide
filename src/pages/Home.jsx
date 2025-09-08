@@ -21,7 +21,7 @@ const Home = () => {
           <div className="absolute h-full w-full bg-black/20 z-2"></div>
           <img
             src={heroImg}
-            className="absolute w-full object-cover -top-140"
+            className="lg:absolute w-full h-full lg:h-fit object-cover -top-140"
           />
         </div>
       </div>

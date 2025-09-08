@@ -5,7 +5,7 @@ import studentLogo from "../assets/student.png";
 
 const Sidebar = () => {
   return (
-    <div className="max-w-80 w-full text-text-primary flex flex-col justify-between">
+    <div className="lg:max-w-80 w-full text-text-primary flex flex-col justify-between">
       <div>
         <div className="bg-white rounded p-2 border border-gray-300">
           <h2 className="flex items-center gap-2">

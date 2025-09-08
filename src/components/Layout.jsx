@@ -7,7 +7,7 @@ const Layout = () => {
   return (
     <div>
       <Navbar />
-      <main className="p-4 flex gap-4 h-[calc(100dvh-60px)]">
+      <main className="p-4 flex-col flex lg:flex-row gap-4 h-[calc(100dvh-60px)]">
         <div className="min-w-[calc(100%-336px)]">
           <SearchBar />
           <Outlet />
