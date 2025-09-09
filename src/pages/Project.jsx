@@ -50,7 +50,7 @@ const Project = () => {
 
             <div className="flex-1 bg-white p-4 h-full overflow-scroll">
               <div className="w-full text-gray-700 pb-10">
-                <h1 className="text-xl">Project Proposal & Synopsis</h1>
+                <h1 className="text-2xl">Project Proposal & Synopsis</h1>
                 <h1 className="text-lg mt-4">Calendar</h1>
                 <p>
                   Twice a year as shown below to your concerned regional center.
@@ -100,7 +100,7 @@ const Project = () => {
                   </li>
                   <li>
                     Structure of Synopsis
-                    <ul className="list-inside list-disc pl-5 text-gray-600">
+                    <ul className="list-inside list-disc pl-5 text-gray-600 space-y-1">
                       <li>
                         Cover Page (make on your own) -{" "}
                         <a
@@ -150,12 +150,10 @@ const Project = () => {
                   </li>
                 </ol>
                 <h1 className="text-lg mt-4">MUST READ</h1>
-                <ul className="list-inside list-disc pl-5 text-gray-600">
+                <ul className="list-inside list-disc pl-5 text-gray-600 space-y-1">
                   <li>
-                    Please follow all the guidelines very seriously, some
-                    students think that IGNOU is very humble and soft on this
-                    part, but the honest truth is they are very strict about it.
-                    I don't want any student to repeat their year or semester
+                    Follow all guidelines strictly. IGNOU is strict about this
+                    and rejections are common.
                   </li>
                   <li>Synopsis must be SPIRAL BOUND</li>
                   <li>
