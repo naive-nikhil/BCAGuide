@@ -2,7 +2,7 @@ const Synopsis = () => {
   return (
     <div className="w-full text-gray-700 pb-10">
       <h1 className="text-2xl">Project Proposal & Synopsis</h1>
-      <h1 className="text-lg mt-4">Calendar</h1>
+      <h2 className="text-lg mt-4">Calendar</h2>
       <p>Twice a year as shown below to your concerned regional center.</p>
       <ul className="list-inside list-disc pl-5">
         <li>1st April to 30th June</li>
@@ -14,7 +14,7 @@ const Synopsis = () => {
         to you on your email by your concerned regional center, whether it is
         Approved or Rejected
       </p>
-      <h1 className="text-lg mt-4">Guidelines</h1>
+      <h2 className="text-lg mt-4">Guidelines</h2>
       <ol className="list-inside list-decimal space-y-2">
         <li>You need a Project Guide for your course.</li>
         <ul className="list-inside list-disc pl-5 text-gray-600">
@@ -92,7 +92,7 @@ const Synopsis = () => {
           be attached only once
         </li>
       </ol>
-      <h1 className="text-lg mt-4">MUST READ</h1>
+      <h2 className="text-lg mt-4">MUST READ</h2>
       <ul className="list-inside list-disc pl-5 text-gray-600 space-y-1 pt-2">
         <li>
           Follow all guidelines strictly. IGNOU is strict about this and

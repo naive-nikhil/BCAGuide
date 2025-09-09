@@ -2,7 +2,7 @@ const Viva = () => {
   return (
     <div className="w-full text-gray-700">
       <h1 className="text-2xl">Viva Voce (Max Marks - 100)</h1>
-      <h1 className="text-lg mt-4">Calendar</h1>
+      <h2 className="text-lg mt-4">Calendar</h2>
       <p>Twice a year as shown below</p>
       <ul className="list-inside list-disc pl-5">
         <li>
@@ -13,7 +13,7 @@ const Viva = () => {
           Slot
         </li>
       </ul>
-      <h1 className="text-lg mt-4">MUST READ</h1>
+      <h2 className="text-lg mt-4">MUST READ</h2>
       <ul className="list-inside list-disc pl-5 text-gray-600 space-y-1 pt-2">
         <li>Sincerely revise your Project Report</li>
         <li>All the questions will be asked from it</li>
