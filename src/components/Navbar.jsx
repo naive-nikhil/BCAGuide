@@ -19,7 +19,7 @@ const menu = [
       { title: "Assignments", link: "assignments/2024-25" },
       { title: "Study Materials", link: "study-materials" },
       {
-        title: "Project Synopsis & Report",
+        title: "Project Synopsis & Report - BCSP064",
         link: "project-synopsis-and-report",
       },
     ],
@@ -53,7 +53,10 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-200 flex justify-center lg:justify-between items-center relative z-100">
-      <img src={menuIcon} className="w-8 absolute right-0 mr-2 lg:hidden" />
+      <img
+        src={menuIcon}
+        className="w-6 absolute right-0 mr-2 lg:hidden brightness-10 cursor-pointer"
+      />
       <h1 className="text-2xl mx-4 font-medium text-text-primary text-heading p-4 lg:p-0">
         BCA Guide - IGNOU
       </h1>
