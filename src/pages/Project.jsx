@@ -31,7 +31,7 @@ const Project = () => {
       <div className="flex flex-col max-h-[409px] w-full justify-between ">
         <div className="flex justify-between mb-2">
           <h1 className="text-xl text-text-primary">
-            Project Syopsis & Report (BCSP064)
+            Project Synopsis & Report (BCSP064)
           </h1>
         </div>
 
@@ -41,27 +41,16 @@ const Project = () => {
               <h1 className="p-3 bg-violet-300 rounded-md">
                 Steps to complete this course
               </h1>
-              <Step
-                stepKey="synopsis"
-                label="Project Proposal & Synopsis"
-                number={1}
-                selectedStep={selectedStep}
-                setSelectedStep={setSelectedStep}
-              />
-              <Step
-                stepKey="report"
-                label="Project Report"
-                number={2}
-                selectedStep={selectedStep}
-                setSelectedStep={setSelectedStep}
-              />
-              <Step
-                stepKey="viva"
-                label="Viva Voce"
-                number={3}
-                selectedStep={selectedStep}
-                setSelectedStep={setSelectedStep}
-              />
+              {steps.map((step) => (
+                <Step
+                  key={step.key}
+                  stepKey={step.key}
+                  label={step.label}
+                  number={step.number}
+                  selectedStep={selectedStep}
+                  setSelectedStep={setSelectedStep}
+                />
+              ))}
               <h2 className="text-sm absolute bottom-0 p-3">
                 Note: All steps must be completed in order to complete this
                 course.
