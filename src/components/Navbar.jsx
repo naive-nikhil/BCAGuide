@@ -19,7 +19,7 @@ const menu = [
       { title: "Assignments", link: "assignments/2024-25" },
       { title: "Study Materials", link: "study-materials" },
       {
-        title: "Project Synopsis & Report - BCSP064",
+        title: "Project Synopsis & Report",
         link: "project-synopsis-and-report",
       },
     ],
