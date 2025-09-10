@@ -14,7 +14,7 @@ const cards = [
 
 const FeaturedCarousel = () => {
   return (
-    <div className="mt-4">
+    <div className="">
       <div className="text-text-primary flex items-center justify-between mb-2">
         <h2 className="text-xl">Featured</h2>
         <h3 className="cursor-pointer">View All</h3>

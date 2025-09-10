@@ -16,8 +16,8 @@ const cards = [
 const Home = () => {
   return (
     <div className="flex flex-col">
-      <div className="h-[409px] rounded-lg overflow-hidden">
-        <div className="relative overflow-hidden h-105">
+      <div className="h-[409px]">
+        <div className="relative overflow-hidden h-105 rounded-lg">
           <div className="absolute h-[409px] w-full bg-black/20">
             <img
               src={heroImg}
