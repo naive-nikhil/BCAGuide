@@ -49,7 +49,7 @@ const Project = () => {
               <h1 className="p-3 bg-violet-300 rounded-md w-full text-center">
                 Steps to complete this course
               </h1>
-              <div className="flex flex-row lg:flex-col gap-2 lg:gap-6 text-nowrap w-full mt-2">
+              <div className="flex flex-row lg:flex-col gap-2 lg:gap-6 text-nowrap w-full mt-2 select-none">
                 {steps.map((step) => (
                   <Step
                     key={step.key}
