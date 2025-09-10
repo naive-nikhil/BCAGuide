@@ -53,7 +53,7 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-200 flex justify-between items-center relative z-100 px-4">
       <a href="/">
-        <h1 className="text-2xl font-medium text-text-primary text-heading py-4 lg:p-0">
+        <h1 className="text-2xl font-medium text-text-primary text-heading py-4 lg:p-0 select-none">
           BCA Guide - IGNOU
         </h1>
       </a>
