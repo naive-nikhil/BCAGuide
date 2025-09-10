@@ -52,9 +52,11 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-200 flex justify-between items-center relative z-100 px-4">
-      <h1 className="text-2xl font-medium text-text-primary text-heading py-4 lg:p-0">
-        BCA Guide - IGNOU
-      </h1>
+      <a href="/">
+        <h1 className="text-2xl font-medium text-text-primary text-heading py-4 lg:p-0">
+          BCA Guide - IGNOU
+        </h1>
+      </a>
       <ul className="[&_li]:cursor-pointer [&_li]:p-4 [&_li]:hover:bg-accent-tertiary [&_li]:flex [&_li]:items-center [&_li]:gap-2 text-text-primary text-lg lg:flex hidden">
         {menu.map((item, index) => (
           <li
