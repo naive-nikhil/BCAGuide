@@ -44,7 +44,7 @@ const Sidebar = () => {
           notifications on this website only!
         </p>
       </div>
-      <div className="flex lg:block items-center mb-4">
+      <div className="flex lg:block items-center mb-8">
         <div>
           <h3 className="text-lg cursor-pointer mt-2">
             Made With Love ❤️
