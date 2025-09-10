@@ -6,7 +6,7 @@ const SearchBar = () => {
       <img src={searchLogo} className="w-4 brightness-60" />
       <input
         type="text"
-        placeholder="Search for solved assignments and previous year question papers"
+        placeholder="Search for resources"
         className="w-full py-2 pl-2"
       />
       <button className={`rounded cursor-pointer p-2 px-6 bg-emerald-300`}>

@@ -52,14 +52,8 @@ const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(null);
 
   return (
-    <nav className="bg-gray-200 flex justify-center lg:justify-between items-center relative z-100">
-      <a href="/project-synopsis-and-report">
-        <img
-          src={menuIcon}
-          className="w-6 absolute right-0 mr-2 lg:hidden brightness-10 cursor-pointer"
-        />
-      </a>
-      <h1 className="text-2xl mx-4 font-medium text-text-primary text-heading p-4 lg:p-0">
+    <nav className="bg-gray-200 flex justify-between items-center relative z-100 px-4">
+      <h1 className="text-2xl font-medium text-text-primary text-heading py-4 lg:p-0">
         BCA Guide - IGNOU
       </h1>
       <ul className="[&_li]:cursor-pointer [&_li]:p-4 [&_li]:hover:bg-accent-tertiary [&_li]:flex [&_li]:items-center [&_li]:gap-2 text-text-primary text-lg lg:flex hidden">
@@ -101,6 +95,9 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
+      <a href="/project-synopsis-and-report" className="w-6 lg:hidden">
+        <img src={menuIcon} className="brightness-10" />
+      </a>
     </nav>
   );
 };
