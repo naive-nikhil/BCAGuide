@@ -87,7 +87,7 @@ const Navbar = () => {
               }`}
             ></span>
             {dropdownMenu === index && item.submenu && (
-              <ul className="absolute top-full left-0 bg-white text-nowrap shadow-2xl flex flex-col">
+              <ul className="absolute top-full left-0 bg-white text-nowrap shadow-2xl flex flex-col z-1">
                 {item.submenu.map((subItem, subIndex) => (
                   <Link key={subIndex} to={subItem.link}>
                     <li className="relative">{subItem.title}</li>

@@ -11,7 +11,7 @@ const Sidebar = () => {
           <h2 className="flex items-center gap-2">
             {" "}
             <img src={studentLogo} className="w-4 -mt-[2px] brightness-25" />
-            Students Counter - 88,880 Visits
+            Students Counter - 88,880
           </h2>
         </div>
         <h2 className="mt-4 text-xl">Important Links</h2>
@@ -44,7 +44,7 @@ const Sidebar = () => {
           notifications on this website only!
         </p>
       </div>
-      <div className="flex flex-row lg:flex-col justify-between items-center lg:items-start gap-4 mb-8">
+      <div className="mb-8">
         <div className="self-end lg:self-auto">
           <h3 className="text-lg cursor-pointer mt-2">
             Made With Love ❤️
@@ -61,7 +61,7 @@ const Sidebar = () => {
           </div>
         </div>
         <div>
-          <h3 className="mt-2">You Can Support Me</h3>
+          <h3 className="mt-2">Support Me</h3>
           <img src={QR} alt="QR Code" className="w-40 mt-2" />
           <div className="hidden lg:flex items-center mt-2 gap-2">
             <h3 className="text-lg">Follow Us - </h3>

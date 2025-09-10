@@ -7,16 +7,19 @@ const Layout = () => {
   return (
     <div>
       <Navbar />
-      <main className="p-4 flex-col flex lg:flex-row gap-4 h-[calc(100dvh-60px)]">
-        <div className="w-full lg:w-[68%] 2xl:w-[78%]">
+      <main className="p-4 flex-col flex lg:flex-row w-full gap-4 h-full">
+        <div className="w-full lg:w-[calc(100%-300px)]">
           <SearchBar />
           <Outlet />
         </div>
-        <div className="w-full lg:w-[32%] 2xl:w-[22%] flex flex-col lg:flex-row gap-4">
+        <div className="w-full lg:w-[300px] flex flex-col lg:flex-row gap-4">
           <div className="bg-gray-200 rounded-full h-1 w-full lg:h-full lg:w-1"></div>
           <Sidebar />
         </div>
       </main>
+      <div className="w-full bg-black text-white text-center text-lg p-3">
+        Copyright - Vani
+      </div>
     </div>
   );
 };
