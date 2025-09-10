@@ -44,21 +44,30 @@ const Sidebar = () => {
           notifications on this website only!
         </p>
       </div>
-      <div>
-        <h3 className="text-lg cursor-pointer mt-2">
-          Made With Love ❤️
-          <br />
-          by a fellow IGNOU BCA Student
-        </h3>
-        <h3 className="text-text-primary/60">
-          The Platform is 100% Free (No Ads)
-        </h3>
-        <h3 className="mt-2">You Can Support Me</h3>
-        <img src={QR} alt="QR Code" className="w-40 mt-2" />
-        <div className="flex items-center mt-2 gap-2">
-          <h3 className="text-lg">Follow Us - </h3>
-          <img src={xLogo} className="w-6 cursor-pointer" />
-          <img src={instagramLogo} className="w-6 cursor-pointer" />
+      <div className="flex lg:block items-center mb-4">
+        <div>
+          <h3 className="text-lg cursor-pointer mt-2">
+            Made With Love ❤️
+            <br />
+            by a fellow IGNOU BCA Student
+          </h3>
+          <h3 className="text-text-primary/60">
+            The Platform is 100% Free (No Ads)
+          </h3>
+          <div className="flex lg:hidden items-center mt-2 gap-2">
+            <h3 className="text-lg">Follow Us - </h3>
+            <img src={xLogo} className="w-6 cursor-pointer" />
+            <img src={instagramLogo} className="w-6 cursor-pointer" />
+          </div>
+        </div>
+        <div>
+          <h3 className="mt-2">You Can Support Me</h3>
+          <img src={QR} alt="QR Code" className="w-40 mt-2" />
+          <div className="hidden lg:flex items-center mt-2 gap-2">
+            <h3 className="text-lg">Follow Us - </h3>
+            <img src={xLogo} className="w-6 cursor-pointer" />
+            <img src={instagramLogo} className="w-6 cursor-pointer" />
+          </div>
         </div>
       </div>
     </div>

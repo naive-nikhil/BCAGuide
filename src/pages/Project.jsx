@@ -14,21 +14,29 @@ const Project = () => {
     {
       key: "synopsis",
       label: "Project Proposal & Synopsis",
+      shortLabel: "Proposal",
       number: 1,
       component: <Synopsis />,
     },
     {
       key: "report",
       label: "Project Report",
+      shortLabel: "Report",
       number: 2,
       component: <Report />,
     },
-    { key: "viva", label: "Viva Voce", number: 3, component: <Viva /> },
+    {
+      key: "viva",
+      label: "Viva Voce",
+      shortLabel: "Viva",
+      number: 3,
+      component: <Viva />,
+    },
   ];
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col max-h-[409px] w-full justify-between ">
+      <div className="flex flex-col lg:max-h-[409px] w-full justify-between ">
         <div className="flex justify-between mb-2">
           <h1 className="text-xl text-text-primary">
             Project Synopsis & Report (BCSP064)
@@ -36,22 +44,25 @@ const Project = () => {
         </div>
 
         <div className="flex w-full justify-between overflow-hidden rounded-md">
-          <div className="flex w-full">
-            <div className="relative bg-violet-100 w-fit p-2 h-full flex flex-col gap-6 items-center text-lg text-gray-700">
-              <h1 className="p-3 bg-violet-300 rounded-md">
+          <div className="flex flex-col lg:flex-row w-full">
+            <div className="relative bg-violet-100 p-2 lg:h-full flex flex-col gap-6 items-center text-lg text-gray-700">
+              <h1 className="p-3 bg-violet-300 rounded-md w-full text-center">
                 Steps to complete this course
               </h1>
-              {steps.map((step) => (
-                <Step
-                  key={step.key}
-                  stepKey={step.key}
-                  label={step.label}
-                  number={step.number}
-                  selectedStep={selectedStep}
-                  setSelectedStep={setSelectedStep}
-                />
-              ))}
-              <h2 className="text-sm absolute bottom-0 p-3">
+              <div className="flex flex-row lg:flex-col gap-6 text-nowrap w-full">
+                {steps.map((step) => (
+                  <Step
+                    key={step.key}
+                    stepKey={step.key}
+                    label={step.label}
+                    shortLabel={step.shortLabel}
+                    number={step.number}
+                    selectedStep={selectedStep}
+                    setSelectedStep={setSelectedStep}
+                  />
+                ))}
+              </div>
+              <h2 className="text-sm lg:absolute bottom-0 p-1 lg:p-3">
                 Note: All steps must be completed in order to complete this
                 course.
               </h2>
@@ -62,7 +73,7 @@ const Project = () => {
             </div>
           </div>
 
-          <div className="relative overflow-hidden w-80 h-150">
+          <div className="relative hidden lg:block overflow-hidden w-80 h-150">
             <img
               src={heroImg}
               className="absolute w-full h-full object-cover -top-50"

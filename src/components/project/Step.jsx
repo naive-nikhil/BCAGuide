@@ -1,4 +1,11 @@
-const Step = ({ stepKey, label, number, selectedStep, setSelectedStep }) => {
+const Step = ({
+  stepKey,
+  label,
+  shortLabel,
+  number,
+  selectedStep,
+  setSelectedStep,
+}) => {
   const isActive = stepKey === selectedStep;
   return (
     <h2
@@ -7,7 +14,9 @@ const Step = ({ stepKey, label, number, selectedStep, setSelectedStep }) => {
         isActive ? "border-violet-400" : ""
       }`}
     >
-      {label}
+      <span className="hidden lg:inline">{label}</span>
+      <span className="inline lg:hidden">{shortLabel}</span>
+
       <span className="absolute -top-4 left-1/2 border border-emerald-300 -translate-x-1/2 w-6 h-6 flex justify-center items-center rounded-full bg-emerald-200 text-sm">
         {number}
       </span>
