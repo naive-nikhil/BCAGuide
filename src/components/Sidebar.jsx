@@ -15,36 +15,52 @@ const Sidebar = () => {
           </h2>
         </div>
         <h2 className="mt-4 text-xl">Important Links</h2>
-        <h3 className="mt-2 text-blue-600 cursor-pointer text-lg">
+        <a
+          href="https://isms.ignou.ac.in/changeadmdata/AdmissionStatusNew.ASP"
+          target="_blank"
+          className="mt-2 block text-blue-700 text-lg"
+        >
           Admission Status
-        </h3>
+        </a>
         <p className="mt-1 text-text-primary/60">
           Helps find basic details, such as subjects enrolled, Study Center
           Code, Admission Details
         </p>
-        <h3 className="mt-2 text-blue-600 cursor-pointer text-lg">
+        <a
+          href="https://gradecard.ignou.ac.in/gradecard/"
+          target="_blank"
+          className="mt-2 block text-blue-700 cursor-pointer text-lg"
+        >
           Grade Card
-        </h3>
+        </a>
         <p className="mt-1 text-text-primary/60">
           Helps you stay updated with your course completion, shows assigments
           submitted or not, and all the marks in all the subjects.
         </p>
-        <h3 className="mt-2 text-blue-600 cursor-pointer text-lg">
+        <a
+          href="https://ignou.samarth.edu.in/index.php/site/login"
+          target="_blank"
+          className="mt-2 block text-blue-700 cursor-pointer text-lg"
+        >
           IGNOU Samarth
-        </h3>
+        </a>
         <p className="mt-1 text-text-primary/60">
           Helps you find your ID Card, fill re-registration for next sessions,
           fill exam forms, download hall tickets, etc
         </p>
-        <h3 className="text-lg text-blue-600 cursor-pointer mt-2">
+        <a
+          href="https://www.ignou.ac.in/"
+          target="_blank"
+          className="text-lg block text-blue-700 cursor-pointer mt-2"
+        >
           IGNOU Official Website
-        </h3>
+        </a>
         <p className="mt-1 text-text-primary/60">
           Link for IGNOU Official website, students must confirm all the news &
           notifications on this website only!
         </p>
       </div>
-      <div className="mb-12">
+      <div className="mb-12 lg:mb-0">
         <div className="self-end lg:self-auto">
           <h3 className="text-lg cursor-pointer mt-2">
             Made With Love ❤️
