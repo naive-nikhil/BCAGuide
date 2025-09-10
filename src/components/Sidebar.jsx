@@ -5,7 +5,7 @@ import studentLogo from "../assets/student.png";
 
 const Sidebar = () => {
   return (
-    <div className="lg:max-w-80 w-full text-text-primary flex flex-col justify-between">
+    <div className="w-full text-text-primary flex flex-col justify-between">
       <div>
         <div className="bg-white rounded p-2 border border-gray-300">
           <h2 className="flex items-center gap-2">
@@ -44,8 +44,8 @@ const Sidebar = () => {
           notifications on this website only!
         </p>
       </div>
-      <div className="flex lg:block items-center mb-8">
-        <div>
+      <div className="flex lg:block justify-between items-center mb-8">
+        <div className="self-end">
           <h3 className="text-lg cursor-pointer mt-2">
             Made With Love ❤️
             <br />

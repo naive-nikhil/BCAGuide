@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import menuIcon from "../assets/menu.png";
+import crossIcon from "../assets/corss.png";
 
 const menu = [
   { title: "Home", link: "/" },
@@ -49,9 +50,10 @@ const menu = [
 
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(null);
+  const [mobileNavState, setMobileNavState] = useState(false);
 
   return (
-    <nav className="bg-gray-200 flex justify-between items-center relative z-100 px-4">
+    <nav className="bg-gray-200 flex justify-between items-center z-100 px-4">
       <a href="/">
         <h1 className="text-2xl font-medium text-text-primary text-heading py-4 lg:p-0 select-none">
           BCA Guide - IGNOU
@@ -96,9 +98,22 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
-      <a href="/project-synopsis-and-report" className="w-6 lg:hidden">
-        <img src={menuIcon} className="brightness-10" />
-      </a>
+      <img
+        src={menuIcon}
+        className="brightness-10 w-6 lg:hidden"
+        onClick={() => setMobileNavState(!mobileNavState)}
+      />
+
+      {/* Nav Menu For Mobile Screen */}
+      {mobileNavState && (
+        <div className="absolute top-0 left-0 bg-white h-full w-full z-1 lg:hidden">
+          <img
+            onClick={() => setMobileNavState(false)}
+            src={crossIcon}
+            className="w-8 brightness-10 absolute top-0 right-0 m-4 mr-3"
+          />
+        </div>
+      )}
     </nav>
   );
 };
