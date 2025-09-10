@@ -53,10 +53,12 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-200 flex justify-center lg:justify-between items-center relative z-100">
-      <img
-        src={menuIcon}
-        className="w-6 absolute right-0 mr-2 lg:hidden brightness-10 cursor-pointer"
-      />
+      <a href="/project-synopsis-and-report">
+        <img
+          src={menuIcon}
+          className="w-6 absolute right-0 mr-2 lg:hidden brightness-10 cursor-pointer"
+        />
+      </a>
       <h1 className="text-2xl mx-4 font-medium text-text-primary text-heading p-4 lg:p-0">
         BCA Guide - IGNOU
       </h1>
