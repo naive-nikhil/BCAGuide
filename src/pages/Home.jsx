@@ -18,11 +18,12 @@ const Home = () => {
     <div className="flex flex-col">
       <div className="h-[409px]">
         <div className="relative overflow-hidden h-105 rounded-lg">
-          <div className="absolute h-full w-full bg-black/20 z-2"></div>
-          <img
-            src={heroImg}
-            className="lg:absolute w-full h-full lg:h-fit object-cover -top-140"
-          />
+          <div className="absolute h-[409px] w-full bg-black/20">
+            <img
+              src={heroImg}
+              className="w-full h-full object-cover object-bottom"
+            />
+          </div>
         </div>
       </div>
       <FeaturedCarousel />

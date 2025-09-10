@@ -44,8 +44,8 @@ const Sidebar = () => {
           notifications on this website only!
         </p>
       </div>
-      <div className="flex lg:block justify-between items-center mb-8">
-        <div className="self-end">
+      <div className="flex flex-row lg:flex-col justify-between items-center lg:items-start gap-4 mb-8">
+        <div className="self-end lg:self-auto">
           <h3 className="text-lg cursor-pointer mt-2">
             Made With Love ❤️
             <br />
