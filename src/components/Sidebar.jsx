@@ -44,7 +44,7 @@ const Sidebar = () => {
           notifications on this website only!
         </p>
       </div>
-      <div className="mb-8">
+      <div className="mb-12">
         <div className="self-end lg:self-auto">
           <h3 className="text-lg cursor-pointer mt-2">
             Made With Love ❤️

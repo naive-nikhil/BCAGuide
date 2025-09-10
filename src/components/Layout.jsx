@@ -17,7 +17,6 @@ const Layout = () => {
           <Sidebar />
         </div>
       </main>
-      <div className="w-full bg-black text-white text-lg h-2"></div>
     </div>
   );
 };
