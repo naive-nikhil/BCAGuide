@@ -17,7 +17,7 @@ const Layout = () => {
           <Sidebar />
         </div>
       </main>
-      <div className="w-full bg-black text-white text-center text-lg p-4">
+      <div className="w-full bg-black text-white text-center text-lg p-4 pb-8">
         Copyright - Vani
       </div>
     </div>
