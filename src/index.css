@@ -1,6 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'MyFont Rg';
+  src: url('/public/fonts/myfont.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'MyFont Md';
+  src: url('/public/fonts/myfontmd.otf') format('opentype');
+}
+
 @theme {
   --color-text-primary: hsl(210, 10%, 27%);
   --color-background-primary: hsl(60, 33%, 97%);
@@ -16,11 +26,11 @@
 }
 
 .text-heading {
-  font-family: "GT Walsheim Trial Md", sans-serif;
+  font-family: "MyFont Md", sans-serif;
 }
 
 * {
-  font-family: "GT Walsheim Trial Rg", sans-serif;
+  font-family: "MyFont Rg", sans-serif;
   outline: 0;
   /* outline: 1px solid #000; */
 }

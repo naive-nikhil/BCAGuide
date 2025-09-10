@@ -73,7 +73,7 @@ const Project = () => {
             </div>
           </div>
 
-          <div className="relative hidden lg:block overflow-hidden w-80 h-150">
+          <div className="relative hidden 2xl:block overflow-hidden w-80 h-150">
             <img
               src={heroImg}
               className="absolute w-full h-full object-cover -top-50"
