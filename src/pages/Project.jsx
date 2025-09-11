@@ -43,11 +43,11 @@ const Project = () => {
         </h1>
         <div className="flex w-full justify-between overflow-hidden rounded-md">
           <div className="flex flex-col lg:flex-row w-full">
-            <div className="relative bg-violet-100 p-2 lg:h-full flex flex-col justify-between items-center text-lg text-gray-700">
+            <div className="bg-violet-100 p-2 lg:h-full flex flex-col gap-6 items-center text-lg text-gray-700">
               <h1 className="p-3 bg-violet-300 rounded-md w-full text-center">
                 Steps to complete this course
               </h1>
-              <div className="flex flex-row lg:flex-col lg:justify-between gap-2 h-full py-4 text-nowrap w-full mt-2 select-none">
+              <div className="flex flex-row lg:flex-col gap-2 lg:gap-6 text-nowrap w-full select-none">
                 {steps.map((step) => (
                   <Step
                     key={step.key}
@@ -60,7 +60,6 @@ const Project = () => {
                   />
                 ))}
               </div>
-              <h2 className="text-sm">Note: All steps must be completed.</h2>
             </div>
 
             <div className="flex-1 bg-white p-4 h-full overflow-auto">

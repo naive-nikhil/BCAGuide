@@ -4,7 +4,7 @@ const Synopsis = () => {
       <h1 className="text-2xl">Project Proposal & Synopsis</h1>
       <h2 className="text-lg mt-4">Calendar</h2>
       <p>Twice a year as shown below to your concerned regional center.</p>
-      <ul className="list-inside list-disc pl-5">
+      <ul className="list-outside pl-4 list-disc">
         <li>1st April to 30th June</li>
         <li>1st October to 31st December</li>
       </ul>
@@ -14,16 +14,18 @@ const Synopsis = () => {
         to you on your email by your concerned regional center, whether it is
         Approved or Rejected
       </p>
-      <h2 className="text-lg mt-4">Guidelines</h2>
-      <ol className="list-inside list-decimal space-y-2">
-        <li>You need a Project Guide for your course.</li>
-        <ul className="list-inside list-disc pl-5 text-gray-600">
-          <li>A person having Ph.D/M.Tech in Computer Science, OR</li>
-          <li>
-            A person having B.E/B.Tech/M.Sc (Computer Science) or M.CA with
-            minimum 2 years experience in the Industry / Teaching
-          </li>
-        </ul>
+      <h2 className="text-lg mt-8">Guidelines</h2>
+      <ol className="list-outside pl-4 list-decimal space-y-6">
+        <li>
+          You need a Project Guide for your course.
+          <ul className="list-outside pl-4 list-disc text-gray-600 pt-1">
+            <li>A person having Ph.D/M.Tech in Computer Science, OR</li>
+            <li>
+              A person having B.E/B.Tech/M.Sc (Computer Science) or M.CA with
+              minimum 2 years experience in the Industry / Teaching
+            </li>
+          </ul>
+        </li>
         <li>
           You can choose any topic you want but avoid buying or using previous
           similar projects. There are very high chances of rejection.{" "}
@@ -31,7 +33,7 @@ const Synopsis = () => {
         </li>
         <li>
           Table of Content
-          <ul className="list-inside list-disc pl-5 text-gray-600 pt-2">
+          <ul className="list-outside pl-4 list-disc text-gray-600 pt-1">
             <li>Introduction and Objectives</li>
             <li>Project Category</li>
             <li>Analysis(DFDs & Database Design)</li>
@@ -44,7 +46,7 @@ const Synopsis = () => {
         </li>
         <li>
           Structure of Synopsis (MUST)
-          <ul className="list-inside list-disc pl-5 text-gray-600 space-y-1 pt-2">
+          <ul className="list-outside list-disc pl-4 text-gray-600 space-y-1 pt-1">
             <li>
               Cover Page (make on your own) -{" "}
               <a
@@ -93,7 +95,7 @@ const Synopsis = () => {
         </li>
       </ol>
       <h2 className="text-lg mt-4">MUST READ</h2>
-      <ul className="list-inside list-disc pl-5 text-gray-600 space-y-1 pt-2">
+      <ul className="list-outside list-disc pl-4 text-gray-600 space-y-1 pt-1">
         <li>
           Follow all guidelines strictly. IGNOU is strict about this and
           rejections are common.
