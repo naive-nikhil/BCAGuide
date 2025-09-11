@@ -61,10 +61,10 @@ const Project = () => {
                 ))}
               </div>
             </div>
-
-            <div className="flex-1 bg-white p-4 h-full overflow-auto">
+            <div className="flex-1 bg-white p-2 lg:p-4 h-full overflow-auto">
               {activeStep?.component}
             </div>
+            0
           </div>
 
           <div className="relative hidden 2xl:block overflow-hidden w-80 h-150">
