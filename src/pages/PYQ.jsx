@@ -60,115 +60,122 @@ const PYQ = () => {
   console.log(selectedCoursePaperLink);
 
   return (
-    <div className="flex flex-col">
-      <HeroCarousel
-        sectionHeading={"Previous Year Question Papers With Solutions"}
-        sectionDesc={"previous year question papers"}
-        totalPages={3}
-        baseUrl={"/previous-year-question-papers"}
-      >
-        {/* Page - 2 */}
-        <>
-          <Link
-            to={"/previous-year-question-papers"}
-            className="absolute p-2 bottom-4 left-1/2 -translate-x-1/2 cursor-pointer border rounded-full border-b-3 border-r-2 bg-violet-50 border-violet-500 hover:-translate-y-1 transition-all duration-300 ease"
-          >
-            <img src={backIcon} width={20} className="brightness-20" />
-          </Link>
-          <div className="flex items-center justify-between p-3 border border-gray-200 rounded border-b-3 cursor-pointer mb-4 text-gray-700">
-            <div>
-              <h2 className="text-lg">
-                {selectedCourse} - {selectedCourseTitle}
-              </h2>
-              <p className=" text-text-primary/60">
-                Papers are organised session wise (June & December)
-              </p>
-            </div>
-            <div className="flex gap-4">
-              <div
-                onClick={() => setSelectedSession("june")}
-                className={`hover:text-blue-600 ${
-                  selectedSession === "june"
-                    ? "text-blue-600"
-                    : "text-text-primary/60 "
-                }`}
-              >
-                June
-              </div>
-              <div
-                onClick={() => setSelectedSession("december")}
-                className={`hover:text-blue-600 ${
-                  selectedSession === "december"
-                    ? "text-blue-600"
-                    : "text-text-primary/60"
-                }`}
-              >
-                December
-              </div>
-            </div>
-          </div>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {selectedCoursePapers &&
-              selectedCoursePapers.map((paper, index) => (
-                <Link
-                  to={paper.year.toLowerCase().replace(/\s+/g, "-")}
-                  key={index}
-                  className="border p-2 border-gray-200 hover:-translate-y-1 transition-all duration-300 ease rounded border-b-3 text-blue-600 cursor-pointer"
-                >
-                  {paper.year}
-                </Link>
-              ))}
-          </ul>
-        </>
-
-        {/* Page - 3 */}
-        <div className="flex justify-between gap-4">
-          <div className="w-full flex flex-col justify-between">
+    <>
+      <section className="h-full lg:h-[calc(calc(100vh-164px)/2)] overflow-hidden flex flex-col gap-2">
+        <h1 className="text-xl text-gray-700">
+          Previous Year Question Papers With Solutions
+        </h1>
+        <HeroCarousel
+          sectionHeading={"Previous Year Question Papers With Solutions"}
+          sectionDesc={"previous year question papers"}
+          totalPages={3}
+          baseUrl={"/previous-year-question-papers"}
+        >
+          {/* Page - 2 */}
+          <>
             <Link
-              to={`/previous-year-question-papers/${courseCode}`}
-              className="p-2 w-fit cursor-pointer border rounded-full border-b-3 border-r-2 bg-violet-50 border-violet-500 hover:-translate-y-1 transition-all duration-300 ease"
+              to={"/previous-year-question-papers"}
+              className="absolute p-2 bottom-4 left-1/2 -translate-x-1/2 cursor-pointer border rounded-full border-b-3 border-r-2 bg-violet-50 border-violet-500 hover:-translate-y-1 transition-all duration-300 ease"
             >
               <img src={backIcon} width={20} className="brightness-20" />
             </Link>
-            <div>
-              <h1 className="text-lg flex items-center gap-2">
-                {selectedCourse}
-                <p className="bg-green-100 text-green-600 text-sm w-fit px-2 rounded">
-                  Solved
+            <div className="flex items-center justify-between p-3 border border-gray-200 rounded border-b-3 cursor-pointer mb-4 text-gray-700">
+              <div>
+                <h2 className="text-lg">
+                  {selectedCourse} - {selectedCourseTitle}
+                </h2>
+                <p className=" text-text-primary/60">
+                  Papers are organised session wise (June & December)
                 </p>
-              </h1>
-              <h2>{selectedCourseTitle}</h2>
-              <h3>Previous Year Question Paper - {selectedYear}</h3>
-
-              <div className="flex w-full gap-1 mt-4">
-                <a
-                  className="w-full text-center rounded py-2 cursor-pointer bg-blue-200 mt-2 hover:-translate-y-1 transition duration-300 ease-in-out text-blue-600"
-                  target="_blank"
-                  href={selectedCoursePaperLink}
+              </div>
+              <div className="flex gap-4">
+                <div
+                  onClick={() => setSelectedSession("june")}
+                  className={`hover:text-blue-600 ${
+                    selectedSession === "june"
+                      ? "text-blue-600"
+                      : "text-text-primary/60 "
+                  }`}
                 >
-                  {" "}
-                  Download Paper
-                </a>
-
-                <br />
-                <button
-                  className={`w-full rounded py-2 cursor-pointer bg-green-200 mt-2 hover:-translate-y-1 transition duration-300 ease-in-out text-green-600`}
+                  June
+                </div>
+                <div
+                  onClick={() => setSelectedSession("december")}
+                  className={`hover:text-blue-600 ${
+                    selectedSession === "december"
+                      ? "text-blue-600"
+                      : "text-text-primary/60"
+                  }`}
                 >
-                  Download Solution
-                </button>
+                  December
+                </div>
               </div>
             </div>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {selectedCoursePapers &&
+                selectedCoursePapers.map((paper, index) => (
+                  <Link
+                    to={paper.year.toLowerCase().replace(/\s+/g, "-")}
+                    key={index}
+                    className="border p-2 border-gray-200 hover:-translate-y-1 transition-all duration-300 ease rounded border-b-3 text-blue-600 cursor-pointer"
+                  >
+                    {paper.year}
+                  </Link>
+                ))}
+            </ul>
+          </>
+
+          {/* Page - 3 */}
+          <div className="flex justify-between gap-4">
+            <div className="w-full flex flex-col justify-between">
+              <Link
+                to={`/previous-year-question-papers/${courseCode}`}
+                className="p-2 w-fit cursor-pointer border rounded-full border-b-3 border-r-2 bg-violet-50 border-violet-500 hover:-translate-y-1 transition-all duration-300 ease"
+              >
+                <img src={backIcon} width={20} className="brightness-20" />
+              </Link>
+              <div>
+                <h1 className="text-lg flex items-center gap-2">
+                  {selectedCourse}
+                  <p className="bg-green-100 text-green-600 text-sm w-fit px-2 rounded">
+                    Solved
+                  </p>
+                </h1>
+                <h2>{selectedCourseTitle}</h2>
+                <h3>Previous Year Question Paper - {selectedYear}</h3>
+
+                <div className="flex w-full gap-1 mt-4">
+                  <a
+                    className="w-full text-center rounded py-2 cursor-pointer bg-blue-200 mt-2 hover:-translate-y-1 transition duration-300 ease-in-out text-blue-600"
+                    target="_blank"
+                    href={selectedCoursePaperLink}
+                  >
+                    {" "}
+                    Download Paper
+                  </a>
+
+                  <br />
+                  <button
+                    className={`w-full rounded py-2 cursor-pointer bg-green-200 mt-2 hover:-translate-y-1 transition duration-300 ease-in-out text-green-600`}
+                  >
+                    Download Solution
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="relative h-82 border rounded-md border-gray-300 bg-blue-200 w-full overflow-hidden group">
+              <img
+                src={bcs012June2024}
+                className="absolute object-cover -rotate-25 shadow-2xl right-0 -bottom-4 translate-y-1/2 translate-x-1/3 group-hover:scale-105 transition-transform duration-300 ease-in-out"
+              />
+            </div>
           </div>
-          <div className="relative h-82 border rounded-md border-gray-300 bg-blue-200 w-full overflow-hidden group">
-            <img
-              src={bcs012June2024}
-              className="absolute object-cover -rotate-25 shadow-2xl right-0 -bottom-4 translate-y-1/2 translate-x-1/3 group-hover:scale-105 transition-transform duration-300 ease-in-out"
-            />
-          </div>
-        </div>
-      </HeroCarousel>
-      <FeaturedCarousel />
-    </div>
+        </HeroCarousel>
+      </section>
+      <section className="h-[calc(calc(100vh-164px)/2)] overflow-hidden">
+        <FeaturedCarousel />
+      </section>
+    </>
   );
 };
 

@@ -5,13 +5,7 @@ import { Children, useState } from "react";
 import { Link } from "react-router-dom";
 import downIcon from "../assets/down.png";
 
-const HeroCarousel = ({
-  sectionHeading,
-  sectionDesc,
-  totalPages,
-  children,
-  baseUrl,
-}) => {
+const HeroCarousel = ({ sectionDesc, totalPages, children, baseUrl }) => {
   const [selectedSession, setSelectedSession] = useState(
     "July 2024 & January 2025"
   );
@@ -35,9 +29,8 @@ const HeroCarousel = ({
   } = useAppContext();
 
   return (
-    <div className="flex flex-col max-h-[409px] w-full justify-between ">
-      <div className="flex justify-between mb-2">
-        <h1 className="text-xl text-text-primary">{sectionHeading}</h1>
+    <>
+      {/* <div className="flex justify-end">
         {baseUrl && baseUrl.includes("assignments") && (
           <div className="relative text-gray-700 cursor-pointer select-none">
             <h2
@@ -79,29 +72,37 @@ const HeroCarousel = ({
             )}
           </div>
         )}
-      </div>
+      </div> */}
 
-      <div className="flex w-full justify-between overflow-hidden rounded-md">
-        <div className="flex w-full">
-          <div className="text-lg text-gray-700 cursor-pointer overflow-hidden bg-violet-100 relative z-10">
-            {semesters.map((semester, index) => (
-              <Link key={index} to={baseUrl}>
-                {" "}
-                <h1
+      <div className="flex w-full justify-between overflow-hidden rounded-md text-gray-700">
+        <div className="flex flex-col lg:flex-row w-full">
+          <div className="bg-violet-100 p-2 flex flex-col w-full gap-2">
+            <h1 className="lg:hidden text-xl p-3 bg-violet-300 rounded-md w-full text-center">
+              Select Semester
+            </h1>
+            <ul className="text-sm md:text-lg text-gray-700 cursor-pointer overflow-hidden relative z-10 flex flex-row lg:flex-col gap-2">
+              {semesters.map((semester, index) => (
+                <Link
+                  key={index}
+                  to={baseUrl}
                   onClick={() => {
                     setPage(1);
                     setSelectedSemester(semester.title);
                   }}
-                  className={`p-4 flex text-nowrap hover:bg-violet-200 border-b-2 border-violet-200 transition-all duration-200 ease ${
+                  className={`p-3 rounded-md w-full text-nowrap bg-violet-200 border border-violet-300 border-b-2 transition-all duration-200 ease text-center ${
                     selectedSemester === semester.title
-                      ? "bg-violet-200 border-violet-300"
+                      ? "border-violet-400"
                       : ""
                   }`}
                 >
-                  {semester.title}
-                </h1>
-              </Link>
-            ))}
+                  {" "}
+                  <span className="hidden lg:block">{semester.title}</span>
+                  <span className="block lg:hidden">
+                    {semester.title.replace(/Semester\s*/i, "")}
+                  </span>
+                </Link>
+              ))}
+            </ul>
           </div>
 
           <div className="flex-1 bg-white">
@@ -146,14 +147,15 @@ const HeroCarousel = ({
           </div>
         </div>
 
-        <div className="relative overflow-hidden w-80 h-150">
+        <div className="relative hidden 2xl:block overflow-hidden w-80 h-150">
           <img
             src={heroImg}
+            alt="Image representing a wooden block on table with text 'Do What You Love' written on it."
             className="absolute w-full h-full object-cover -top-50"
           />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
