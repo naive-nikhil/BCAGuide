@@ -77,10 +77,10 @@ const HeroCarousel = ({ sectionDesc, totalPages, children, baseUrl }) => {
       <div className="flex w-full justify-between overflow-hidden rounded-md text-gray-700">
         <div className="flex flex-col lg:flex-row w-full">
           <div className="bg-violet-100 p-2 flex flex-col w-full gap-2">
-            <h1 className="lg:hidden text-xl p-3 bg-violet-300 rounded-md w-full text-center">
+            <h1 className="lg:hidden text-lg p-3 bg-violet-300 rounded-md w-full text-center">
               Select Semester
             </h1>
-            <ul className="text-sm md:text-lg text-gray-700 cursor-pointer overflow-hidden relative z-10 flex flex-row lg:flex-col gap-2">
+            <ul className="text-sm lg:text-lg text-gray-700 cursor-pointer overflow-hidden relative z-10 flex flex-row lg:flex-col gap-2">
               {semesters.map((semester, index) => (
                 <Link
                   key={index}
