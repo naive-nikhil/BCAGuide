@@ -35,7 +35,7 @@ const DownloadPaper = () => {
       >
         <img src={backIcon} className="w-4 h-auto brightness-20" alt="" />
       </Link>
-      <div className="flex flex-col justify-between gap-2">
+      <div className="flex flex-col lg:flex-row justify-between gap-2">
         <div>
           <h1 className="text-lg flex items-center gap-2">
             {selectedCourse}
@@ -46,29 +46,30 @@ const DownloadPaper = () => {
           <h2>{selectedCourseTitle}</h2>
           <h3>Previous Year Question Paper - {formattedYear}</h3>
         </div>
-        <div className="relative h-50 rounded-md bg-blue-200 w-full overflow-hidden group mt-2">
-          <img
-            src={bcs012June2024}
-            className="absolute object-cover -rotate-25 shadow-2xl right-0 -bottom-4 translate-y-1/2 translate-x-1/3 group-hover:scale-105 transition-transform duration-300 ease-in-out"
-          />
-        </div>
+        <div className="flex flex-1 flex-col items-center gap-2 border">
+          <div className="relative h-70 rounded-md bg-blue-200 w-full overflow-hidden group">
+            <img
+              src={bcs012June2024}
+              className="absolute object-cover -rotate-25 shadow-2xl right-0 -bottom-4 translate-y-1/2 translate-x-1/3 group-hover:scale-105 transition-transform duration-300 ease-in-out"
+            />
+          </div>
+          <div className="flex lg:flex-row w-full gap-1">
+            <a
+              className="w-full block text-center rounded p-2 cursor-pointer bg-blue-200 hover:-translate-y-1 transition duration-300 ease-in-out text-blue-600"
+              target="_blank"
+              href={selectedCoursePaperLink}
+            >
+              {" "}
+              Download Paper
+            </a>
 
-        <div className="flex lg:flex-row w-full gap-1">
-          <a
-            className="w-full block text-center rounded py-2 cursor-pointer bg-blue-200 hover:-translate-y-1 transition duration-300 ease-in-out text-blue-600"
-            target="_blank"
-            href={selectedCoursePaperLink}
-          >
-            {" "}
-            Download Paper
-          </a>
-
-          <br />
-          <button
-            className={`w-full block rounded py-2 cursor-pointer bg-green-200 hover:-translate-y-1 transition duration-300 ease-in-out text-green-600`}
-          >
-            Download Solution
-          </button>
+            <br />
+            <button
+              className={`w-full block text-center text-nowrap rounded p-2 cursor-pointer bg-green-200 hover:-translate-y-1 transition duration-300 ease-in-out text-green-600`}
+            >
+              Download Solution
+            </button>
+          </div>
         </div>
       </div>
     </div>

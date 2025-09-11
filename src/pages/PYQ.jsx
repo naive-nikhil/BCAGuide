@@ -14,7 +14,7 @@ const PYQ = () => {
 
   useEffect(() => {
     if (!courseCode && !year) {
-      setPage(<CoursesPage />);
+      setPage(<CoursesPage sectionDesc={"Previous Year Question Papers"} />);
     } else if (courseCode && !year) {
       setSelectedCourse(courseCode.toUpperCase());
       setPage(<SelectPaper />);

@@ -61,7 +61,7 @@ const SelectPaper = () => {
           December
         </div>
       </div>
-      <ul className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+      <ul className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-4">
         {selectedCoursePapers &&
           selectedCoursePapers.map((paper, index) => (
             <Link

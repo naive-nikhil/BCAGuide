@@ -8,10 +8,7 @@ const CoursesPage = ({ sectionDesc }) => {
     <div className="w-full [&_h2]:cursor-pointer flex flex-col gap-4">
       <section>
         <h1 className="text-lg">Courses in {selectedSemester}</h1>
-        <p className="text-gray-400">
-          This section contains {sectionDesc} of{" "}
-          {selectedSemester.toLowerCase()} courses!
-        </p>
+        <p className="text-gray-400">{sectionDesc}</p>
       </section>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-0 lg:pb-4">
         {semesters
