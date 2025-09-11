@@ -1,15 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import backIcon from "../../assets/back.png";
 import { useAppContext } from "../../context/AppContext";
 import semesters from "../../data/data.json";
+import { useEffect } from "react";
 
 const SelectPaper = () => {
   const {
     selectedSemester,
     selectedCourse,
+    setSelectedCourse,
     selectedSession,
     setSelectedSession,
   } = useAppContext();
+
+  // const { coursecode } = useParams;
+
+  // useEffect(() => {
+  //   setSelectedCourse(coursecode);
+  // }, [coursecode]);
 
   const selectedCourseTitle = semesters
     .find((sem) => sem.title === selectedSemester)
