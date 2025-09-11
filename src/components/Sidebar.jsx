@@ -1,7 +1,6 @@
 import QR from "../assets/QR.png";
-import xLogo from "../assets/x.png";
-import instagramLogo from "../assets/instagram.png";
 import studentLogo from "../assets/student.png";
+import StudentCounter from "./sidebar/StudentCounter";
 
 const links = [
   {
@@ -43,43 +42,42 @@ const links = [
 
 const Sidebar = () => {
   return (
-    <div className="w-full text-text-primary flex flex-col gap-2 lg:justify-between">
-      <div>
-        <h2 className="flex justify-center items-center gap-2 bg-white rounded h-[40px] border border-gray-300">
-          {" "}
-          <img src={studentLogo} className="w-4 -mt-[2px] brightness-25" />
-          Students Counter - 88,880
-        </h2>
+    <aside className="w-full text-gray-700 flex flex-col gap-2 lg:justify-between">
+      <section>
+        <StudentCounter count={"100,000"} />
         <h2 className="mt-4 text-xl">Important Links</h2>
-        {links.map((link) => (
-          <div key={link.key}>
-            <a
-              href={link.link}
-              target="_blank"
-              className="mt-2 block text-blue-700"
-            >
-              {link.label}
-            </a>
-            <p className="mt-1 text-text-primary/60 text-sm">
-              {link.description}
-            </p>
-          </div>
-        ))}
-      </div>
-      <div className="mb-12 lg:mb-0">
-        <h3 className="cursor-pointer">
+        <ul className="space-y-3">
+          {links.map((link) => (
+            <li key={link.key}>
+              <a
+                href={link.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 block text-blue-700 hover:underline"
+              >
+                {link.label}
+              </a>
+              <p className="mt-1 text-gray-400 text-sm line-clamp-none lg:line-clamp-2">
+                {link.description}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section className="mb-12 lg:mb-0">
+        <h2>Support Me</h2>
+        <p>
           Made With Love ❤️ <br />
           by a fellow IGNOU BCA Student
-        </h3>
-        <h3 className="text-text-primary/60 text-sm">
+        </p>
+        <p className="text-sm text-gray-400 mt-1">
           The Platform is 100% Free (No Ads)
-        </h3>
-        <h3 className="mt-2">Support Me</h3>
-        <div className="w-28 2xl:w-30">
+        </p>
+        <div className="mt-2 w-40">
           <img src={QR} alt="QR Code" className="w-full h-full mt-1" />
         </div>
-      </div>
-    </div>
+      </section>
+    </aside>
   );
 };
 
