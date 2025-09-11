@@ -2,7 +2,7 @@ import heroImg from "../assets/hero.jpg";
 
 const Carousel = ({ sidebarComponent, pages }) => {
   return (
-    <div className="flex w-full justify-between overflow-hidden rounded-md">
+    <div className="flex w-full justify-between overflow-hidden rounded-md h-fit">
       <div className="flex flex-col lg:flex-row w-full">
         {sidebarComponent}
 
