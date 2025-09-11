@@ -4,6 +4,8 @@ import heroImg from "../assets/hero.jpg";
 import { Children, useState } from "react";
 import { Link } from "react-router-dom";
 import downIcon from "../assets/down.png";
+import SemesterList from "./carousel/SemesterList";
+import CoursesPage from "./carousel/CoursesPage";
 
 const HeroCarousel = ({ sectionDesc, totalPages, children, baseUrl }) => {
   const [selectedSession, setSelectedSession] = useState(
@@ -76,35 +78,7 @@ const HeroCarousel = ({ sectionDesc, totalPages, children, baseUrl }) => {
 
       <div className="flex w-full justify-between overflow-hidden rounded-md text-gray-700">
         <div className="flex flex-col lg:flex-row w-full">
-          <div className="bg-violet-100 p-2 flex flex-col w-full lg:max-w-50 gap-2">
-            <h1 className="lg:hidden text-lg p-3 bg-violet-300 rounded-md w-full text-center">
-              Select Semester
-            </h1>
-            <ul className="text-sm lg:text-lg text-gray-700 cursor-pointer overflow-hidden relative z-10 flex flex-row lg:flex-col gap-2">
-              {semesters.map((semester, index) => (
-                <Link
-                  key={index}
-                  to={baseUrl}
-                  onClick={() => {
-                    setPage(1);
-                    setSelectedSemester(semester.title);
-                  }}
-                  className={`py-3 lg:p-0 lg:h-14 flex items-center justify-center rounded-md w-full text-nowrap bg-violet-200 border border-violet-300 border-b-2 hover:border-violet-400 ${
-                    selectedSemester === semester.title
-                      ? "border-violet-400"
-                      : ""
-                  }`}
-                >
-                  {" "}
-                  <span className="hidden lg:block">{semester.title}</span>
-                  <span className="block lg:hidden">
-                    {semester.title.replace(/Semester\s*/i, "")}
-                  </span>
-                </Link>
-              ))}
-            </ul>
-          </div>
-
+          <SemesterList baseUrl={baseUrl} />
           <div className="flex-1 bg-white p-2 lg:p-4 overflow-auto">
             <div
               style={{
@@ -119,31 +93,7 @@ const HeroCarousel = ({ sectionDesc, totalPages, children, baseUrl }) => {
               className={`flex gap-4 transition-transform h-full duration-500 ease-in-out`}
             >
               {/* Page 1 - Will remain same across the app */}
-              <div className="w-full [&_h2]:cursor-pointer flex flex-col gap-4">
-                <section>
-                  <h1 className="text-lg">Courses in {selectedSemester}</h1>
-                  <p className="text-gray-400">
-                    This section contains {sectionDesc} of{" "}
-                    {selectedSemester.toLowerCase()} courses!
-                  </p>
-                </section>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 pb-0 lg:pb-4">
-                  {semesters
-                    .find((sem) => sem.title === selectedSemester)
-                    .subjects.map((sub, index) => (
-                      <Link
-                        to={sub.code.toLowerCase()}
-                        key={index}
-                        className="p-3 border border-gray-200 rounded border-b-3 cursor-pointer hover:-translate-y-1 transition-all duration-300 ease"
-                      >
-                        <h2 className="text-blue-600">{sub.code}</h2>
-                        <p className=" text-gray-400 line-clamp-1">
-                          {sub.title}
-                        </p>
-                      </Link>
-                    ))}
-                </ul>
-              </div>
+              <CoursesPage sectionDesc={sectionDesc} />
 
               {contentPages.map((page, index) => (
                 <div
