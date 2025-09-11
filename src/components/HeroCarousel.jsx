@@ -76,7 +76,7 @@ const HeroCarousel = ({ sectionDesc, totalPages, children, baseUrl }) => {
 
       <div className="flex w-full justify-between overflow-hidden rounded-md text-gray-700">
         <div className="flex flex-col lg:flex-row w-full">
-          <div className="bg-violet-100 p-2 flex flex-col w-full gap-2">
+          <div className="bg-violet-100 p-2 flex flex-col w-full lg:max-w-50 gap-2">
             <h1 className="lg:hidden text-lg p-3 bg-violet-300 rounded-md w-full text-center">
               Select Semester
             </h1>
@@ -89,7 +89,7 @@ const HeroCarousel = ({ sectionDesc, totalPages, children, baseUrl }) => {
                     setPage(1);
                     setSelectedSemester(semester.title);
                   }}
-                  className={`p-3 rounded-md w-full text-nowrap bg-violet-200 border border-violet-300 border-b-2 transition-all duration-200 ease text-center ${
+                  className={`p-3 lg:p-0 lg:h-100 flex items-center justify-center rounded-md w-full text-nowrap bg-violet-200 border border-violet-300 border-b-2 hover:border-violet-400 ${
                     selectedSemester === semester.title
                       ? "border-violet-400"
                       : ""
@@ -105,7 +105,7 @@ const HeroCarousel = ({ sectionDesc, totalPages, children, baseUrl }) => {
             </ul>
           </div>
 
-          <div className="flex-1 bg-white">
+          <div className="flex-1 bg-white p-2 lg:p-4">
             <div
               style={{
                 width: `${totalPages * 100}%`,
@@ -114,7 +114,7 @@ const HeroCarousel = ({ sectionDesc, totalPages, children, baseUrl }) => {
               className={`flex transition-transform h-full duration-500 ease-in-out`}
             >
               {/* Page 1 - Will remain same across the app */}
-              <div className="w-full p-5 [&_h2]:cursor-pointer h-full">
+              <div className="w-full [&_h2]:cursor-pointer h-full">
                 <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   <li className="p-3 border border-gray-200 rounded border-b-3 cursor-pointer">
                     <h2 className="text-lg">Courses in {selectedSemester}</h2>
