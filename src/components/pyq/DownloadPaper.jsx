@@ -6,9 +6,9 @@ import bcs012June2024 from "../../assets/BCS012_JUNE2024.jpg";
 
 const formatYear = (yearParam) => {
   return yearParam
-    .split("-") // ["june", "2015"]
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // ["June", "2015"]
-    .join(" "); // "June 2015"
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 };
 
 const DownloadPaper = () => {

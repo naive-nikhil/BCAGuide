@@ -30,7 +30,12 @@ const PYQ = () => {
         <h1 className="text-xl text-gray-700">
           Previous Year Question Papers With Solutions
         </h1>
-        <Carousel sidebarComponent={<SemesterList />} pages={page} />
+        <Carousel
+          sidebarComponent={
+            <SemesterList baseUrl={"/previous-year-question-papers"} />
+          }
+          pages={page}
+        />
       </section>
       <section className="h-[calc(calc(100vh-164px)/2)] overflow-hidden">
         <FeaturedCarousel />

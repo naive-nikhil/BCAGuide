@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import semesters from "../../data/data.json";
 import { useAppContext } from "../../context/AppContext";
+import CoursesPage from "./CoursesPage";
 
 const SemesterList = ({ baseUrl }) => {
   const { selectedSemester, setSelectedSemester, setPage } = useAppContext();
@@ -15,7 +16,7 @@ const SemesterList = ({ baseUrl }) => {
             key={index}
             to={baseUrl}
             onClick={() => {
-              setPage(1);
+              setPage(<CoursesPage />);
               setSelectedSemester(semester.title);
             }}
             className={`py-3 lg:p-0 lg:h-14 flex items-center justify-center rounded-md w-full text-nowrap bg-violet-200 border border-violet-300 border-b-2 hover:border-violet-400 ${
