@@ -74,12 +74,12 @@ const PYQ = () => {
           {/* Page - 2 */}
           <>
             <Link
-              to={"/previous-year-question-papers"}
-              className="absolute p-2 bottom-4 left-1/2 -translate-x-1/2 cursor-pointer border rounded-full border-b-3 border-r-2 bg-violet-50 border-violet-500 hover:-translate-y-1 transition-all duration-300 ease"
+              to="/previous-year-question-papers"
+              className="absolute right-0 flex items-center justify-center w-8 h-8 bg-violet-200 border border-r-2 border-b-2 border-violet-300 rounded-full"
             >
-              <img src={backIcon} width={20} className="brightness-20" />
+              <img src={backIcon} className="w-4 h-auto brightness-20" alt="" />
             </Link>
-            <div>
+            <div className="mt-2">
               <h1 className="text-lg">{selectedCourse}</h1>
               <h2>{selectedCourseTitle}</h2>
               <p className=" text-text-primary/60">
