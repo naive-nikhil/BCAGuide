@@ -53,7 +53,7 @@ const Navbar = () => {
   const [mobileNavState, setMobileNavState] = useState(false);
 
   return (
-    <nav className="bg-gray-200 flex justify-between items-center z-100 px-4">
+    <nav className="bg-gray-200 flex justify-between items-center z-100 px-4 relative">
       <a href="/">
         <h1 className="text-2xl font-medium text-text-primary text-heading py-[14px] lg:p-0 select-none">
           BCA Guide - IGNOU
@@ -106,13 +106,41 @@ const Navbar = () => {
 
       {/* Nav Menu For Mobile Screen */}
       {mobileNavState && (
-        <div className="absolute top-0 left-0 bg-white h-full w-full z-1 lg:hidden">
-          <img
-            onClick={() => setMobileNavState(false)}
-            src={crossIcon}
-            className="w-8 brightness-10 absolute top-0 right-0 m-4 mr-3"
-          />
-          <a href="/project-synopsis-and-report">Project Report and Synopsis</a>
+        <div className="absolute top-full left-0 bg-white max-h-fit w-full z-1 lg:hidden shadow-xl">
+          <ul className="[&_li]:cursor-pointer [&_li]:p-4 [&_li]:flex [&_li]:items-center [&_li]:gap-2 text-gray-700 text-lg flex flex-col">
+            {menu.map((item, index) => (
+              <li
+                key={index}
+                onMouseEnter={() => setDropdownMenu(index)}
+                onMouseLeave={() => setDropdownMenu(null)}
+                className="relative border"
+              >
+                {item.link !== "#" ? (
+                  <Link
+                    to={item.link}
+                    className="flex items-center gap-2 w-full h-full"
+                  >
+                    {item.title}
+                    {item.submenu && <span>•</span>}
+                  </Link>
+                ) : (
+                  <span className="flex items-center gap-2 w-full h-full">
+                    {item.title}
+                    {item.submenu && <span>•</span>}
+                  </span>
+                )}
+                {dropdownMenu === index && item.submenu && (
+                  <ul className="absolute top-full left-0 bg-white text-nowrap shadow-2xl flex flex-col z-1">
+                    {item.submenu.map((subItem, subIndex) => (
+                      <Link key={subIndex} to={subItem.link}>
+                        <li className="relative">{subItem.title}</li>
+                      </Link>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </nav>
