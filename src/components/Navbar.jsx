@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-200 flex justify-between items-center z-100 px-4">
       <a href="/">
-        <h1 className="text-2xl font-medium text-text-primary text-heading py-4 lg:p-0 select-none">
+        <h1 className="text-2xl font-medium text-text-primary text-heading py-[14px] lg:p-0 select-none">
           BCA Guide - IGNOU
         </h1>
       </a>
@@ -112,6 +112,7 @@ const Navbar = () => {
             src={crossIcon}
             className="w-8 brightness-10 absolute top-0 right-0 m-4 mr-3"
           />
+          <a href="/project-synopsis-and-report">Project Report and Synopsis</a>
         </div>
       )}
     </nav>

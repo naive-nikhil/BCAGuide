@@ -1,33 +1,20 @@
 import heroImg from "../assets/hero.jpg";
-import bcs012June2024 from "../assets/BCS012_JUNE2024.jpg";
-import bcs054June2024 from "../assets/BCS054_JUNE2024.webp";
 import FeaturedCarousel from "../components/FeaturedCarousel";
-
-const cards = [
-  { img: bcs012June2024 },
-  { img: bcs054June2024 },
-  { img: bcs012June2024 },
-  { img: bcs054June2024 },
-  { img: bcs054June2024 },
-  { img: bcs012June2024 },
-  { img: bcs054June2024 },
-];
 
 const Home = () => {
   return (
-    <div className="flex flex-col">
-      <div className="h-[409px]">
-        <div className="relative overflow-hidden h-105 rounded-lg">
-          <div className="absolute h-[409px] w-full bg-black/20">
-            <img
-              src={heroImg}
-              className="w-full h-full object-cover object-bottom"
-            />
-          </div>
-        </div>
+    <>
+      <div className="h-[calc(calc(100dvh-164px)/2)] rounded-md overflow-hidden">
+        <img
+          src={heroImg}
+          className="h-full w-full object-cover object-bottom"
+          alt=""
+        />
       </div>
-      <FeaturedCarousel />
-    </div>
+      <div className="h-[calc(calc(100dvh-164px)/2)] overflow-hidden">
+        <FeaturedCarousel />
+      </div>
+    </>
   );
 };
 
