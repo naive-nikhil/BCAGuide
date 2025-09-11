@@ -12,7 +12,7 @@ const Layout = () => {
           <div className="h-[40px]">
             <SearchBar />
           </div>
-          <div className="h-[calc(100vh-132px)] flex flex-col gap-4">
+          <div className="lg:h-[calc(100vh-132px)] flex flex-col gap-4">
             <Outlet />
           </div>
         </div>

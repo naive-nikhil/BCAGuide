@@ -7,9 +7,6 @@ import Report from "../components/project/Report";
 import Viva from "../components/project/Viva";
 import Step from "../components/project/Step";
 
-const Project = () => {
-  const [selectedStep, setSelectedStep] = useState("synopsis");
-
   const steps = [
     {
       key: "synopsis",
@@ -34,22 +31,23 @@ const Project = () => {
     },
   ];
 
-  return (
-    <div className="flex flex-col">
-      <div className="flex flex-col lg:max-h-[409px] w-full justify-between ">
-        <div className="flex justify-between mb-2">
-          <h1 className="text-xl text-text-primary">
-            Project Synopsis & Report (BCSP064)
-          </h1>
-        </div>
+const Project = () => {
+  const [selectedStep, setSelectedStep] = useState("synopsis");
 
+  const activeStep = steps.find((step) => step.key === selectedStep);
+  return (
+    <>
+      <section className="h-full lg:h-[calc(calc(100vh-164px)/2)] overflow-hidden flex flex-col gap-2">
+        <h1 className="text-xl text-gray-700">
+          Project Synopsis & Report (BCSP064)
+        </h1>
         <div className="flex w-full justify-between overflow-hidden rounded-md">
           <div className="flex flex-col lg:flex-row w-full">
-            <div className="relative bg-violet-100 p-2 lg:h-full flex flex-col gap-4 lg:gap-6 items-center text-lg text-gray-700">
+            <div className="relative bg-violet-100 p-2 lg:h-full flex flex-col justify-between items-center text-lg text-gray-700">
               <h1 className="p-3 bg-violet-300 rounded-md w-full text-center">
                 Steps to complete this course
               </h1>
-              <div className="flex flex-row lg:flex-col gap-2 lg:gap-6 text-nowrap w-full mt-2 select-none">
+              <div className="flex flex-row lg:flex-col lg:justify-between gap-2 h-full py-4 text-nowrap w-full mt-2 select-none">
                 {steps.map((step) => (
                   <Step
                     key={step.key}
@@ -62,27 +60,27 @@ const Project = () => {
                   />
                 ))}
               </div>
-              <h2 className="text-sm lg:absolute lg:bottom-0 p-1 lg:p-3">
-                Note: All steps must be completed in order to complete this
-                course.
-              </h2>
+              <h2 className="text-sm">Note: All steps must be completed.</h2>
             </div>
 
             <div className="flex-1 bg-white p-4 h-full overflow-auto">
-              {steps.find((step) => step.key === selectedStep)?.component}
+              {activeStep?.component}
             </div>
           </div>
 
           <div className="relative hidden 2xl:block overflow-hidden w-80 h-150">
             <img
               src={heroImg}
+              alt="Image representing a wooden block on table with text 'Do What You Love' written on it."
               className="absolute w-full h-full object-cover -top-50"
             />
           </div>
         </div>
-      </div>
-      <FeaturedCarousel />
-    </div>
+      </section>
+      <section className="h-[calc(calc(100vh-164px)/2)] overflow-hidden">
+        <FeaturedCarousel />
+      </section>
+    </>
   );
 };
 
