@@ -5,8 +5,9 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [selectedSemester, setSelectedSemester] = useState("Semester One");
   const [selectedCourse, setSelectedCourse] = useState("");
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(null);
   const [selectedStep, setSelectedStep] = useState("synopsis");
+  const [selectedSession, setSelectedSession] = useState("june");
 
   return (
     <AppContext.Provider
@@ -19,6 +20,8 @@ export const AppProvider = ({ children }) => {
         setPage,
         selectedStep,
         setSelectedStep,
+        selectedSession,
+        setSelectedSession,
       }}
     >
       {children}
