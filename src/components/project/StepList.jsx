@@ -1,4 +1,4 @@
-const Step = ({
+const StepList = ({
   stepKey,
   label,
   shortLabel,
@@ -24,4 +24,4 @@ const Step = ({
   );
 };
 
-export default Step;
+export default StepList;

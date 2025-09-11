@@ -6,30 +6,31 @@ import Synopsis from "../components/project/Synopsis";
 import Report from "../components/project/Report";
 import Viva from "../components/project/Viva";
 import Step from "../components/project/Step";
+import SemesterList from "../components/carousel/SemesterList";
 
-  const steps = [
-    {
-      key: "synopsis",
-      label: "Project Proposal & Synopsis",
-      shortLabel: "Proposal",
-      number: 1,
-      component: <Synopsis />,
-    },
-    {
-      key: "report",
-      label: "Project Report",
-      shortLabel: "Report",
-      number: 2,
-      component: <Report />,
-    },
-    {
-      key: "viva",
-      label: "Viva Voce",
-      shortLabel: "Viva",
-      number: 3,
-      component: <Viva />,
-    },
-  ];
+const steps = [
+  {
+    key: "synopsis",
+    label: "Project Proposal & Synopsis",
+    shortLabel: "Proposal",
+    number: 1,
+    component: <Synopsis />,
+  },
+  {
+    key: "report",
+    label: "Project Report",
+    shortLabel: "Report",
+    number: 2,
+    component: <Report />,
+  },
+  {
+    key: "viva",
+    label: "Viva Voce",
+    shortLabel: "Viva",
+    number: 3,
+    component: <Viva />,
+  },
+];
 
 const Project = () => {
   const [selectedStep, setSelectedStep] = useState("synopsis");
@@ -43,7 +44,8 @@ const Project = () => {
         </h1>
         <div className="flex w-full justify-between overflow-hidden rounded-md">
           <div className="flex flex-col lg:flex-row w-full">
-            <div className="bg-violet-100 p-2 lg:h-full flex flex-col gap-6 items-center text-lg text-gray-700">
+            <SemesterList />
+            {/* <div className="bg-violet-100 p-2 lg:h-full flex flex-col gap-6 items-center text-lg text-gray-700">
               <h1 className="p-3 bg-violet-300 rounded-md w-full text-center">
                 Steps to complete this course
               </h1>
@@ -60,7 +62,7 @@ const Project = () => {
                   />
                 ))}
               </div>
-            </div>
+            </div> */}
             <div className="flex-1 bg-white p-2 lg:p-4 h-full overflow-auto">
               {activeStep?.component}
             </div>
