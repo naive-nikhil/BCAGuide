@@ -105,7 +105,7 @@ const HeroCarousel = ({ sectionDesc, totalPages, children, baseUrl }) => {
             </ul>
           </div>
 
-          <div className="flex-1 w-fit bg-white p-2 lg:p-4 overflow-auto">
+          <div className="flex-1 bg-white p-2 lg:p-4 overflow-auto">
             <div
               style={{
                 width: `calc(${totalPages * 100}% + ${
@@ -114,6 +114,7 @@ const HeroCarousel = ({ sectionDesc, totalPages, children, baseUrl }) => {
                 transform: `translateX(calc(-${
                   (100 / totalPages) * (page - 1)
                 }% - ${(page - 1) * 6}px))`,
+                height: "",
               }}
               className={`flex gap-4 transition-transform h-full duration-500 ease-in-out`}
             >
@@ -145,7 +146,10 @@ const HeroCarousel = ({ sectionDesc, totalPages, children, baseUrl }) => {
               </div>
 
               {contentPages.map((page, index) => (
-                <div key={index + 2} className="w-full h-full relative">
+                <div
+                  key={index + 2}
+                  className="w-full h-fit relative overflow-hidden"
+                >
                   {page}{" "}
                 </div>
               ))}
