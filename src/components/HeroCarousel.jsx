@@ -89,7 +89,7 @@ const HeroCarousel = ({ sectionDesc, totalPages, children, baseUrl }) => {
                     setPage(1);
                     setSelectedSemester(semester.title);
                   }}
-                  className={`p-3 lg:p-0 lg:h-14 flex items-center justify-center rounded-md w-full text-nowrap bg-violet-200 border border-violet-300 border-b-2 hover:border-violet-400 ${
+                  className={`py-3 lg:p-0 lg:h-14 flex items-center justify-center rounded-md w-full text-nowrap bg-violet-200 border border-violet-300 border-b-2 hover:border-violet-400 ${
                     selectedSemester === semester.title
                       ? "border-violet-400"
                       : ""

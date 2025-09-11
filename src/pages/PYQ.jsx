@@ -79,39 +79,32 @@ const PYQ = () => {
             >
               <img src={backIcon} width={20} className="brightness-20" />
             </Link>
-            <div className="flex items-center justify-between p-3 border border-gray-200 rounded border-b-3 cursor-pointer mb-4 text-gray-700">
-              <div>
-                <h2 className="text-lg">
-                  {selectedCourse} - {selectedCourseTitle}
-                </h2>
-                <p className=" text-text-primary/60">
-                  Papers are organised session wise (June & December)
-                </p>
+            <div>
+              <h1 className="text-lg">{selectedCourse}</h1>
+              <h2>{selectedCourseTitle}</h2>
+              <p className=" text-text-primary/60">
+                Papers are organised session wise
+              </p>
+            </div>
+            <div className="flex gap-2 mt-2">
+              <div
+                onClick={() => setSelectedSession("june")}
+                className={`bg-green-200 text-gray-700 px-3 py-2 text-sm rounded-md border border-b-2 border-green-300 ${
+                  selectedSession === "june" ? "border-green-400" : ""
+                }`}
+              >
+                June
               </div>
-              <div className="flex gap-4">
-                <div
-                  onClick={() => setSelectedSession("june")}
-                  className={`hover:text-blue-600 ${
-                    selectedSession === "june"
-                      ? "text-blue-600"
-                      : "text-text-primary/60 "
-                  }`}
-                >
-                  June
-                </div>
-                <div
-                  onClick={() => setSelectedSession("december")}
-                  className={`hover:text-blue-600 ${
-                    selectedSession === "december"
-                      ? "text-blue-600"
-                      : "text-text-primary/60"
-                  }`}
-                >
-                  December
-                </div>
+              <div
+                onClick={() => setSelectedSession("december")}
+                className={`bg-green-200 text-gray-700 px-3 py-2 text-sm rounded-md border border-b-2 border-green-300 ${
+                  selectedSession === "december" ? "border-green-400" : ""
+                }`}
+              >
+                December
               </div>
             </div>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <ul className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
               {selectedCoursePapers &&
                 selectedCoursePapers.map((paper, index) => (
                   <Link
@@ -126,7 +119,7 @@ const PYQ = () => {
           </>
 
           {/* Page - 3 */}
-          <div className="flex justify-between gap-4">
+          <div className="flex flex-col lg:flex-row justify-between gap-4 hidden">
             <div className="w-full flex flex-col justify-between">
               <Link
                 to={`/previous-year-question-papers/${courseCode}`}
