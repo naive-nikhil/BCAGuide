@@ -1,5 +1,3 @@
-import React from "react";
-
 const Carousel = () => {
   return (
     <div className="flex flex-col lg:flex-row w-full">

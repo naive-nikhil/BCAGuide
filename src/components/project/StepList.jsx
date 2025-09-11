@@ -1,27 +1,56 @@
-const StepList = ({
-  stepKey,
-  label,
-  shortLabel,
-  number,
-  selectedStep,
-  setSelectedStep,
-}) => {
-  const isActive = stepKey === selectedStep;
-  return (
-    <h2
-      onClick={() => setSelectedStep(stepKey)}
-      className={`relative p-3 rounded-md bg-violet-200 w-full text-center border border-violet-300 cursor-pointer border-b-2 hover:border-violet-400 ${
-        isActive ? "border-violet-400" : ""
-      }`}
-    >
-      <span className="hidden lg:inline">{label}</span>
-      <span className="inline lg:hidden">{shortLabel}</span>
+import Step from "./Step";
+import Synopsis from "../../components/project/Synopsis";
+import Report from "../../components/project/Report";
+import Viva from "../../components/project/Viva";
 
-      <span className="absolute -top-4 left-1/2 border border-emerald-300 -translate-x-1/2 w-6 h-6 flex justify-center items-center rounded-full bg-emerald-200 text-sm">
-        {number}
-      </span>
-    </h2>
+const steps = [
+  {
+    key: "synopsis",
+    label: "Project Proposal & Synopsis",
+    shortLabel: "Proposal",
+    number: 1,
+    component: <Synopsis />,
+  },
+  {
+    key: "report",
+    label: "Project Report",
+    shortLabel: "Report",
+    number: 2,
+    component: <Report />,
+  },
+  {
+    key: "viva",
+    label: "Viva Voce",
+    shortLabel: "Viva",
+    number: 3,
+    component: <Viva />,
+  },
+];
+
+const StepList = () => {
+  return (
+    <div className="bg-violet-100 p-2 lg:h-full flex flex-col gap-6 items-center text-lg text-gray-700">
+      <h1 className="p-3 bg-violet-300 rounded-md w-full text-center">
+        Steps to complete this course
+      </h1>
+      <div className="flex flex-row lg:flex-col gap-2 lg:gap-6 text-nowrap w-full select-none">
+        {steps.map((step) => (
+          <Step
+            key={step.key}
+            stepKey={step.key}
+            label={step.label}
+            shortLabel={step.shortLabel}
+            number={step.number}
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 
 export default StepList;
+
+export const getActiveStepComponent = (selectedStep) => {
+  const activeStep = steps.find((step) => step.key === selectedStep);
+  return activeStep?.component || null;
+};
