@@ -107,12 +107,15 @@ const Navbar = () => {
       {/* Nav Menu For Mobile Screen */}
       {mobileNavState && (
         <div className="absolute top-full left-0 bg-white max-h-fit w-full z-1 lg:hidden shadow-xl">
-          <ul className="[&_li]:cursor-pointer [&_li]:p-4 [&_li]:flex [&_li]:items-center [&_li]:gap-2 text-gray-700 text-lg flex flex-col">
+          <ul className="[&_li]:cursor-pointer [&_li]:p-4 [&_li]:flex [&_li]:flex-col [&_li]:gap-2 text-gray-700 text-lg flex flex-col">
             {menu.map((item, index) => (
               <li
                 key={index}
-                onMouseEnter={() => setDropdownMenu(index)}
-                onMouseLeave={() => setDropdownMenu(null)}
+                onClick={() =>
+                  index != 2
+                    ? setMobileNavState(false)
+                    : setDropdownMenu(dropdownMenu === index ? null : index)
+                }
                 className="relative"
               >
                 {item.link !== "#" ? (
@@ -130,9 +133,16 @@ const Navbar = () => {
                   </span>
                 )}
                 {dropdownMenu === index && item.submenu && (
-                  <ul className="absolute top-full left-0 bg-white text-nowrap shadow-2xl flex flex-col z-1">
+                  <ul className="bg-gray-100/50 text-nowrap flex flex-col -mx-4">
                     {item.submenu.map((subItem, subIndex) => (
-                      <Link key={subIndex} to={subItem.link}>
+                      <Link
+                        key={subIndex}
+                        to={subItem.link}
+                        onClick={() => {
+                          setDropdownMenu(null);
+                          setMobileNavState(false);
+                        }}
+                      >
                         <li className="relative">{subItem.title}</li>
                       </Link>
                     ))}
