@@ -113,7 +113,7 @@ const Navbar = () => {
                 key={index}
                 onMouseEnter={() => setDropdownMenu(index)}
                 onMouseLeave={() => setDropdownMenu(null)}
-                className="relative border"
+                className="relative"
               >
                 {item.link !== "#" ? (
                   <Link
