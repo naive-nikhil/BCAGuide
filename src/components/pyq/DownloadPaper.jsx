@@ -49,7 +49,7 @@ const DownloadPaper = () => {
           </div>
         </div>
         <div className="flex flex-1 lg:max-w-120 flex-col items-center gap-2">
-          <div className="relative h-60 lg:h-full rounded-md bg-blue-200 border border-blue-200 border-r-3 border-b-6 w-full overflow-hidden group">
+          <div className="relative h-60 lg:h-full rounded-md bg-blue-200 border border-blue-200 border-r-3 border-b-3 w-full overflow-hidden group">
             <img
               src={bcs012June2024}
               className="absolute object-cover -rotate-25 shadow-2xl right-0 -bottom-4 translate-y-1/2 translate-x-1/3 group-hover:scale-105 transition-transform duration-300 ease-in-out"
