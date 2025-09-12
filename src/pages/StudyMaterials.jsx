@@ -11,6 +11,7 @@ import Carousel from "../components/Carousel";
 import CoursesPage from "../components/carousel/CoursesPage";
 import SemesterList from "../components/carousel/SemesterList";
 import SelectBlock from "../components/material/SelectBlock";
+import DownloadMaterial from "../components/material/DownloadMaterial";
 
 const StudyMaterials = () => {
   const [selectedSession, setSelectedSession] = useState("june");
@@ -29,7 +30,7 @@ const StudyMaterials = () => {
       setSelectedCourse(courseCode.toUpperCase());
       setPage(<SelectBlock />);
     } else if (courseCode && block) {
-      setPage(3);
+      setPage(<DownloadMaterial />);
     }
   }, [courseCode, block]);
 
