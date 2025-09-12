@@ -1,7 +1,6 @@
 import backIcon from "../assets/back.png";
 
 import { useState, useEffect } from "react";
-import HeroCarousel from "../components/HeroCarousel";
 import FeaturedCarousel from "../components/FeaturedCarousel";
 import { useAppContext } from "../context/AppContext";
 import { Link } from "react-router-dom";

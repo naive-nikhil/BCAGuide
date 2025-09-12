@@ -7,13 +7,15 @@ import { Link } from "react-router-dom";
 
 import semesters from "../data/data.json";
 import { useParams } from "react-router-dom";
-import SemesterList from "../components/carousel/SemesterList";
 import Carousel from "../components/Carousel";
+import CoursesPage from "../components/carousel/CoursesPage";
+import SemesterList from "../components/carousel/SemesterList";
+import SelectBlock from "../components/material/SelectBlock";
 
 const StudyMaterials = () => {
   const [selectedSession, setSelectedSession] = useState("june");
   const [selectedYear, setSelectedYear] = useState("");
-  const { setPage, selectedSemester, setSelectedCourse, selectedCourse } =
+  const { setPage, selectedSemester, setSelectedCourse, selectedCourse, page } =
     useAppContext();
 
   const { courseCode, block } = useParams();
@@ -22,10 +24,10 @@ const StudyMaterials = () => {
 
   useEffect(() => {
     if (!courseCode && !block) {
-      setPage(1);
+      setPage(<CoursesPage sectionDesc="Study Materials" />);
     } else if (courseCode && !block) {
       setSelectedCourse(courseCode.toUpperCase());
-      setPage(2);
+      setPage(<SelectBlock />);
     } else if (courseCode && block) {
       setPage(3);
     }
@@ -64,9 +66,7 @@ const StudyMaterials = () => {
           Previous Year Question Papers With Solutions
         </h1>
         <Carousel
-          sidebarComponent={
-            <SemesterList baseUrl={"/previous-year-question-papers"} />
-          }
+          sidebarComponent={<SemesterList baseUrl={"/study-materials"} />}
           pages={page}
         />
       </section>
