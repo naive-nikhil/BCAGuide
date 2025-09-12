@@ -2,32 +2,20 @@ import { Link, useParams } from "react-router-dom";
 import backIcon from "../../assets/back.png";
 import { useAppContext } from "../../context/AppContext";
 import semesters from "../../data/data.json";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const SelectPaper = () => {
-  const {
-    selectedSemester,
-    selectedCourse,
-    setSelectedCourse,
-    selectedSession,
-    setSelectedSession,
-  } = useAppContext();
-
-  // const { coursecode } = useParams;
-
-  // useEffect(() => {
-  //   setSelectedCourse(coursecode);
-  // }, [coursecode]);
+const SelectPaper = ({ courseCode }) => {
+  const { selectedSemester } = useAppContext();
+  const [session, setSession] = useState("june");
 
   const selectedCourseTitle = semesters
     .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === selectedCourse)?.title;
+    .subjects.find((sub) => sub.code === courseCode)?.title;
 
   const selectedCoursePapers = semesters
     .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === selectedCourse)?.papers.session?.[
-    selectedSession
-  ];
+    .subjects.find((sub) => sub.code === courseCode)?.papers.session?.[session];
+
   return (
     <div className="relative">
       <Link
@@ -37,7 +25,7 @@ const SelectPaper = () => {
         <img src={backIcon} className="w-4 h-auto brightness-20" alt="" />
       </Link>
       <div>
-        <h1 className="text-lg">{selectedCourse}</h1>
+        <h1 className="text-lg">{courseCode}</h1>
         <h2>{selectedCourseTitle}</h2>
         <p className=" text-text-primary/60">
           Papers are organised session wise
@@ -45,23 +33,23 @@ const SelectPaper = () => {
       </div>
       <div className="flex gap-2 mt-2">
         <div
-          onClick={() => setSelectedSession("june")}
+          onClick={() => setSession("june")}
           className={`bg-green-200 text-gray-700 px-3 py-2 text-sm rounded-md border border-b-2 border-green-300 ${
-            selectedSession === "june" ? "border-green-400" : ""
+            session === "june" ? "border-green-400" : ""
           }`}
         >
           June
         </div>
         <div
-          onClick={() => setSelectedSession("december")}
+          onClick={() => setSession("december")}
           className={`bg-green-200 text-gray-700 px-3 py-2 text-sm rounded-md border border-b-2 border-green-300 ${
-            selectedSession === "december" ? "border-green-400" : ""
+            session === "december" ? "border-green-400" : ""
           }`}
         >
           December
         </div>
       </div>
-      <ul className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-4">
+      <ul className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-4">
         {selectedCoursePapers &&
           selectedCoursePapers.map((paper, index) => (
             <Link

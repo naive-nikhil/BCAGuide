@@ -3,7 +3,7 @@ import semesters from "../../data/data.json";
 import { useAppContext } from "../../context/AppContext";
 
 const SemesterList = ({ baseUrl }) => {
-  const { selectedSemester, setSelectedSemester, setPage } = useAppContext();
+  const { selectedSemester, setSelectedSemester } = useAppContext();
   return (
     <div className="bg-violet-100 p-2 flex flex-col w-full lg:max-w-50 gap-2">
       <h1 className="lg:hidden text-lg p-3 bg-violet-300 rounded-md w-full text-center">

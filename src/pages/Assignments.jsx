@@ -1,11 +1,4 @@
-import backIcon from "../assets/back.png";
-
-import { useState, useEffect } from "react";
 import FeaturedCarousel from "../components/FeaturedCarousel";
-import { useAppContext } from "../context/AppContext";
-import { Link } from "react-router-dom";
-
-import semesters from "../data/data.json";
 import { useParams } from "react-router-dom";
 import SemesterList from "../components/carousel/SemesterList";
 import Carousel from "../components/Carousel";

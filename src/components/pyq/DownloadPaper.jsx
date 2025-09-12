@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import backIcon from "../../assets/back.png";
 import { useAppContext } from "../../context/AppContext";
 import semesters from "../../data/data.json";
@@ -11,19 +11,20 @@ const formatYear = (yearParam) => {
     .join(" ");
 };
 
-const DownloadPaper = () => {
-  const { courseCode, year } = useParams();
-  const { selectedSemester, selectedCourse, selectedSession } = useAppContext();
+const DownloadPaper = ({ courseCode, year }) => {
+  const { selectedSemester } = useAppContext();
+
   const selectedCourseTitle = semesters
     .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === selectedCourse)?.title;
+    .subjects.find((sub) => sub.code === courseCode)?.title;
 
+  const session = year.split("-")[0];
   const formattedYear = year ? formatYear(year) : null;
 
   const selectedCoursePaperLink = semesters
     .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === selectedCourse)
-    ?.papers.session?.[selectedSession].find(
+    .subjects.find((sub) => sub.code === courseCode)
+    ?.papers.session?.[session].find(
       (paper) => paper.year === formattedYear
     )?.link;
 
@@ -32,14 +33,14 @@ const DownloadPaper = () => {
       <div className="flex flex-col lg:flex-row justify-between gap-2 h-full">
         <div className="flex-1 flex flex-col justify-between">
           <Link
-            to={`/previous-year-question-papers/${courseCode}`}
+            to={`/previous-year-question-papers/${courseCode.toLowerCase()}`}
             className="absolute lg:relative right-0 flex items-center justify-center w-8 h-8 bg-violet-200 border border-r-2 border-b-2 border-violet-300 rounded-full"
           >
             <img src={backIcon} className="w-4 h-auto brightness-20" alt="" />
           </Link>
           <div>
             <h1 className="text-lg flex items-center gap-2">
-              {selectedCourse}
+              {courseCode}
               <p className="bg-green-100 text-green-600 text-sm w-fit px-2 rounded">
                 Solved
               </p>

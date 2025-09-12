@@ -5,7 +5,6 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [selectedSemester, setSelectedSemester] = useState("Semester One");
   const [selectedCourse, setSelectedCourse] = useState("");
-  const [page, setPage] = useState(null);
   const [selectedStep, setSelectedStep] = useState("synopsis");
   const [selectedSession, setSelectedSession] = useState("june");
 
@@ -16,8 +15,6 @@ export const AppProvider = ({ children }) => {
         setSelectedSemester,
         selectedCourse,
         setSelectedCourse,
-        page,
-        setPage,
         selectedStep,
         setSelectedStep,
         selectedSession,

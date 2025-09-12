@@ -13,9 +13,9 @@ const PYQ = () => {
   if (!courseCode && !year) {
     page = <CoursesPage sectionDesc="Previous Year Question Papers" />;
   } else if (courseCode && !year) {
-    page = <SelectPaper />;
+    page = <SelectPaper courseCode={courseCode.toUpperCase()} />;
   } else if (courseCode && year) {
-    page = <DownloadPaper />;
+    page = <DownloadPaper courseCode={courseCode.toUpperCase()} year={year} />;
   }
 
   return (
