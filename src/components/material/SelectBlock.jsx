@@ -19,24 +19,20 @@ const SelectBlock = () => {
     .subjects.find((sub) => sub.code === selectedCourse)?.material;
 
   return (
-    <div>
+    <div className="relative flex flex-col gap-4">
       {" "}
       <Link
-        to={"/study-materials"}
-        className="absolute p-2 bottom-4 left-1/2 -translate-x-1/2 cursor-pointer border rounded-full border-b-3 border-r-2 bg-violet-50 border-violet-500 hover:-translate-y-1 transition-all duration-300 ease"
+        to="/previous-year-question-papers"
+        className="absolute right-0 flex items-center justify-center w-8 h-8 bg-violet-200 border border-r-2 border-b-2 border-violet-300 rounded-full"
       >
-        <img src={backIcon} width={20} className="brightness-20" />
+        <img src={backIcon} className="w-4 h-auto brightness-20" alt="" />
       </Link>
-      <div className="flex items-center justify-between p-3 border border-gray-200 rounded border-b-3 cursor-pointer mb-4 text-gray-700">
-        <div>
-          <h2 className="text-lg">
-            {courseCode && courseCode.toUpperCase()} -{" "}
-            {selectedCourseTitle || "Select a Course"}
-          </h2>
-          <p className=" text-text-primary/60">
-            Syllabus is organized block wise
-          </p>
-        </div>
+      <div>
+        <h1 className="text-lg">{selectedCourse}</h1>
+        <h2>{selectedCourseTitle}</h2>
+        <p className=" text-text-primary/60">
+          Papers are organised session wise
+        </p>
       </div>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
         {selectedCourseMaterial &&

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import backIcon from "../../assets/back.png";
 import { Link, useParams } from "react-router-dom";
 import { useAppContext } from "../../context/AppContext";
@@ -6,13 +6,10 @@ import semesters from "../../data/data.json";
 import bcs012June2024 from "../../assets/BCS012_JUNE2024.jpg";
 
 const DownloadMaterial = () => {
-  const [selectedSession, setSelectedSession] = useState(
-    "July 2024 & January 2025"
-  );
+  const [selectedSession] = useState("July 2024 & January 2025");
 
-  const { session, courseCode } = useParams();
-  const { setPage, selectedSemester, setSelectedCourse, selectedCourse, page } =
-    useAppContext();
+  const { session } = useParams();
+  const { selectedSemester, selectedCourse } = useAppContext();
 
   const selectedCourseTitle = semesters
     .find((sem) => sem.title === selectedSemester)
