@@ -4,30 +4,7 @@ import { useAppContext } from "../../context/AppContext";
 import semesters from "../../data/data.json";
 import bcs012June2024 from "../../assets/BCS012_JUNE2024.jpg";
 
-const formatYear = (yearParam) => {
-  return yearParam
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-};
-
-const DownloadPaper = ({ courseCode, year }) => {
-  const { selectedSemester } = useAppContext();
-
-  const selectedCourseTitle = semesters
-    .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === courseCode)?.title;
-
-  const session = year.split("-")[0];
-  const formattedYear = year ? formatYear(year) : null;
-
-  const selectedCoursePaperLink = semesters
-    .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === courseCode)
-    ?.papers.session?.[session].find(
-      (paper) => paper.year === formattedYear
-    )?.link;
-
+const DownloadPaper = ({ courseCode, courseTitle, type, year, link }) => {
   return (
     <div className="relative h-full">
       <div className="flex flex-col lg:flex-row justify-between gap-2 h-full">
@@ -45,8 +22,10 @@ const DownloadPaper = ({ courseCode, year }) => {
                 Solved
               </p>
             </h1>
-            <h2>{selectedCourseTitle}</h2>
-            <h3>Previous Year Question Paper - {formattedYear}</h3>
+            <h2>{courseTitle}</h2>
+            <h3>
+              {type} - {year}
+            </h3>
           </div>
         </div>
         <div className="flex flex-1 lg:max-w-120 flex-col items-center gap-2">
@@ -60,7 +39,7 @@ const DownloadPaper = ({ courseCode, year }) => {
             <a
               className="w-full block text-center text-nowrap rounded py-2 lg:p-2 cursor-pointer bg-blue-200 border border-blue-300 border-b-2 hover:border-blue-400 text-blue-600"
               target="_blank"
-              href={selectedCoursePaperLink}
+              href={link}
             >
               {" "}
               Download Paper

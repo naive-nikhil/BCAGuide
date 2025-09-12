@@ -3,16 +3,37 @@ import { useParams } from "react-router-dom";
 import SemesterList from "../components/carousel/SemesterList";
 import Carousel from "../components/Carousel";
 import CoursesPage from "../components/carousel/CoursesPage";
-import DownloadAssignment from "../components/assignments/DownloadAssignment";
+import Download from "../components/pyq/Download";
+import { useAppContext } from "../context/AppContext";
+import semesters from "../data/data.json";
 
 const Assignments = () => {
   const { session, courseCode } = useParams();
+  const { selectedSemester, selectedCourse } = useAppContext();
+
+  const selectedCourseTitle = semesters
+    .find((sem) => sem.title === selectedSemester)
+    .subjects.find((sub) => sub.code === courseCode.toUpperCase())?.title;
+
+  const selectedSessionCourseAssignmentLink = semesters
+    .find((sem) => sem.title === selectedSemester)
+    .subjects.find((sub) => sub.code === selectedCourse)?.assignments?.[
+    selectedSession
+  ];
 
   let page = null;
   if (!courseCode && session) {
     page = <CoursesPage sectionDesc="Assignments" baseUrl={"/assignments"} />;
   } else if (courseCode && session) {
-    page = <DownloadAssignment />;
+    page = (
+      <Download
+        courseCode={courseCode.toUpperCase()}
+        courseTitle={selectedCourseTitle}
+        type={"Assignment"}
+        year={session}
+        link={selectedSessionCourseAssignmentLink}
+      />
+    );
   }
 
   return (

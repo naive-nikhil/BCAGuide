@@ -6,23 +6,6 @@ import semesters from "../../data/data.json";
 import bcs012June2024 from "../../assets/BCS012_JUNE2024.jpg";
 
 const DownloadAssignment = () => {
-  const [selectedSession, setSelectedSession] = useState(
-    "July 2024 & January 2025"
-  );
-
-  const { session, courseCode } = useParams();
-  const { setPage, selectedSemester, setSelectedCourse, selectedCourse, page } =
-    useAppContext();
-
-  const selectedCourseTitle = semesters
-    .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === selectedCourse)?.title;
-
-  const selectedSessionCourseAssignmentLink = semesters
-    .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === selectedCourse)?.assignments?.[
-    selectedSession
-  ];
   return (
     <div className="relative h-full">
       <div className="flex flex-col lg:flex-row justify-between gap-2 h-full">
