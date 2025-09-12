@@ -40,7 +40,6 @@ const StepList = () => {
             stepKey={step.key}
             label={step.label}
             shortLabel={step.shortLabel}
-            number={step.number}
           />
         ))}
       </ul>
