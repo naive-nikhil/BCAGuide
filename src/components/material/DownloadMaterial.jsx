@@ -25,7 +25,7 @@ const DownloadMaterial = () => {
       <div className="flex flex-col lg:flex-row justify-between gap-2 h-full">
         <div className="flex-1 flex flex-col justify-between">
           <Link
-            to={`/assignments/${session}`}
+            to={`/study-materials/${selectedCourse}`}
             className="absolute lg:relative right-0 flex items-center justify-center w-8 h-8 bg-violet-200 border border-r-2 border-b-2 border-violet-300 rounded-full"
           >
             <img src={backIcon} className="w-4 h-auto brightness-20" alt="" />

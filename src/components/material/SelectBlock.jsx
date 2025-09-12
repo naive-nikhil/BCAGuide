@@ -5,9 +5,8 @@ import semesters from "../../data/data.json";
 import { useAppContext } from "../../context/AppContext";
 
 const SelectBlock = () => {
-  const { courseCode, block } = useParams();
-  const { setPage, selectedSemester, setSelectedCourse, selectedCourse, page } =
-    useAppContext();
+  
+  const { selectedSemester, selectedCourse } = useAppContext();
   const selectedCourseTitle =
     semesters
       .find((sem) => sem.title === selectedSemester)
@@ -22,7 +21,7 @@ const SelectBlock = () => {
     <div className="relative flex flex-col gap-4">
       {" "}
       <Link
-        to="/previous-year-question-papers"
+        to="/study-materials"
         className="absolute right-0 flex items-center justify-center w-8 h-8 bg-violet-200 border border-r-2 border-b-2 border-violet-300 rounded-full"
       >
         <img src={backIcon} className="w-4 h-auto brightness-20" alt="" />
