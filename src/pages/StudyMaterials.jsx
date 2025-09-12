@@ -14,62 +14,23 @@ import SelectBlock from "../components/material/SelectBlock";
 import DownloadMaterial from "../components/material/DownloadMaterial";
 
 const StudyMaterials = () => {
-  const [selectedSession, setSelectedSession] = useState("june");
-  const [selectedYear, setSelectedYear] = useState("");
-  const { setPage, selectedSemester, setSelectedCourse, selectedCourse, page } =
-    useAppContext();
-
   const { courseCode, block } = useParams();
-
-  console.log(block);
-
-  useEffect(() => {
-    if (!courseCode && !block) {
-      setPage(<CoursesPage sectionDesc="Study Materials" />);
-    } else if (courseCode && !block) {
-      setSelectedCourse(courseCode.toUpperCase());
-      setPage(<SelectBlock />);
-    } else if (courseCode && block) {
-      setPage(<DownloadMaterial />);
-    }
-  }, [courseCode, block]);
-
-  const selectedCourseTitle =
-    semesters
-      .find((sem) => sem.title === selectedSemester)
-      .subjects.find((sub) => sub.code === selectedCourse)?.title ||
-    "Select a Course";
-
-  const selectedCourseMaterial = semesters
-    .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === selectedCourse)?.material;
-
-  const selectedCourseMaterialDescription =
-    semesters
-      .find((sem) => sem.title === selectedSemester)
-      .subjects.find((sub) => sub.code === selectedCourse)
-      ?.material.find(
-        (mat) => mat.id.toLowerCase().replace(/\s/g, "") === block
-      )?.description || "No description available";
-
-  const selectedCourseMaterialLink =
-    semesters
-      .find((sem) => sem.title === selectedSemester)
-      .subjects.find((sub) => sub.code === selectedCourse)
-      ?.material.find(
-        (mat) => mat.id.toLowerCase().replace(/\s/g, "") === block
-      )?.link || "#";
+  let page = null;
+  if (!courseCode && !block) {
+    page = (
+      <CoursesPage sectionDesc="Study Materials" baseUrl={"/study-materials"} />
+    );
+  } else if (courseCode && !block) {
+    page = <SelectBlock />;
+  } else if (courseCode && block) {
+    page = <DownloadMaterial />;
+  }
 
   return (
     <>
       <section className="h-full lg:h-[calc(calc(100vh-164px)/2)] overflow-hidden flex flex-col gap-2">
-        <h1 className="text-xl text-gray-700">
-          Previous Year Question Papers With Solutions
-        </h1>
-        <Carousel
-          sidebarComponent={<SemesterList baseUrl={"/study-materials"} />}
-          pages={page}
-        />
+        <h1 className="text-xl text-gray-700">Study Materials</h1>
+        <Carousel sidebarComponent={<SemesterList />} page={page} />
       </section>
       <section className="h-[calc(calc(100vh-164px)/2)] overflow-hidden">
         <FeaturedCarousel />

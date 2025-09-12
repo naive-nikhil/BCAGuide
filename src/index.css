@@ -3,12 +3,12 @@
 
 @font-face {
   font-family: 'MyFont Rg';
-  src: url('/public/fonts/myfont.otf') format('opentype');
+  src: url('/fonts/myfont.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'MyFont Md';
-  src: url('/public/fonts/myfontmd.otf') format('opentype');
+  src: url('/fonts/myfontmd.otf') format('opentype');
 }
 
 @theme {

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import semesters from "../../data/data.json";
 import { useAppContext } from "../../context/AppContext";
-import CoursesPage from "./CoursesPage";
 
 const SemesterList = ({ baseUrl }) => {
   const { selectedSemester, setSelectedSemester, setPage } = useAppContext();

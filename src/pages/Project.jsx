@@ -14,7 +14,7 @@ const Project = () => {
         <h1 className="text-xl text-gray-700">
           Project Synopsis & Report (BCSP064)
         </h1>
-        <Carousel sidebarComponent={<StepList />} pages={ActiveStepComponent} />
+        <Carousel sidebarComponent={<StepList />} page={ActiveStepComponent} />
       </section>
       <section className="h-[calc(calc(100vh-164px)/2)] overflow-hidden">
         <FeaturedCarousel />

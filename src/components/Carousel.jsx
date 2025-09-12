@@ -1,13 +1,13 @@
 import heroImg from "../assets/hero.jpg";
 
-const Carousel = ({ sidebarComponent, pages }) => {
+const Carousel = ({ sidebarComponent, page }) => {
   return (
     <div className="flex w-full justify-between overflow-hidden rounded-md h-fit">
       <div className="flex flex-col lg:flex-row w-full">
         {sidebarComponent}
 
         <div className="flex-1 bg-white p-2 lg:p-4 h-full overflow-auto">
-          {pages}
+          {page}
         </div>
       </div>
 

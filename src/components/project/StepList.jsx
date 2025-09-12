@@ -29,11 +29,11 @@ const steps = [
 
 const StepList = () => {
   return (
-    <div className="bg-violet-100 p-2 lg:h-full flex flex-col gap-6 items-center text-lg text-gray-700">
+    <div className="bg-violet-100 p-2 flex flex-col gap-2 items-center text-lg text-gray-700">
       <h1 className="p-3 bg-violet-300 rounded-md w-full text-center">
         Steps to complete this course
       </h1>
-      <div className="flex flex-row lg:flex-col gap-2 lg:gap-6 text-nowrap w-full select-none">
+      <ul className="text-sm lg:text-lg text-gray-700 cursor-pointer overflow-hidden relative z-10 flex flex-row lg:flex-col gap-2 w-full">
         {steps.map((step) => (
           <Step
             key={step.key}
@@ -43,7 +43,7 @@ const StepList = () => {
             number={step.number}
           />
         ))}
-      </div>
+      </ul>
     </div>
   );
 };
