@@ -54,10 +54,10 @@ const About = () => {
               student can find:
             </p>
             <ul className="list-outside list-disc pl-4">
-              <li>📚 Previous year question papers (with solutions)</li>
-              <li>📝 Assignments and study materials</li>
-              <li>🔗 Important links and official guidelines</li>
-              <li>📢 Updates and notifications in one place</li>
+              <li>Previous year question papers (with solutions)</li>
+              <li>Assignments and study materials</li>
+              <li>Important links and official guidelines</li>
+              <li>Updates and notifications in one place</li>
             </ul>
             <p>
               I want this website to be the place I wish I had when I started my
