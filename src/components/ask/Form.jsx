@@ -35,7 +35,7 @@ This message is sent from BCAGuide`;
         type="text"
         name="name"
         placeholder="Name"
-        className="border border-emerald-400 rounded-md p-2 antialiased"
+        className="border border-b-2 border-emerald-400 rounded-md p-2 antialiased"
         value={formData.name}
         onChange={handleChange}
         required
@@ -44,7 +44,7 @@ This message is sent from BCAGuide`;
         type="email"
         name="email"
         placeholder="Email"
-        className="border border-emerald-400 rounded-md p-2 antialiased"
+        className="border border-b-2 border-emerald-400 rounded-md p-2 antialiased"
         value={formData.email}
         onChange={handleChange}
         required
