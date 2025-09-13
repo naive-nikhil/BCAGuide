@@ -129,7 +129,7 @@ const Table = () => {
                 <a
                   href={notification.link}
                   target="_blank"
-                  className="mt-4 p-2 bg-emerald-300 rounded-lg block w-fit"
+                  className="mt-4 px-3 py-1 bg-emerald-300 rounded-lg text-sm block w-fit"
                 >
                   View Attachment
                 </a>
