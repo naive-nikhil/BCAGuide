@@ -9,7 +9,7 @@ const EnterData = () => {
         <div className="h-100 w-80 bg-white rounded-md relative">
           <span
             onClick={() => setShowForm(false)}
-            className="absolute top-2 right-2 cursor-pointer"
+            className="absolute top-2 right-2 cursor-pointer text-sm"
           >
             Close
           </span>
