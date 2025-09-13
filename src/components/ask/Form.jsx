@@ -17,7 +17,9 @@ const Form = () => {
     const phone = "918178455863"; // 👈 Your WhatsApp number in international format
     const message = `Hello, my name is ${formData.name}.
 My email is ${formData.email}.
-${formData.doubt}`;
+${formData.doubt}
+
+This message is sent from BCAGuide`;
 
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank"); // opens WhatsApp Web / App
