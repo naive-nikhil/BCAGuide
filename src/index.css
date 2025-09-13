@@ -43,4 +43,6 @@
 
 .animate-wiggle {
   animation: wiggle 1.2s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
