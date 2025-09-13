@@ -34,3 +34,13 @@
   outline: 0;
   /* outline: 1px solid #000; */
 }
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+.animate-fade {
+  animation: wiggle 1.2s ease-in-out infinite;
+}

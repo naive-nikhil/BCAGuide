@@ -44,7 +44,7 @@ const menu = [
   },
   {
     title: "Notifications & Alerts",
-    link: "#",
+    link: "notifications",
   },
 ];
 
