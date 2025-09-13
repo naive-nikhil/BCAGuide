@@ -36,13 +36,11 @@
 }
 
 @keyframes wiggle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-1.5deg); }
-  75% { transform: rotate(1.5deg); }
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
 }
 
 .animate-wiggle {
   animation: wiggle 1.2s ease-in-out infinite;
-  will-change: transform;
-  transform: translateZ(0);
 }
