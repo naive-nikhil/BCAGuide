@@ -100,49 +100,44 @@ const Table = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
   return (
-    <div className="flex flex-col gap-4">
-      <h2 className="text-xl">Frequently Asked Questions</h2>
-      <ul className="grid grid-cols-1 gap-4">
-        {notifications &&
-          notifications.map((notification, index) => (
-            <li
-              onClick={() => toggleNotification(index)}
-              key={notification.id}
-              className="border p-4 border-gray-200 transition-all duration-300 ease rounded border-b-3 cursor-pointer"
-            >
-              <h2 className="text-lg">
-                {notification.title}
-                {index === 0 && (
-                  <span className="bg-red-500 rounded-md text-white text-xs px-2 py-[2px] ml-4 inline-block animate-fade">
-                    New
-                  </span>
-                )}
-              </h2>
-
-              <p className="text-sm text-gray-400 mt-1">
-                Issued By - {notification.issuedBy} •{" "}
-                <span className="text-emerald-500 text-nowrap text-heading">
-                  {notification.date}
+    <ul className="grid grid-cols-1 gap-4">
+      {notifications &&
+        notifications.map((notification, index) => (
+          <li
+            onClick={() => toggleNotification(index)}
+            key={notification.id}
+            className="border p-4 border-gray-200 transition-all duration-300 ease rounded border-b-3 cursor-pointer"
+          >
+            <h2 className="text-lg">
+              {notification.title}
+              {index === 0 && (
+                <span className="bg-red-500 rounded-md text-white text-xs px-2 py-[2px] ml-4 inline-block animate-fade">
+                  New
                 </span>
-              </p>
-              {openIndex === index && (
-                <>
-                  <p className="text-gray-400 mt-4">
-                    {notification.description}
-                  </p>
-                  <a
-                    href={notification.link}
-                    target="_blank"
-                    className="mt-4 p-2 bg-emerald-300 rounded-lg block w-fit"
-                  >
-                    View Attachment
-                  </a>
-                </>
               )}
-            </li>
-          ))}
-      </ul>
-    </div>
+            </h2>
+
+            <p className="text-sm text-gray-400 mt-1">
+              Issued By - {notification.issuedBy} •{" "}
+              <span className="text-emerald-500 text-nowrap text-heading">
+                {notification.date}
+              </span>
+            </p>
+            {openIndex === index && (
+              <>
+                <p className="text-gray-400 mt-4">{notification.description}</p>
+                <a
+                  href={notification.link}
+                  target="_blank"
+                  className="mt-4 p-2 bg-emerald-300 rounded-lg block w-fit"
+                >
+                  View Attachment
+                </a>
+              </>
+            )}
+          </li>
+        ))}
+    </ul>
   );
 };
 
