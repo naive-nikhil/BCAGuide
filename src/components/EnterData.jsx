@@ -1,4 +1,3 @@
-import React from "react";
 import { useAppContext } from "../context/AppContext";
 
 const EnterData = () => {
@@ -6,13 +5,18 @@ const EnterData = () => {
   return (
     showForm && (
       <div className="absolute top-0 left-0 h-dvh w-full bg-black/70 flex justify-center items-center z-999">
-        <div className="h-100 w-80 bg-white rounded-md relative">
+        <div className="max-h-200 h-full max-w-120 w-full bg-white rounded-md relative p-2">
           <span
             onClick={() => setShowForm(false)}
             className="absolute top-2 right-2 cursor-pointer text-sm"
           >
             Close
           </span>
+          <h1>Enter Data</h1>
+          <label htmlFor="type">Select Type</label>
+          <select name="type" id="">
+            <option value=""></option>
+          </select>
         </div>
       </div>
     )
