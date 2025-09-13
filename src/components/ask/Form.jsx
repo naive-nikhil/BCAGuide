@@ -49,7 +49,7 @@ This message is sent from BCAGuide`;
       />
       <textarea
         name="doubt"
-        className="border border-b-2 border-emerald-400 rounded-md p-2 h-full"
+        className="border border-b-2 border-emerald-400 rounded-md p-2 h-full resize-none"
         placeholder="Ask Doubt"
         value={formData.doubt}
         onChange={handleChange}
