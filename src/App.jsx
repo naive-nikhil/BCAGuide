@@ -6,6 +6,7 @@ import Assignments from "./pages/Assignments";
 import StudyMaterials from "./pages/StudyMaterials";
 import Project from "./pages/Project";
 import About from "./pages/About";
+import AskDoubt from "./pages/AskDoubt";
 
 const App = () => {
   return (
@@ -40,6 +41,8 @@ const App = () => {
           />
 
           <Route path="project-synopsis-and-report" element={<Project />} />
+
+          <Route path="ask-doubts" element={<AskDoubt />} />
         </Route>
       </Routes>
     </>

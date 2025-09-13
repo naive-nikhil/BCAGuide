@@ -40,7 +40,7 @@ const menu = [
   // },
   {
     title: "Ask Doubts",
-    link: "#",
+    link: "ask-doubts",
   },
   {
     title: "Notifications & Alerts",
