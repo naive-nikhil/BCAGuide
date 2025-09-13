@@ -14,17 +14,17 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const phone = "918178455863"; // 👈 Your WhatsApp number in international format
+    const phone = "918178455863";
     const message = `Hello
 Name - ${formData.name}.
-Emai - ${formData.email}.
+Email - ${formData.email}.
 
 Doubt - ${formData.doubt}
 
 This message is sent from BCAGuide`;
 
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank"); // opens WhatsApp Web / App
+    window.open(url, "_blank");
   };
   return (
     <form
@@ -35,7 +35,7 @@ This message is sent from BCAGuide`;
         type="text"
         name="name"
         placeholder="Name"
-        className="border border-emerald-400 rounded-md p-2"
+        className="border border-emerald-400 rounded-md p-2 antialiased"
         value={formData.name}
         onChange={handleChange}
         required
@@ -44,14 +44,14 @@ This message is sent from BCAGuide`;
         type="email"
         name="email"
         placeholder="Email"
-        className="border border-emerald-400 rounded-md p-2"
+        className="border border-emerald-400 rounded-md p-2 antialiased"
         value={formData.email}
         onChange={handleChange}
         required
       />
       <textarea
         name="doubt"
-        className="border border-b-2 border-emerald-400 rounded-md p-2 h-full resize-none"
+        className="border border-b-2 border-emerald-400 rounded-md p-2 h-full resize-none antialiased"
         placeholder="Ask Doubt"
         value={formData.doubt}
         onChange={handleChange}
