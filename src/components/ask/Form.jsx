@@ -15,10 +15,11 @@ const Form = () => {
     e.preventDefault();
 
     const phone = "918178455863"; // 👈 Your WhatsApp number in international format
-    const message = `Hello, my name is ${formData.name}.
-My email is ${formData.email}.
+    const message = `Hello
+Name - ${formData.name}.
+Emai - ${formData.email}.
 
-${formData.doubt}
+Doubt - ${formData.doubt}
 
 This message is sent from BCAGuide`;
 
