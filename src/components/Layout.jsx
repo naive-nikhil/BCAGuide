@@ -3,10 +3,12 @@ import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import FeaturedCarousel from "./FeaturedCarousel";
+import EnterData from "./EnterData";
 
 const Layout = () => {
   return (
     <div>
+      <EnterData />
       <Navbar />
       <main className="p-4 flex-col flex lg:flex-row w-full gap-4 h-full lg:h-[calc(100vh-60px)]">
         <div className="w-full lg:w-[calc(100%-300px)] flex flex-col gap-4">

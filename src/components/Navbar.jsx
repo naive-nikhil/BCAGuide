@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import menuIcon from "../assets/menu.png";
 import crossIcon from "../assets/corss.png";
+import { useAppContext } from "../context/AppContext";
 
 const menu = [
   { title: "Home", link: "/" },
@@ -53,13 +54,14 @@ const Navbar = () => {
   const [mobileNavState, setMobileNavState] = useState(false);
 
   const [count, setCount] = useState(0);
+  const { setShowForm } = useAppContext();
 
   const handleClick = () => {
     const newCount = count + 1;
     setCount(newCount);
 
     if (newCount === 5) {
-      alert("Hello World!");
+      setShowForm(true);
       setCount(0);
     }
   };
