@@ -13,11 +13,11 @@ const Assignments = () => {
 
   const selectedCourseTitle = semesters
     .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === courseCode.toUpperCase())?.title;
+    .subjects.find((sub) => sub.code === courseCode?.toUpperCase())?.title;
 
   const selectedSessionCourseAssignmentLink = semesters
     .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === selectedCourse)?.assignments?.[
+    .subjects?.find((sub) => sub.code === selectedCourse)?.assignments?.[
     selectedSession
   ];
 
@@ -38,13 +38,8 @@ const Assignments = () => {
 
   return (
     <>
-      <section className="h-full lg:h-[calc(calc(100vh-164px)/2)] overflow-hidden flex flex-col gap-2">
-        <h1 className="text-xl text-gray-700">Assignments</h1>
-        <Carousel sidebarComponent={<SemesterList />} page={page} />
-      </section>
-      <section className="h-[calc(calc(100vh-164px)/2)] overflow-hidden">
-        <FeaturedCarousel />
-      </section>
+      <h1 className="text-xl text-gray-700">Assignments</h1>
+      <Carousel sidebarComponent={<SemesterList />} page={page} />
     </>
   );
 };

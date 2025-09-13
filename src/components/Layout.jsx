@@ -2,6 +2,7 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
 import SearchBar from "./SearchBar";
+import FeaturedCarousel from "./FeaturedCarousel";
 
 const Layout = () => {
   return (
@@ -13,7 +14,12 @@ const Layout = () => {
             <SearchBar />
           </div>
           <div className="lg:h-[calc(100vh-132px)] flex flex-col gap-4">
-            <Outlet />
+            <section className="h-full lg:h-[calc(calc(100vh-164px)/2)] overflow-hidden flex flex-col gap-2">
+              <Outlet />
+            </section>
+            <section className="h-[calc(calc(100vh-164px)/2)] overflow-hidden">
+              <FeaturedCarousel />
+            </section>
           </div>
         </div>
         <div className="w-full lg:w-[300px] flex flex-col lg:flex-row gap-4 overflow-hidden lg:h-[calc(100vh-92px)]">

@@ -17,7 +17,7 @@ const CoursesPage = ({ sectionDesc, baseUrl }) => {
         <div className="text-gray-700 cursor-pointer select-none relative lg:absolute top-0 right-0">
           <h2
             onClick={() => setOpenSessionSelect(!openSessionSelect)}
-            className={`flex items-center justify-between gap-4 bg-white px-2 rounded-md border border-gray-300 ${
+            className={`flex items-center justify-between gap-4 bg-white p-2 rounded-md border border-gray-300 ${
               openSessionSelect && "rounded-b-none"
             }`}
           >

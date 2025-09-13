@@ -5,6 +5,7 @@ import PYQ from "./pages/PYQ";
 import Assignments from "./pages/Assignments";
 import StudyMaterials from "./pages/StudyMaterials";
 import Project from "./pages/Project";
+import About from "./pages/About";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="about-me" element={<About />} />
           <Route path="previous-year-question-papers" element={<PYQ />} />
           <Route
             path="previous-year-question-papers/:courseCode"
@@ -28,8 +30,14 @@ const App = () => {
             element={<Assignments />}
           />
           <Route path="study-materials" element={<StudyMaterials />} />
-          <Route path="study-materials/:courseCode" element={<StudyMaterials />} />
-          <Route path="study-materials/:courseCode/:block" element={<StudyMaterials />} />
+          <Route
+            path="study-materials/:courseCode"
+            element={<StudyMaterials />}
+          />
+          <Route
+            path="study-materials/:courseCode/:block"
+            element={<StudyMaterials />}
+          />
 
           <Route path="project-synopsis-and-report" element={<Project />} />
         </Route>

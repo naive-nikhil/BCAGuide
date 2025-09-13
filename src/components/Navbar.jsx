@@ -7,7 +7,7 @@ const menu = [
   { title: "Home", link: "/" },
   {
     title: "About Me",
-    link: "#",
+    link: "about-me",
   },
   {
     title: "Resources",

@@ -1,40 +1,56 @@
-import backIcon from "../assets/back.png";
-import bcs012June2024 from "../assets/BCS012_JUNE2024.jpg";
-import { useState, useEffect } from "react";
 import FeaturedCarousel from "../components/FeaturedCarousel";
-import { useAppContext } from "../context/AppContext";
-import { Link } from "react-router-dom";
-
-import semesters from "../data/data.json";
 import { useParams } from "react-router-dom";
 import Carousel from "../components/Carousel";
 import CoursesPage from "../components/carousel/CoursesPage";
 import SemesterList from "../components/carousel/SemesterList";
 import SelectBlock from "../components/material/SelectBlock";
-import DownloadMaterial from "../components/material/DownloadMaterial";
+import Download from "../components/pyq/Download";
+import semesters from "../data/data.json";
+import { useAppContext } from "../context/AppContext";
 
 const StudyMaterials = () => {
+  const { selectedSemester } = useAppContext();
   const { courseCode, block } = useParams();
+
+  const selectedCourseTitle = semesters
+    .find((sem) => sem.title === selectedSemester)
+    .subjects.find((sub) => sub.code === courseCode?.toUpperCase())?.title;
+
+  const studyMaterial = semesters
+    .find((sem) => sem.title === selectedSemester)
+    .subjects?.find((sub) => sub.code === courseCode?.toUpperCase())?.material;
+
+  const blockLink = studyMaterial?.[block];
+
   let page = null;
   if (!courseCode && !block) {
     page = (
       <CoursesPage sectionDesc="Study Materials" baseUrl={"/study-materials"} />
     );
   } else if (courseCode && !block) {
-    page = <SelectBlock />;
+    page = (
+      <SelectBlock
+        courseCode={courseCode.toUpperCase()}
+        courseTitle={selectedCourseTitle}
+        material={studyMaterial}
+      />
+    );
   } else if (courseCode && block) {
-    page = <DownloadMaterial />;
+    page = (
+      <Download
+        courseCode={courseCode.toUpperCase()}
+        courseTitle={selectedCourseTitle}
+        type={"Study Material"}
+        year={block.toUpperCase()}
+        link={blockLink}
+      />
+    );
   }
 
   return (
     <>
-      <section className="h-full lg:h-[calc(calc(100vh-164px)/2)] overflow-hidden flex flex-col gap-2">
-        <h1 className="text-xl text-gray-700">Study Materials</h1>
-        <Carousel sidebarComponent={<SemesterList />} page={page} />
-      </section>
-      <section className="h-[calc(calc(100vh-164px)/2)] overflow-hidden">
-        <FeaturedCarousel />
-      </section>
+      <h1 className="text-xl text-gray-700">Study Materials</h1>
+      <Carousel sidebarComponent={<SemesterList />} page={page} />
     </>
   );
 };

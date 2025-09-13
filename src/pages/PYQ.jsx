@@ -21,17 +21,15 @@ const PYQ = () => {
 
   const selectedCourseTitle = semesters
     .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === courseCode.toUpperCase())?.title;
-
-  console.log(selectedCourseTitle);
+    .subjects.find((sub) => sub.code === courseCode?.toUpperCase())?.title;
 
   const session = year && year.split("-")[0];
   const formattedYear = year ? formatYear(year) : null;
 
   const selectedCoursePaperLink = semesters
     .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === courseCode)
-    ?.papers.session?.[session].find(
+    .subjects.find((sub) => sub.code === courseCode?.toUpperCase())
+    ?.papers.session?.[session]?.find(
       (paper) => paper.year === formattedYear
     )?.link;
 
@@ -45,6 +43,7 @@ const PYQ = () => {
       <Download
         courseCode={courseCode.toUpperCase()}
         courseTitle={selectedCourseTitle}
+        type={"Previous Year Question Paper"}
         year={formattedYear}
         link={selectedCoursePaperLink}
       />
@@ -53,18 +52,13 @@ const PYQ = () => {
 
   return (
     <>
-      <section className="h-full lg:h-[calc(calc(100vh-164px)/2)] overflow-hidden flex flex-col gap-2">
-        <h1 className="text-xl text-gray-700">Previous Year Question Papers</h1>
-        <Carousel
-          sidebarComponent={
-            <SemesterList baseUrl={"/previous-year-question-papers"} />
-          }
-          page={page}
-        />
-      </section>
-      <section className="h-[calc(calc(100vh-164px)/2)] overflow-hidden">
-        <FeaturedCarousel />
-      </section>
+      <h1 className="text-xl text-gray-700">Previous Year Question Papers</h1>
+      <Carousel
+        sidebarComponent={
+          <SemesterList baseUrl={"/previous-year-question-papers"} />
+        }
+        page={page}
+      />
     </>
   );
 };
