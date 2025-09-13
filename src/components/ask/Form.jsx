@@ -29,7 +29,7 @@ This message is sent from BCAGuide`;
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-2 w-full lg:max-w-60 p-2 bg-white text-gray-700"
+      className="flex flex-col gap-2 w-full lg:max-w-100 p-2 bg-white text-gray-700"
     >
       <input
         type="text"
