@@ -113,7 +113,7 @@ const Table = () => {
               <h2 className="text-lg">
                 {notification.title}
                 {index === 0 && (
-                  <span className="bg-red-500 antialiased rounded-md text-white text-xs px-2 py-[2px] ml-4 inline-block animate-fade">
+                  <span className="bg-red-500 rounded-md text-white text-xs px-2 py-[2px] ml-4 inline-block animate-fade">
                     New
                   </span>
                 )}
