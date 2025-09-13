@@ -52,13 +52,26 @@ const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(null);
   const [mobileNavState, setMobileNavState] = useState(false);
 
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    const newCount = count + 1;
+    setCount(newCount);
+
+    if (newCount === 5) {
+      alert("Hello World!");
+      setCount(0);
+    }
+  };
+
   return (
     <nav className="bg-gray-200 flex justify-between items-center z-100 px-4 relative">
-      <a href="/">
-        <h1 className="text-2xl font-medium text-text-primary text-heading py-[14px] lg:p-0 select-none">
-          BCA Guide - IGNOU
-        </h1>
-      </a>
+      <h1
+        onClick={handleClick}
+        className="text-2xl font-medium text-text-primary text-heading py-[14px] lg:p-0 select-none"
+      >
+        BCA Guide - IGNOU
+      </h1>
       <ul className="[&_li]:cursor-pointer [&_li]:p-4 [&_li]:hover:bg-accent-tertiary [&_li]:flex [&_li]:items-center [&_li]:gap-2 text-text-primary text-lg lg:flex hidden">
         {menu.map((item, index) => (
           <li
