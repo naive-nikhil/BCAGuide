@@ -27,13 +27,13 @@ This message is sent from BCAGuide`;
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-2 w-full lg:max-w-60 text-gray-700"
+      className="flex flex-col gap-2 w-full lg:max-w-60 p-2 bg-white text-gray-700"
     >
       <input
         type="text"
         name="name"
         placeholder="Name"
-        className="border border-b-2 border-emerald-400 rounded-md p-2"
+        className="border border-emerald-400 rounded-md p-2"
         value={formData.name}
         onChange={handleChange}
         required
@@ -42,7 +42,7 @@ This message is sent from BCAGuide`;
         type="email"
         name="email"
         placeholder="Email"
-        className="border border-b-2 border-emerald-400 rounded-md p-2"
+        className="border border-emerald-400 rounded-md p-2"
         value={formData.email}
         onChange={handleChange}
         required
