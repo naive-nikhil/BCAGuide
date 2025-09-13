@@ -1,5 +1,4 @@
 import heroImg from "../assets/hero.jpg";
-import FeaturedCarousel from "../components/FeaturedCarousel";
 
 const Home = () => {
   return (
