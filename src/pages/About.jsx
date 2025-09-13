@@ -1,4 +1,3 @@
-import React from "react";
 import profilePic from "../assets/profile.jpg";
 import Carousel from "../components/Carousel";
 
@@ -10,13 +9,18 @@ const About = () => {
       <Carousel
         sidebarComponent={
           <div
-            className={`w-full lg:max-w-100 lg:h-full overflow-hidden flex items-center justify-center rounded-md`}
+            className={`w-20 lg:w-full lg:max-w-100 lg:h-full overflow-hidden items-center justify-center rounded-md absolute lg:relative hidden lg:flex`}
           >
-            <img src={profilePic} className="object-cover" />
+            <img src={profilePic} className="object-cover max-w-512 h-full" />
           </div>
         }
         page={
           <div className="flex flex-col gap-2">
+            <div
+              className={`w-full lg:max-w-100 lg:h-full h-95 overflow-hidden flex items-center justify-center rounded-md lg:hidden`}
+            >
+              <img src={profilePic} className="object-cover max-w-512 h-full" />
+            </div>
             <h2 className="text-xl">
               Hi, I'm Nikhil 👋 [an Ex-BCA Student from IGNOU]
             </h2>
