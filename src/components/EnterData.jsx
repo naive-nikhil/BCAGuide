@@ -16,6 +16,8 @@ const EnterData = () => {
           <label htmlFor="type">Select Type</label> -
           <select name="type" id="type">
             <option value="paper">Paper</option>
+            <option value="assignment">Assignment</option>
+            <option value="assignment">Assignment</option>
           </select>
         </div>
       </div>

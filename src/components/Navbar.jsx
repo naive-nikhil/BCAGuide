@@ -62,6 +62,7 @@ const Navbar = () => {
 
     if (newCount === 5) {
       setShowForm(true);
+      window.style.overflow = "hidden";
       setCount(0);
     }
   };
