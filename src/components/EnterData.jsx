@@ -208,7 +208,7 @@ const EnterData = () => {
       >
         <span
           onClick={handleLogout}
-          className="absolute top-4 right-4 cursor-pointer text-sm"
+          className="absolute top-4 right-4 cursor-pointer text-sm select-none"
         >
           Logout
         </span>
