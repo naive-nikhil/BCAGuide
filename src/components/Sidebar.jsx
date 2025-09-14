@@ -44,7 +44,7 @@ const Sidebar = () => {
   return (
     <aside className="w-full text-gray-700 flex flex-col gap-2 lg:justify-between">
       <section>
-        <StudentCounter count={"100,000"} />
+        <StudentCounter />
         <h2 className="mt-4 text-xl">Important Links</h2>
         <ul className="space-y-3">
           {links.map((link) => (
