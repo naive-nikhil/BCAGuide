@@ -215,7 +215,7 @@ const EnterData = () => {
 
         <h1 className="text-xl">Upload Data</h1>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-col lg:flex-row">
           {/* Type */}
           <div className="flex items-center gap-2 flex-1">
             <label htmlFor="type" className="text-nowrap">
