@@ -204,7 +204,7 @@ const EnterData = () => {
     <div className="absolute top-0 left-0 h-dvh w-full bg-black/70 flex justify-center items-center z-999">
       <form
         onSubmit={handleSubmit}
-        className="max-h-150 h-full max-w-170 m-4 w-full bg-white rounded-md relative p-4 flex flex-col gap-2"
+        className="max-h-150 h-full max-w-170 m-4 w-full bg-white rounded-md relative p-4 flex flex-col gap-4"
       >
         <span
           onClick={handleLogout}
@@ -215,7 +215,7 @@ const EnterData = () => {
 
         <h1 className="text-xl">Upload Data</h1>
 
-        <div className="flex gap-4 flex-col lg:flex-row">
+        <div className="flex gap-2 lg:gap-4 flex-col lg:flex-row">
           {/* Type */}
           <div className="flex items-center gap-2 flex-1">
             <label htmlFor="type" className="text-nowrap">
