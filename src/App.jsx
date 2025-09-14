@@ -8,13 +8,11 @@ import Project from "./pages/Project";
 import About from "./pages/About";
 import AskDoubt from "./pages/AskDoubt";
 import Notifications from "./pages/Notifications";
-import Login from "./components/Login";
 
 const App = () => {
   return (
     <>
       <Routes>
-        <Route path="login" element={<Login />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about-me" element={<About />} />

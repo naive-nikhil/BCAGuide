@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import menuIcon from "../assets/menu.png";
-import crossIcon from "../assets/corss.png";
-import { useAppContext } from "../context/AppContext";
 
 const menu = [
   { title: "Home", link: "/" },
@@ -53,29 +51,14 @@ const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(null);
   const [mobileNavState, setMobileNavState] = useState(false);
 
-  const navigate = useNavigate();
-
-  const [count, setCount] = useState(0);
-  const { setShowForm } = useAppContext();
-
-  const handleClick = () => {
-    const newCount = count + 1;
-    setCount(newCount);
-
-    if (newCount === 5) {
-      navigate("login");
-      setCount(0);
-    }
-  };
-
   return (
     <nav className="bg-gray-200 flex justify-between items-center z-100 px-4 relative">
-      <h1
-        onClick={handleClick}
+      <a
+        href="/"
         className="text-2xl font-medium text-text-primary text-heading py-[14px] lg:p-0 select-none"
       >
         BCA Guide - IGNOU
-      </h1>
+      </a>
       <ul className="[&_li]:cursor-pointer [&_li]:p-4 [&_li]:hover:bg-accent-tertiary [&_li]:flex [&_li]:items-center [&_li]:gap-2 text-text-primary text-lg lg:flex hidden">
         {menu.map((item, index) => (
           <li
