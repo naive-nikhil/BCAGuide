@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -22,11 +24,30 @@ const Form = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+  };
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    onLogin(null);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (isAdmin) {
-      console.log("Login Admin");
+      try {
+        const userCred = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        onLogin(userCred.user);
+        console.log("Login Successfull");
+      } catch (err) {
+        console.log(err);
+      }
     } else {
       const phone = "918178455863";
       const message = `Hello
