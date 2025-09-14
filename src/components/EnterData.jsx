@@ -285,7 +285,7 @@ const EnterData = () => {
         </div>
 
         {/* Session */}
-        <div className="flex items-center gap-4 flex-col lg:flex-row">
+        <div className="flex gap-4 flex-col lg:flex-row">
           <div className="flex items-center gap-2">
             <legend>Session</legend>
             <label htmlFor="june" className="flex gap-2">
