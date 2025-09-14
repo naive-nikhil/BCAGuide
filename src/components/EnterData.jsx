@@ -285,30 +285,40 @@ const EnterData = () => {
         </div>
 
         {/* Session */}
-        <div className="flex items-center gap-2">
-          <legend>Session</legend>
-          <label htmlFor="june" className="flex gap-2">
-            <input
-              type="radio"
-              id="june"
-              name="session"
-              value="June"
-              checked={formData.session === "June"}
-              onChange={handleChange}
-            />
-            June
-          </label>
+        <div className="flex items-center gap-4 flex-col lg:flex-row">
+          <div className="flex items-center gap-2">
+            <legend>Session</legend>
+            <label htmlFor="june" className="flex gap-2">
+              <input
+                type="radio"
+                id="june"
+                name="session"
+                value="June"
+                checked={formData.session === "June"}
+                onChange={handleChange}
+              />
+              June
+            </label>
 
-          <label htmlFor="december" className="flex gap-2">
+            <label htmlFor="december" className="flex gap-2">
+              <input
+                type="radio"
+                id="december"
+                name="session"
+                value="December"
+                checked={formData.session === "December"}
+                onChange={handleChange}
+              />
+              December
+            </label>
+          </div>
+
+          <label htmlFor="year" className="flex gap-2 items-center w-full">
+            Year
             <input
-              type="radio"
-              id="december"
-              name="session"
-              value="December"
-              checked={formData.session === "December"}
-              onChange={handleChange}
+              type="text"
+              className="bg-emerald-100 rounded-md px-2 py-1 w-full"
             />
-            December
           </label>
         </div>
 
@@ -338,7 +348,7 @@ const EnterData = () => {
           />
         </div>
 
-        <input type="submit" className="bg-emerald-200 p-2 rounded-md" />
+        <input type="submit" className="bg-emerald-300 p-2 rounded-md" />
       </form>
     </div>
   );
