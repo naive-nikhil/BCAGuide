@@ -3,127 +3,7 @@ import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 import { useAppContext } from "../context/AppContext";
 
-const data = [
-  {
-    id: 1,
-    courses: [
-      { courseCode: "BCS011", courseTitle: "Computer Basics And PC Software" },
-      { courseCode: "BCS012", courseTitle: "Mathematics" },
-      { courseCode: "ECO1", courseTitle: "Business Organization" },
-      { courseCode: "FEG02", courseTitle: "Foundataion Course In English 2" },
-      {
-        courseCode: "BCSL013",
-        courseTitle: "Computer Basics And PC Software Lab",
-      },
-    ],
-  },
-  {
-    id: 2,
-    courses: [
-      { courseCode: "MCS011", courseTitle: "Problem Solving And Programming" },
-      {
-        courseCode: "MCS012",
-        courseTitle: "Computer Organziation And Assembly Language Programming",
-      },
-      { courseCode: "MCS013", courseTitle: "Discrete Mathematics" },
-      { courseCode: "MCS015", courseTitle: "Communication Skills" },
-      { courseCode: "ECO02", courseTitle: "Accountancy 1" },
-      { courseCode: "BCSL021", courseTitle: "C Language Programming Lab" },
-      {
-        courseCode: "BCSL022",
-        courseTitle: "Assembly Language Programming Lab",
-      },
-    ],
-  },
-  {
-    id: 3,
-    courses: [
-      { courseCode: "MCS014", courseTitle: "System Analysis and Design" },
-      { courseCode: "MCS021", courseTitle: "Data and File Structures" },
-      {
-        courseCode: "MCS023",
-        courseTitle: "Introduction To Database Managmement System",
-      },
-      { courseCode: "BCS031", courseTitle: "Programming In C++" },
-      {
-        courseCode: "BCSL032",
-        courseTitle: "C++ Programming Lab",
-      },
-      {
-        courseCode: "BCSL033",
-        courseTitle: "Data And File Structures Lab",
-      },
-      {
-        courseCode: "BCSL034",
-        courseTitle: "DBMS Lab",
-      },
-    ],
-  },
-  {
-    id: 4,
-    courses: [
-      {
-        courseCode: "MCS024",
-        courseTitle: "Object Oriented Technology And Java Programming",
-      },
-      { courseCode: "BCS040", courseTitle: "Statistical Techniques" },
-      {
-        courseCode: "BCS041",
-        courseTitle: "Fundamentals Of Computer Networks",
-      },
-      { courseCode: "BCS042", courseTitle: "Introduction To Algorithm Design" },
-      { courseCode: "BCSL043", courseTitle: "Java Programming Lab" },
-      { courseCode: "BCSL044", courseTitle: "Statistical Techniques Lab" },
-      { courseCode: "BCSL045", courseTitle: "Algorithms Design Lab" },
-      {
-        courseCode: "MCSL016",
-        courseTitle: "Internet Concepts And Web Design",
-      },
-    ],
-  },
-  {
-    id: 5,
-    courses: [
-      {
-        courseCode: "BCS051",
-        courseTitle: "Introduction To Software Engineering",
-      },
-      {
-        courseCode: "BCS052",
-        courseTitle: "Network Programming And Administration",
-      },
-      { courseCode: "BCS053", courseTitle: "Web Programming" },
-      {
-        courseCode: "BCS054",
-        courseTitle: "Computer Oriented Numerical Techniques",
-      },
-      { courseCode: "BCS055", courseTitle: "Business Communication" },
-      {
-        courseCode: "BCSL056",
-        courseTitle: "Network Programming Administration Lab",
-      },
-      { courseCode: "BCSL057", courseTitle: "Web Programming Lab" },
-      {
-        courseCode: "BCSL058",
-        courseTitle: "Computer Oriented Numerical Techniques Lab",
-      },
-    ],
-  },
-  {
-    id: 6,
-    courses: [
-      {
-        courseCode: "MCS022",
-        courseTitle: "Operating System Concepts And Networking Management",
-      },
-      { courseCode: "BCS062", courseTitle: "E-Commerce" },
-      {
-        courseCode: "BCSL063",
-        courseTitle: "Operating System Concepts And Networking Management Lab",
-      },
-    ],
-  },
-];
+import { resources, coursesBySemester } from "../data/flat_data";
 
 const EnterData = () => {
   const [formData, setFormData] = useState({
@@ -141,6 +21,8 @@ const EnterData = () => {
     materialLink: "",
   });
   const { setUser } = useAppContext();
+
+  console.log(resources.length);
 
   const handleLogout = async () => {
     await signOut(auth);
@@ -170,7 +52,7 @@ const EnterData = () => {
   };
 
   // find courses for selected semester
-  const selectedSemester = data.find(
+  const selectedSemester = coursesBySemester.find(
     (sem) => sem.id === Number(formData.semester)
   );
 
@@ -207,7 +89,6 @@ const EnterData = () => {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
-      // Re-enable scroll when component unmounts
       document.body.style.overflow = "auto";
     };
   }, []);
@@ -261,7 +142,7 @@ const EnterData = () => {
               required
             >
               <option value="">Select Semester</option>
-              {data.map((sem) => (
+              {coursesBySemester.map((sem) => (
                 <option key={sem.id} value={sem.id}>
                   {sem.id}
                 </option>
@@ -328,6 +209,7 @@ const EnterData = () => {
                   id="year"
                   type="text"
                   value={formData.year}
+                  onChange={handleChange}
                   className="bg-emerald-100 rounded-md px-2 py-1 w-full"
                 />
               </label>
@@ -370,6 +252,7 @@ const EnterData = () => {
                 id="cycle"
                 type="text"
                 value={formData.cycle}
+                onChange={handleChange}
                 className="bg-emerald-100 rounded-md px-2 py-1 w-full"
               />
             </label>

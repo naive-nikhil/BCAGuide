@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [selectedSemester, setSelectedSemester] = useState("Semester One");
+  const [selectedSemester, setSelectedSemester] = useState("1");
   const [selectedCourse, setSelectedCourse] = useState("");
   const [selectedStep, setSelectedStep] = useState("synopsis");
   const [selectedSession, setSelectedSession] = useState("june");

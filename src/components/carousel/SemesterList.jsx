@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import semesters from "../../data/data.json";
 import { useAppContext } from "../../context/AppContext";
+
+import { semesters } from "../../data/flat_data";
 
 const SemesterList = ({ baseUrl }) => {
   const { selectedSemester, setSelectedSemester } = useAppContext();
@@ -10,15 +11,15 @@ const SemesterList = ({ baseUrl }) => {
         Select Semester
       </h1>
       <ul className="text-sm lg:text-lg text-gray-700 cursor-pointer overflow-hidden relative z-10 flex flex-row lg:flex-col gap-2">
-        {semesters.map((semester, index) => (
+        {semesters.map((semester) => (
           <Link
-            key={index}
+            key={semester.id}
             to={baseUrl}
             onClick={() => {
-              setSelectedSemester(semester.title);
+              setSelectedSemester(semester.id);
             }}
             className={`py-3 lg:p-0 lg:h-14 flex items-center justify-center rounded-md w-full text-nowrap bg-violet-200 border border-violet-300 border-b-2 hover:border-violet-400 ${
-              selectedSemester === semester.title ? "border-violet-400" : ""
+              selectedSemester === semester.id ? "border-violet-400" : ""
             }`}
           >
             {" "}

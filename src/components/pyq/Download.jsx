@@ -1,18 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import backIcon from "../../assets/back.png";
 import bcs012June2024 from "../../assets/BCS012_JUNE2024.jpg";
 
 const DownloadPaper = ({ courseCode, courseTitle, type, year, link }) => {
-  console.log();
+  const location = useLocation();
+  const label = location.pathname.includes("previous")
+    ? "Paper"
+    : location.pathname.includes("assignments")
+    ? "Assignment"
+    : "Material";
   return (
     <div className="relative h-full">
       <div className="flex flex-col lg:flex-row justify-between gap-2 h-full">
         <div className="flex-1 flex flex-col justify-between">
           <Link
-            to={`/${type
-              .toLowerCase()
-              .split(" ")
-              .join("-")}s/${courseCode.toLowerCase()}`}
+            to={-1}
             className="absolute lg:relative right-0 flex items-center justify-center w-8 h-8 bg-violet-200 border border-r-2 border-b-2 border-violet-300 rounded-full"
           >
             <img src={backIcon} className="w-4 h-auto brightness-20" alt="" />
@@ -26,7 +28,7 @@ const DownloadPaper = ({ courseCode, courseTitle, type, year, link }) => {
             </h1>
             <h2>{courseTitle}</h2>
             <h3>
-              {type} [{year}]
+              {type} {year && `[${year}]`}
             </h3>
           </div>
         </div>
@@ -44,14 +46,15 @@ const DownloadPaper = ({ courseCode, courseTitle, type, year, link }) => {
               href={link}
             >
               {" "}
-              Download Paper
+              Download {label}
             </a>
 
             <br />
             <button
               className={`w-full block text-center text-nowrap rounded py-2 lg:p-2 cursor-pointer bg-green-200 border border-b-2 border-green-300 hover:border-green-400 text-green-600`}
             >
-              Download Solution
+              Download{" "}
+              {location.pathname.includes("materials") ? "Notes" : "Solution"}
             </button>
           </div>
         </div>

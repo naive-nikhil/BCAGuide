@@ -19,29 +19,16 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="about-me" element={<About />} />
           <Route path="previous-year-question-papers" element={<PYQ />} />
+          <Route path="previous-year-question-papers/:code" element={<PYQ />} />
           <Route
-            path="previous-year-question-papers/:courseCode"
-            element={<PYQ />}
-          />
-          <Route
-            path="previous-year-question-papers/:courseCode/:year?"
+            path="previous-year-question-papers/:code/:session/:year?"
             element={<PYQ />}
           />
           <Route path="assignments" element={<Assignments />} />
-          <Route path="assignments/:session" element={<Assignments />} />
-          <Route
-            path="assignments/:session/:courseCode"
-            element={<Assignments />}
-          />
+          <Route path="assignments/:cycle" element={<Assignments />} />
+          <Route path="assignments/:cycle/:code" element={<Assignments />} />
           <Route path="study-materials" element={<StudyMaterials />} />
-          <Route
-            path="study-materials/:courseCode"
-            element={<StudyMaterials />}
-          />
-          <Route
-            path="study-materials/:courseCode/:block"
-            element={<StudyMaterials />}
-          />
+          <Route path="study-materials/:code" element={<StudyMaterials />} />
 
           <Route path="project-synopsis-and-report" element={<Project />} />
 

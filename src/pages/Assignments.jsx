@@ -7,31 +7,33 @@ import Download from "../components/pyq/Download";
 import { useAppContext } from "../context/AppContext";
 import semesters from "../data/data.json";
 
+import { resources, coursesByCode } from "../data/flat_data";
+
 const Assignments = () => {
-  const { session, courseCode } = useParams();
+  const { cycle, code } = useParams();
   const { selectedSemester, selectedCourse } = useAppContext();
 
-  const selectedCourseTitle = semesters
-    .find((sem) => sem.title === selectedSemester)
-    .subjects.find((sub) => sub.code === courseCode?.toUpperCase())?.title;
+  const courseCode = code?.toUpperCase();
+  const courseTitle = coursesByCode[courseCode];
 
-  const selectedSessionCourseAssignmentLink = semesters
-    .find((sem) => sem.title === selectedSemester)
-    .subjects?.find((sub) => sub.code === selectedCourse)?.assignments?.[
-    selectedSession
-  ];
+  const assignmentLink = resources?.find(
+    (resource) =>
+      resource.courseCode === courseCode &&
+      resource.type === "assignment" &&
+      resource.cycle === cycle
+  )?.assignmentLink;
 
   let page = null;
-  if (!courseCode && session) {
+  if (!courseCode && cycle) {
     page = <CoursesPage sectionDesc="Assignments" baseUrl={"/assignments"} />;
-  } else if (courseCode && session) {
+  } else if (courseCode && cycle) {
     page = (
       <Download
-        courseCode={courseCode.toUpperCase()}
-        courseTitle={selectedCourseTitle}
+        courseCode={courseCode}
+        courseTitle={courseTitle}
         type={"Assignment"}
-        year={session}
-        link={selectedSessionCourseAssignmentLink}
+        year={cycle}
+        link={assignmentLink}
       />
     );
   }
