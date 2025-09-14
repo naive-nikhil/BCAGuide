@@ -204,66 +204,70 @@ const EnterData = () => {
     <div className="absolute top-0 left-0 h-dvh w-full bg-black/70 flex justify-center items-center z-999">
       <form
         onSubmit={handleSubmit}
-        className="max-h-150 h-full max-w-240 m-4 w-full bg-white rounded-md relative p-2 flex flex-col gap-4"
+        className="max-h-150 h-full max-w-170 m-4 w-full bg-white rounded-md relative p-4 flex flex-col gap-2"
       >
         <span
           onClick={handleLogout}
-          className="absolute top-2 right-2 cursor-pointer text-sm"
+          className="absolute top-4 right-4 cursor-pointer text-sm"
         >
           Logout
         </span>
 
-        <h1 className="text-xl">Enter Data</h1>
+        <h1 className="text-xl">Upload Data</h1>
 
-        {/* Type */}
-        <div className="flex items-center gap-2">
-          <label htmlFor="type">Select Type</label>
-          <select
-            className="border p-2"
-            id="type"
-            name="type"
-            value={formData.type}
-            onChange={handleChange}
-          >
-            <option value="">-- Select Type --</option>
-            <option value="paper">Paper</option>
-            <option value="assignment">Assignment</option>
-            <option value="material">Material</option>
-            <option value="notification">Notification</option>
-          </select>
-        </div>
+        <div className="flex gap-4">
+          {/* Type */}
+          <div className="flex items-center gap-2 flex-1">
+            <label htmlFor="type" className="text-nowrap">
+              Select Type
+            </label>
+            <select
+              className="bg-emerald-100 rounded-md px-2 py-1 w-full [&_option]:bg-white"
+              id="type"
+              name="type"
+              value={formData.type}
+              onChange={handleChange}
+            >
+              <option value="">Select Type</option>
+              <option value="paper">Paper</option>
+              <option value="assignment">Assignment</option>
+              <option value="material">Material</option>
+              <option value="notification">Notification</option>
+            </select>
+          </div>
 
-        {/* Semester */}
-        <div className="flex items-center gap-2">
-          <label htmlFor="semester">Semester</label>
-          <select
-            className="border p-2"
-            id="semester"
-            name="semester"
-            value={formData.semester}
-            onChange={handleChange}
-          >
-            <option value="">-- Select Semester --</option>
-            {data.map((sem) => (
-              <option key={sem.id} value={sem.id}>
-                {sem.id}
-              </option>
-            ))}
-          </select>
+          {/* Semester */}
+          <div className="flex items-center gap-2 flex-1">
+            <label htmlFor="semester">Semester</label>
+            <select
+              className="bg-emerald-100 rounded-md px-2 py-1 w-full [&_option]:bg-white"
+              id="semester"
+              name="semester"
+              value={formData.semester}
+              onChange={handleChange}
+            >
+              <option value="">Select Semester</option>
+              {data.map((sem) => (
+                <option key={sem.id} value={sem.id}>
+                  {sem.id}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
         {/* Course */}
         <div className="flex items-center gap-2">
           <label htmlFor="course">Course</label>
           <select
-            className="border p-2 w-50"
+            className="bg-emerald-100 rounded-md px-2 py-1 w-full [&_option]:bg-white"
             id="course"
             name="course"
             value={formData.course}
             onChange={handleChange}
             disabled={!formData.semester}
           >
-            <option value="">-- Select Course --</option>
+            <option value="">Select Course</option>
             {courses.map((course) => (
               <option key={course.courseCode} value={course.courseCode}>
                 {course.courseCode} - {course.courseTitle}
@@ -273,9 +277,9 @@ const EnterData = () => {
         </div>
 
         {/* Session */}
-        <fieldset className="mt-2 flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <legend>Session</legend>
-          <label htmlFor="june" className="p-2 flex gap-2">
+          <label htmlFor="june" className="flex gap-2">
             <input
               type="radio"
               id="june"
@@ -287,7 +291,7 @@ const EnterData = () => {
             June
           </label>
 
-          <label htmlFor="december" className="p-2 flex gap-2">
+          <label htmlFor="december" className="flex gap-2">
             <input
               type="radio"
               id="december"
@@ -298,31 +302,35 @@ const EnterData = () => {
             />
             December
           </label>
-        </fieldset>
+        </div>
 
-        {/* Paper Link */}
-        <label htmlFor="paperLink">Paper Link</label>
-        <input
-          type="text"
-          id="paperLink"
-          name="paperLink"
-          value={formData.paperLink}
-          onChange={handleChange}
-          className="border p-2"
-        />
+        <div className="flex flex-col">
+          {/* Paper Link */}
+          <label htmlFor="paperLink">Paper Link</label>
+          <input
+            type="text"
+            id="paperLink"
+            name="paperLink"
+            value={formData.paperLink}
+            onChange={handleChange}
+            className="bg-emerald-100 rounded-md px-2 py-1 w-full"
+          />
+        </div>
 
-        {/* Solution Link */}
-        <label htmlFor="solutionLink">Solution Link</label>
-        <input
-          type="text"
-          id="solutionLink"
-          name="solutionLink"
-          value={formData.solutionLink}
-          onChange={handleChange}
-          className="border p-2"
-        />
+        <div className="flex flex-col">
+          {/* Solution Link */}
+          <label htmlFor="solutionLink">Solution Link</label>
+          <input
+            type="text"
+            id="solutionLink"
+            name="solutionLink"
+            value={formData.solutionLink}
+            onChange={handleChange}
+            className="bg-emerald-100 rounded-md px-2 py-1 w-full"
+          />
+        </div>
 
-        <input type="submit" className="border p-2" />
+        <input type="submit" className="bg-emerald-200 p-2 rounded-md" />
       </form>
     </div>
   );

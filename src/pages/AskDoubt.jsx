@@ -8,7 +8,7 @@ const AskDoubt = () => {
   const { user } = useAppContext();
   return (
     <>
-      {user && <EnterData />}
+      {<EnterData />}
       <h1 className="text-xl text-gray-700">Ask Doubts</h1>
       <Carousel sidebarComponent={<Form />} page={<FAQ />} />
     </>
