@@ -212,7 +212,7 @@ const EnterData = () => {
     <div className="absolute top-0 left-0 h-dvh w-full bg-black/70 flex justify-center items-center z-999">
       <form
         onSubmit={handleSubmit}
-        className="max-h-150 h-full max-w-170 m-4 w-full bg-white rounded-md relative p-4 flex flex-col gap-4"
+        className="max-h-150 h-fit max-w-170 m-4 w-full bg-white rounded-md relative p-4 flex flex-col gap-4"
       >
         <span
           onClick={handleLogout}
