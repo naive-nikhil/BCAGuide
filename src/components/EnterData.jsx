@@ -284,69 +284,128 @@ const EnterData = () => {
           </select>
         </div>
 
-        {/* Session */}
-        <div className="flex gap-4 flex-col lg:flex-row">
-          <div className="flex items-center gap-2">
-            <legend>Session</legend>
-            <label htmlFor="june" className="flex gap-2">
+        {formData.type === "paper" && (
+          <>
+            {/* Session */}
+            <div className="flex gap-4 flex-col lg:flex-row">
+              <div className="flex items-center gap-2">
+                <legend>Session</legend>
+                <label htmlFor="june" className="flex gap-2">
+                  <input
+                    type="radio"
+                    id="june"
+                    name="session"
+                    value="June"
+                    checked={formData.session === "June"}
+                    onChange={handleChange}
+                  />
+                  June
+                </label>
+
+                <label htmlFor="december" className="flex gap-2">
+                  <input
+                    type="radio"
+                    id="december"
+                    name="session"
+                    value="December"
+                    checked={formData.session === "December"}
+                    onChange={handleChange}
+                  />
+                  December
+                </label>
+              </div>
+
+              <label htmlFor="year" className="flex gap-2 items-center w-full">
+                Year
+                <input
+                  type="text"
+                  className="bg-emerald-100 rounded-md px-2 py-1 w-full"
+                />
+              </label>
+            </div>
+
+            <div className="flex flex-col">
+              {/* Paper Link */}
+              <label htmlFor="paperLink">Paper Link</label>
               <input
-                type="radio"
-                id="june"
-                name="session"
-                value="June"
-                checked={formData.session === "June"}
+                type="text"
+                id="paperLink"
+                name="paperLink"
+                value={formData.paperLink}
                 onChange={handleChange}
+                className="bg-emerald-100 rounded-md px-2 py-1 w-full"
               />
-              June
+            </div>
+
+            <div className="flex flex-col">
+              {/* Solution Link */}
+              <label htmlFor="solutionLink">Solution Link</label>
+              <input
+                type="text"
+                id="solutionLink"
+                name="solutionLink"
+                value={formData.solutionLink}
+                onChange={handleChange}
+                className="bg-emerald-100 rounded-md px-2 py-1 w-full"
+              />
+            </div>
+          </>
+        )}
+
+        {formData.type === "assignment" && (
+          <>
+            <label htmlFor="year" className="flex gap-2 items-center w-full">
+              Session
+              <input
+                type="text"
+                className="bg-emerald-100 rounded-md px-2 py-1 w-full"
+              />
             </label>
 
-            <label htmlFor="december" className="flex gap-2">
+            <div className="flex flex-col">
+              {/* Paper Link */}
+              <label htmlFor="assignmentLink">Paper Link</label>
               <input
-                type="radio"
-                id="december"
-                name="session"
-                value="December"
-                checked={formData.session === "December"}
+                type="text"
+                id="assignmentLink"
+                name="assignmentLink"
+                value={formData.assignmentLink}
                 onChange={handleChange}
+                className="bg-emerald-100 rounded-md px-2 py-1 w-full"
               />
-              December
-            </label>
-          </div>
+            </div>
 
-          <label htmlFor="year" className="flex gap-2 items-center w-full">
-            Year
-            <input
-              type="text"
-              className="bg-emerald-100 rounded-md px-2 py-1 w-full"
-            />
-          </label>
-        </div>
+            <div className="flex flex-col">
+              {/* Solution Link */}
+              <label htmlFor="solutionLink">Solution Link</label>
+              <input
+                type="text"
+                id="solutionLink"
+                name="solutionLink"
+                value={formData.solutionLink}
+                onChange={handleChange}
+                className="bg-emerald-100 rounded-md px-2 py-1 w-full"
+              />
+            </div>
+          </>
+        )}
 
-        <div className="flex flex-col">
-          {/* Paper Link */}
-          <label htmlFor="paperLink">Paper Link</label>
-          <input
-            type="text"
-            id="paperLink"
-            name="paperLink"
-            value={formData.paperLink}
-            onChange={handleChange}
-            className="bg-emerald-100 rounded-md px-2 py-1 w-full"
-          />
-        </div>
-
-        <div className="flex flex-col">
-          {/* Solution Link */}
-          <label htmlFor="solutionLink">Solution Link</label>
-          <input
-            type="text"
-            id="solutionLink"
-            name="solutionLink"
-            value={formData.solutionLink}
-            onChange={handleChange}
-            className="bg-emerald-100 rounded-md px-2 py-1 w-full"
-          />
-        </div>
+        {formData.type === "material" && (
+          <>
+            <div className="flex flex-col">
+              {/* Paper Link */}
+              <label htmlFor="materialLink">Paper Link</label>
+              <input
+                type="text"
+                id="materialLink"
+                name="materialLink"
+                value={formData.materialLink}
+                onChange={handleChange}
+                className="bg-emerald-100 rounded-md px-2 py-1 w-full"
+              />
+            </div>
+          </>
+        )}
 
         <input type="submit" className="bg-emerald-300 p-2 rounded-md" />
       </form>
