@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 import { useAppContext } from "../context/AppContext";
@@ -199,6 +199,14 @@ const EnterData = () => {
       alert("Failed to add resource");
     }
   };
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      // Re-enable scroll when component unmounts
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
   return (
     <div className="absolute top-0 left-0 h-dvh w-full bg-black/70 flex justify-center items-center z-999">
