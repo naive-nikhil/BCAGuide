@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import menuIcon from "../assets/menu.png";
 import crossIcon from "../assets/corss.png";
 import { useAppContext } from "../context/AppContext";
@@ -53,6 +53,8 @@ const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(null);
   const [mobileNavState, setMobileNavState] = useState(false);
 
+  const navigate = useNavigate();
+
   const [count, setCount] = useState(0);
   const { setShowForm } = useAppContext();
 
@@ -61,7 +63,7 @@ const Navbar = () => {
     setCount(newCount);
 
     if (newCount === 5) {
-      setShowForm(true);
+      navigate("login");
       setCount(0);
     }
   };

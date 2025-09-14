@@ -4,18 +4,32 @@ const Form = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    password: "",
     doubt: "",
   });
 
+  const [isAdmin, setIsAdmin] = useState(false);
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    // Trigger hidden login panel if name is "admin"
+    if (name === "name" && value.toLowerCase() === "admin") {
+      setIsAdmin(true);
+    } else if (name === "name" && value.toLowerCase() !== "admin") {
+      setIsAdmin(false);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const phone = "918178455863";
-    const message = `Hello
+    if (isAdmin) {
+      console.log("Login Admin");
+    } else {
+      const phone = "918178455863";
+      const message = `Hello
 Name - ${formData.name}.
 Email - ${formData.email}.
 
@@ -23,9 +37,11 @@ Doubt - ${formData.doubt}
 
 This message is sent from BCAGuide`;
 
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    }
   };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -49,17 +65,29 @@ This message is sent from BCAGuide`;
         onChange={handleChange}
         required
       />
-      <textarea
-        name="doubt"
-        className="border border-b-2 border-emerald-400 rounded-md p-2 h-full resize-none antialiased"
-        placeholder="Ask Doubt"
-        value={formData.doubt}
-        onChange={handleChange}
-        required
-      ></textarea>
+      {isAdmin ? (
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter Password"
+          className="border border-b-2 border-emerald-400 rounded-md p-2 antialiased"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+      ) : (
+        <textarea
+          name="doubt"
+          className="border border-b-2 border-emerald-400 rounded-md p-2 h-full resize-none antialiased"
+          placeholder="Ask Doubt"
+          value={formData.doubt}
+          onChange={handleChange}
+          required
+        ></textarea>
+      )}
       <input
         type="submit"
-        value="Send Message"
+        value={`${isAdmin ? "Login" : "Send Message"}`}
         className="bg-emerald-600 text-white p-2 cursor-pointer rounded-md"
       />
     </form>

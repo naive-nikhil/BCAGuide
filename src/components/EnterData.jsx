@@ -126,6 +126,7 @@ const data = [
 const EnterData = () => {
   const { showForm, setShowForm } = useAppContext();
   const [formData, setFormData] = useState({
+    id: "145",
     type: "",
     semester: "",
     courseCode: "",
@@ -164,12 +165,41 @@ const EnterData = () => {
 
   const courses = selectedSemester ? selectedSemester.courses : [];
 
-  console.log(formData);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/add-resource", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      console.log(result);
+      alert(result.message);
+      setFormData({
+        type: "",
+        semester: "",
+        courseCode: "",
+        courseTitle: "",
+        session: "",
+        paperLink: "",
+        solutionLink: "",
+      });
+    } catch (err) {
+      console.error(err);
+      alert("Failed to add resource");
+    }
+  };
 
   return (
     showForm && (
       <div className="absolute top-0 left-0 h-dvh w-full bg-black/70 flex justify-center items-center z-999">
-        <div className="max-h-150 h-full max-w-120 m-4 w-full bg-white rounded-md relative p-2 flex flex-col gap-4">
+        <form
+          onSubmit={handleSubmit}
+          className="max-h-150 h-full max-w-240 m-4 w-full bg-white rounded-md relative p-2 flex flex-col gap-4"
+        >
           <span
             onClick={() => setShowForm(false)}
             className="absolute top-2 right-2 cursor-pointer text-sm"
@@ -199,7 +229,7 @@ const EnterData = () => {
 
           {/* Semester */}
           <div className="flex items-center gap-2">
-            <label htmlFor="semester">Semester -</label>
+            <label htmlFor="semester">Semester</label>
             <select
               className="border p-2"
               id="semester"
@@ -217,9 +247,10 @@ const EnterData = () => {
           </div>
 
           {/* Course */}
-          <div>
-            <label htmlFor="course">Course -</label>
+          <div className="flex items-center gap-2">
+            <label htmlFor="course">Course</label>
             <select
+              className="border p-2 w-50"
               id="course"
               name="course"
               value={formData.course}
@@ -236,9 +267,9 @@ const EnterData = () => {
           </div>
 
           {/* Session */}
-          <fieldset className="mt-2">
+          <fieldset className="mt-2 flex items-center gap-4">
             <legend>Session</legend>
-            <label htmlFor="june" className="mr-2">
+            <label htmlFor="june" className="p-2 flex gap-2">
               <input
                 type="radio"
                 id="june"
@@ -250,7 +281,7 @@ const EnterData = () => {
               June
             </label>
 
-            <label htmlFor="december">
+            <label htmlFor="december" className="p-2 flex gap-2">
               <input
                 type="radio"
                 id="december"
@@ -271,6 +302,7 @@ const EnterData = () => {
             name="paperLink"
             value={formData.paperLink}
             onChange={handleChange}
+            className="border p-2"
           />
 
           {/* Solution Link */}
@@ -281,10 +313,11 @@ const EnterData = () => {
             name="solutionLink"
             value={formData.solutionLink}
             onChange={handleChange}
+            className="border p-2"
           />
 
-          <input type="submit" />
-        </div>
+          <input type="submit" className="border p-2" />
+        </form>
       </div>
     )
   );
