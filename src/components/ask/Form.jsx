@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../firebase";
+import EnterData from "../EnterData";
+import { useAppContext } from "../../context/AppContext";
 
-const Form = () => {
+const Form = ({ onLogin }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     doubt: "",
   });
-
+  const { setUser } = useAppContext();
   const [isAdmin, setIsAdmin] = useState(false);
 
   const handleChange = (e) => {
@@ -24,13 +26,15 @@ const Form = () => {
     }
   };
 
+  console.log(formData.password);
+
   const handleLogin = async (e) => {
     e.preventDefault();
   };
 
   const handleLogout = async () => {
     await signOut(auth);
-    onLogin(null);
+    setUser(null);
   };
 
   const handleSubmit = async (e) => {
@@ -40,10 +44,10 @@ const Form = () => {
       try {
         const userCred = await signInWithEmailAndPassword(
           auth,
-          email,
-          password
+          formData.email,
+          formData.password
         );
-        onLogin(userCred.user);
+        setUser(userCred.user);
         console.log("Login Successfull");
       } catch (err) {
         console.log(err);
@@ -66,7 +70,7 @@ This message is sent from BCAGuide`;
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-2 w-full lg:max-w-100 p-2 bg-white text-gray-700"
+      className="flex flex-col gap-2 w-full lg:max-w-100 p-2 bg-white text-gray-700 relative"
     >
       <input
         type="text"

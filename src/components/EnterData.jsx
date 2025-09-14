@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { auth } from "../firebase";
+import { signOut } from "firebase/auth";
 import { useAppContext } from "../context/AppContext";
 
 const data = [
@@ -124,7 +126,6 @@ const data = [
 ];
 
 const EnterData = () => {
-  const { showForm, setShowForm } = useAppContext();
   const [formData, setFormData] = useState({
     id: "145",
     type: "",
@@ -135,6 +136,12 @@ const EnterData = () => {
     paperLink: "",
     solutionLink: "",
   });
+  const { setUser } = useAppContext();
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    setUser(null);
+  };
 
   // handle all field changes
   const handleChange = (e) => {
@@ -194,132 +201,130 @@ const EnterData = () => {
   };
 
   return (
-    showForm && (
-      <div className="absolute top-0 left-0 h-dvh w-full bg-black/70 flex justify-center items-center z-999">
-        <form
-          onSubmit={handleSubmit}
-          className="max-h-150 h-full max-w-240 m-4 w-full bg-white rounded-md relative p-2 flex flex-col gap-4"
+    <div className="absolute top-0 left-0 h-dvh w-full bg-black/70 flex justify-center items-center z-999">
+      <form
+        onSubmit={handleSubmit}
+        className="max-h-150 h-full max-w-240 m-4 w-full bg-white rounded-md relative p-2 flex flex-col gap-4"
+      >
+        <span
+          onClick={handleLogout}
+          className="absolute top-2 right-2 cursor-pointer text-sm"
         >
-          <span
-            onClick={() => setShowForm(false)}
-            className="absolute top-2 right-2 cursor-pointer text-sm"
+          Logout
+        </span>
+
+        <h1 className="text-xl">Enter Data</h1>
+
+        {/* Type */}
+        <div className="flex items-center gap-2">
+          <label htmlFor="type">Select Type</label>
+          <select
+            className="border p-2"
+            id="type"
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
           >
-            Close
-          </span>
+            <option value="">-- Select Type --</option>
+            <option value="paper">Paper</option>
+            <option value="assignment">Assignment</option>
+            <option value="material">Material</option>
+            <option value="notification">Notification</option>
+          </select>
+        </div>
 
-          <h1 className="text-xl">Enter Data</h1>
-
-          {/* Type */}
-          <div className="flex items-center gap-2">
-            <label htmlFor="type">Select Type</label>
-            <select
-              className="border p-2"
-              id="type"
-              name="type"
-              value={formData.type}
-              onChange={handleChange}
-            >
-              <option value="">-- Select Type --</option>
-              <option value="paper">Paper</option>
-              <option value="assignment">Assignment</option>
-              <option value="material">Material</option>
-              <option value="notification">Notification</option>
-            </select>
-          </div>
-
-          {/* Semester */}
-          <div className="flex items-center gap-2">
-            <label htmlFor="semester">Semester</label>
-            <select
-              className="border p-2"
-              id="semester"
-              name="semester"
-              value={formData.semester}
-              onChange={handleChange}
-            >
-              <option value="">-- Select Semester --</option>
-              {data.map((sem) => (
-                <option key={sem.id} value={sem.id}>
-                  {sem.id}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Course */}
-          <div className="flex items-center gap-2">
-            <label htmlFor="course">Course</label>
-            <select
-              className="border p-2 w-50"
-              id="course"
-              name="course"
-              value={formData.course}
-              onChange={handleChange}
-              disabled={!formData.semester}
-            >
-              <option value="">-- Select Course --</option>
-              {courses.map((course) => (
-                <option key={course.courseCode} value={course.courseCode}>
-                  {course.courseCode} - {course.courseTitle}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Session */}
-          <fieldset className="mt-2 flex items-center gap-4">
-            <legend>Session</legend>
-            <label htmlFor="june" className="p-2 flex gap-2">
-              <input
-                type="radio"
-                id="june"
-                name="session"
-                value="June"
-                checked={formData.session === "June"}
-                onChange={handleChange}
-              />
-              June
-            </label>
-
-            <label htmlFor="december" className="p-2 flex gap-2">
-              <input
-                type="radio"
-                id="december"
-                name="session"
-                value="December"
-                checked={formData.session === "December"}
-                onChange={handleChange}
-              />
-              December
-            </label>
-          </fieldset>
-
-          {/* Paper Link */}
-          <label htmlFor="paperLink">Paper Link</label>
-          <input
-            type="text"
-            id="paperLink"
-            name="paperLink"
-            value={formData.paperLink}
-            onChange={handleChange}
+        {/* Semester */}
+        <div className="flex items-center gap-2">
+          <label htmlFor="semester">Semester</label>
+          <select
             className="border p-2"
-          />
-
-          {/* Solution Link */}
-          <label htmlFor="solutionLink">Solution Link</label>
-          <input
-            type="text"
-            id="solutionLink"
-            name="solutionLink"
-            value={formData.solutionLink}
+            id="semester"
+            name="semester"
+            value={formData.semester}
             onChange={handleChange}
-            className="border p-2"
-          />
+          >
+            <option value="">-- Select Semester --</option>
+            {data.map((sem) => (
+              <option key={sem.id} value={sem.id}>
+                {sem.id}
+              </option>
+            ))}
+          </select>
+        </div>
 
-          <input type="submit" className="border p-2" />
-        </form>
-      </div>
-    )
+        {/* Course */}
+        <div className="flex items-center gap-2">
+          <label htmlFor="course">Course</label>
+          <select
+            className="border p-2 w-50"
+            id="course"
+            name="course"
+            value={formData.course}
+            onChange={handleChange}
+            disabled={!formData.semester}
+          >
+            <option value="">-- Select Course --</option>
+            {courses.map((course) => (
+              <option key={course.courseCode} value={course.courseCode}>
+                {course.courseCode} - {course.courseTitle}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Session */}
+        <fieldset className="mt-2 flex items-center gap-4">
+          <legend>Session</legend>
+          <label htmlFor="june" className="p-2 flex gap-2">
+            <input
+              type="radio"
+              id="june"
+              name="session"
+              value="June"
+              checked={formData.session === "June"}
+              onChange={handleChange}
+            />
+            June
+          </label>
+
+          <label htmlFor="december" className="p-2 flex gap-2">
+            <input
+              type="radio"
+              id="december"
+              name="session"
+              value="December"
+              checked={formData.session === "December"}
+              onChange={handleChange}
+            />
+            December
+          </label>
+        </fieldset>
+
+        {/* Paper Link */}
+        <label htmlFor="paperLink">Paper Link</label>
+        <input
+          type="text"
+          id="paperLink"
+          name="paperLink"
+          value={formData.paperLink}
+          onChange={handleChange}
+          className="border p-2"
+        />
+
+        {/* Solution Link */}
+        <label htmlFor="solutionLink">Solution Link</label>
+        <input
+          type="text"
+          id="solutionLink"
+          name="solutionLink"
+          value={formData.solutionLink}
+          onChange={handleChange}
+          className="border p-2"
+        />
+
+        <input type="submit" className="border p-2" />
+      </form>
+    </div>
   );
 };
 
