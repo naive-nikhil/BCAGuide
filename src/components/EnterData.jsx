@@ -135,6 +135,10 @@ const EnterData = () => {
     session: "",
     paperLink: "",
     solutionLink: "",
+    year: "",
+    cycle: "",
+    assignmentLink: "",
+    materialLink: "",
   });
   const { setUser } = useAppContext();
 
@@ -235,6 +239,7 @@ const EnterData = () => {
               name="type"
               value={formData.type}
               onChange={handleChange}
+              required
             >
               <option value="">Select Type</option>
               <option value="paper">Paper</option>
@@ -253,6 +258,7 @@ const EnterData = () => {
               name="semester"
               value={formData.semester}
               onChange={handleChange}
+              required
             >
               <option value="">Select Semester</option>
               {data.map((sem) => (
@@ -318,7 +324,10 @@ const EnterData = () => {
               <label htmlFor="year" className="flex gap-2 items-center w-full">
                 Year
                 <input
+                  name="year"
+                  id="year"
                   type="text"
+                  value={formData.year}
                   className="bg-emerald-100 rounded-md px-2 py-1 w-full"
                 />
               </label>
@@ -354,10 +363,13 @@ const EnterData = () => {
 
         {formData.type === "assignment" && (
           <>
-            <label htmlFor="year" className="flex gap-2 items-center w-full">
-              Session
+            <label htmlFor="cycle" className="flex gap-2 items-center w-full">
+              Cycle
               <input
+                name="cycle"
+                id="cycle"
                 type="text"
+                value={formData.cycle}
                 className="bg-emerald-100 rounded-md px-2 py-1 w-full"
               />
             </label>
