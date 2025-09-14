@@ -9,20 +9,22 @@ const StudentCounter = () => {
   useEffect(() => {
     const ref = doc(db, "stats", "visits");
 
-    const updateVisits = async () => {
+    const fetchAndUpdate = async () => {
       const snap = await getDoc(ref);
-      const currentCount = snap.data().count;
+      const currentCount = snap.data()?.count || 0;
 
-      await updateDoc(ref, { count: currentCount + 1 });
-      setCount(currentCount + 1);
-      console.log(currentCount);
+      // Always show the current value
+      setCount(currentCount);
+
+      // Only increment if first visit in this session
+      if (!sessionStorage.getItem("visit")) {
+        await updateDoc(ref, { count: currentCount + 1 });
+        setCount(currentCount + 1);
+        sessionStorage.setItem("visit", "true");
+      }
     };
 
-    if (!sessionStorage.getItem("visited")) {
-      console.log("I am running");
-      updateVisits();
-      sessionStorage.setItem("visited", "true");
-    }
+    fetchAndUpdate();
   }, []);
 
 
