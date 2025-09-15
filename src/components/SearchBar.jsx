@@ -66,7 +66,7 @@ const SearchBar = () => {
       />
       <div className="relative w-full max-w-3">
         <img src={filterLogo} className="brightness-70 cursor-pointer" />
-        <div className="absolute top-[calc(100%+18px)] flex flex-col p-3 rounded-md right-0 w-fit bg-white border border-gray-300 rounded-tr-none z-99999 text-sm">
+        <div className="absolute top-[calc(100%+18px)] flex flex-col p-2 rounded-md right-0 w-fit bg-white border border-gray-300 rounded-tr-none z-99999 text-sm">
           <label htmlFor="pyqs" className="text-nowrap flex items-center gap-2">
             <input type="checkbox" name="pyqs" id="pyqs" />
             Previous Year Question Papers
