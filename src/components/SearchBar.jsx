@@ -9,6 +9,19 @@ const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState(resources);
 
+  const [filters, setFilters] = useState([]);
+
+  const handleToggle = (filterName) => {
+    setFilters(
+      (prev) =>
+        prev.includes(filterName)
+          ? prev.filter((f) => f !== filterName) // remove if exists
+          : [...prev, filterName] // add if not
+    );
+  };
+
+  console.log(filters);
+
   const fuse = new Fuse(resources, {
     keys: ["title", "course", "type", "year"], // fields to search in
     threshold: 0.4, // fuzziness (lower = stricter, higher = more fuzzy)
@@ -64,34 +77,60 @@ const SearchBar = () => {
         onChange={handleSearch}
         className="w-full py-2 pl-2"
       />
+      {/* Active filter badges */}
+      {filters.length > 0 && (
+        <div className="flex gap-2">
+          {filters.map((f) => {
+            const labels = {
+              pyqs: "PYQs",
+              assignments: "Assignments",
+              materials: "Materials",
+              notes: "Notes",
+            };
+            return (
+              <span
+                key={f}
+                className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full text-xs flex items-center gap-2"
+              >
+                {labels[f]}
+                <button
+                  className="text-red-500 hover:text-red-700"
+                  onClick={() => handleToggle(f)}
+                >
+                  ✕
+                </button>
+              </span>
+            );
+          })}
+        </div>
+      )}
       <div className="relative w-full max-w-3">
         <img src={filterLogo} className="brightness-70 cursor-pointer" />
-        <div className="absolute top-[calc(100%+18px)] flex flex-col gap-1 p-2 rounded-md right-0 w-fit bg-white border border-gray-300 rounded-tr-none z-99999 text-sm">
-          <label htmlFor="pyqs" className="text-nowrap flex items-center gap-2">
-            <input type="checkbox" name="pyqs" id="pyqs" />
-            Previous Year Question Papers
-          </label>
-          <label
-            htmlFor="assignments"
-            className="text-nowrap  flex items-center gap-2"
-          >
-            <input type="checkbox" name="assignments" id="assignments" />
-            Assignments
-          </label>
-          <label
-            htmlFor="materials"
-            className="text-nowrap  flex items-center gap-2"
-          >
-            <input type="checkbox" name="materials" id="materials" />
-            Study Materials
-          </label>
-          <label
-            htmlFor="notes"
-            className="text-nowrap  flex items-center gap-2"
-          >
-            <input type="checkbox" name="notes" id="notes" />
-            Notes
-          </label>
+        {/* Filter dropdown */}
+        <div className="absolute top-[calc(100%+18px)] flex flex-col gap-1 p-2 rounded-md right-0 w-fit bg-white border border-gray-300 rounded-tr-none z-50 text-sm">
+          {["pyqs", "assignments", "materials", "notes"].map((key) => {
+            const labels = {
+              pyqs: "Previous Year Question Papers",
+              assignments: "Assignments",
+              materials: "Study Materials",
+              notes: "Notes",
+            };
+            return (
+              <label
+                key={key}
+                htmlFor={key}
+                className="text-nowrap flex items-center gap-2 cursor-pointer"
+              >
+                <input
+                  type="checkbox"
+                  id={key}
+                  checked={filters.includes(key)}
+                  onChange={() => handleToggle(key)}
+                />
+                {labels[key]}
+              </label>
+            );
+          })}
         </div>
       </div>
       <button className={`rounded cursor-pointer p-2 px-6 bg-emerald-300`}>
