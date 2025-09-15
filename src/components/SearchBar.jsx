@@ -114,7 +114,7 @@ const SearchBar = () => {
           <div className="flex items-center gap-1 p-2 py-1 rounded-full bg-violet-100">
             <img
               src={filterLogo}
-              className="max-w-[10px] brightness-10 cursor-pointer"
+              className="max-w-2 brightness-10 cursor-pointer"
             />
             <span className="text-xs">Filters</span>
           </div>
