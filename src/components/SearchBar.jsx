@@ -109,7 +109,7 @@ const SearchBar = () => {
         <div
           onMouseEnter={() => setFilterDropdown(true)}
           onMouseLeave={() => setFilterDropdown(false)}
-          className="relative w-full max-w-5 flex items-center justify-end h-full"
+          className="p-3 relative w-fit flex items-center justify-end h-full"
         >
           <img
             src={filterLogo}
