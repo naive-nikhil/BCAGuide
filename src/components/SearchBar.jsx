@@ -64,8 +64,8 @@ const SearchBar = () => {
         onChange={handleSearch}
         className="w-full py-2 pl-2"
       />
-      <div className="relative">
-        <img src={filterLogo} className="w-4 brightness-60 cursor-pointer" />
+      <div className="relative w-full max-w-4">
+        <img src={filterLogo} className="brightness-60 cursor-pointer" />
         <div className="absolute top-[calc(100%+18px)] flex flex-col p-3 rounded-md right-0 w-fit bg-white border border-gray-300 rounded-tr-none z-99999 text-sm">
           <label htmlFor="pyqs" className="text-nowrap flex items-center gap-2">
             <input type="checkbox" name="pyqs" id="pyqs" />
