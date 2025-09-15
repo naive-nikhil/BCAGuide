@@ -109,12 +109,15 @@ const SearchBar = () => {
         <div
           onMouseEnter={() => setFilterDropdown(true)}
           onMouseLeave={() => setFilterDropdown(false)}
-          className="h-10 relative flex items-center justify-end w-10"
+          className="h-10 relative flex items-center justify-center"
         >
-          <img
-            src={filterLogo}
-            className="max-w-3 brightness-40 cursor-pointer"
-          />
+          <div className="flex items-center gap-1 p-2 py-1 rounded-full bg-violet-100">
+            <img
+              src={filterLogo}
+              className="max-w-[10px] brightness-10 cursor-pointer"
+            />
+            <span className="text-xs">Filters</span>
+          </div>
 
           {filterDropdown && (
             <div className="absolute top-full flex flex-col pt-2 gap-1 p-2 rounded-b-md right-0 w-fit bg-white border border-gray-300 z-50 text-sm">
