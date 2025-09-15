@@ -10,7 +10,7 @@ const SemesterList = ({ baseUrl }) => {
       <h1 className="lg:hidden text-lg p-3 bg-violet-300 rounded-md w-full text-center">
         Select Semester
       </h1>
-      <ul className="text-sm lg:text-lg text-gray-700 cursor-pointer overflow-hidden relative z-10 flex flex-row lg:flex-col gap-2">
+      <ul className="text-sm lg:text-lg text-gray-700 cursor-pointer overflow-hidden relative flex flex-row lg:flex-col gap-2">
         {semesters.map((semester) => (
           <Link
             key={semester.id}

@@ -1,76 +1,74 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import searchLogo from "../assets/search.png";
 import filterLogo from "../assets/filter.png";
 import Fuse from "fuse.js";
 
-import { resources } from "../data/flat_data";
+import { resources, coursesBySemester } from "../data/flat_data";
+
+// 🔹 Normalize query variations like "sem 1", "semester one"
+const normalizeQuery = (query) => {
+  let q = query.toLowerCase().trim();
+  q = q.replace(/\bsem\b/g, "semester");
+  q = q.replace(/\b1st\b|\bone\b|\bi\b/g, "1");
+  q = q.replace(/\b2nd\b|\btwo\b|\bii\b/g, "2");
+  q = q.replace(/\b3rd\b|\bthree\b|\biii\b/g, "3");
+  q = q.replace(/\bfour\b|\biv\b/g, "4");
+  q = q.replace(/\bfive\b|\bv\b/g, "5");
+  q = q.replace(/\bsix\b|\bvi\b/g, "6");
+  return q;
+};
+
+const detectSemester = (query) => {
+  const normalized = normalizeQuery(query);
+  console.log(normalized);
+  const match = normalized.match(/semester\s*(\d)/);
+  console.log(match);
+  return match ? parseInt(match[1]) : null;
+};
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState(resources);
-
+  const [results, setResults] = useState([]);
   const [filters, setFilters] = useState([]);
   const [filterDropdown, setFilterDropdown] = useState(false);
 
   const handleToggle = (filterName) => {
-    setFilters(
-      (prev) =>
-        prev.includes(filterName)
-          ? prev.filter((f) => f !== filterName) // remove if exists
-          : [...prev, filterName] // add if not
+    setFilters((prev) =>
+      prev.includes(filterName)
+        ? prev.filter((f) => f !== filterName)
+        : [...prev, filterName]
     );
   };
-
-  console.log(filters);
-
-  const fuse = new Fuse(resources, {
-    keys: ["title", "course", "type", "year"], // fields to search in
-    threshold: 0.4, // fuzziness (lower = stricter, higher = more fuzzy)
-    includeScore: true,
-  });
 
   const handleSearch = (e) => {
     const input = e.target.value;
     setQuery(input);
 
-    console.log(input);
-
     if (!input.trim()) {
-      setResults(resources);
+      setResults([]);
       return;
     }
 
-    // Extract year (4-digit number) and course code (like BCS011)
-    const yearMatch = input.match(/\b(19|20)\d{2}\b/);
-    const courseMatch = input.match(/\b[A-Z]{3}\d{3}\b/i);
+    const sem = detectSemester(input);
+    let filtered = [];
 
-    let filtered = resources;
+    console.log(sem);
 
-    console.log(yearMatch);
-
-    console.log(courseMatch);
-
-    if (yearMatch) {
-      filtered = filtered.filter((r) => r.year === yearMatch[0]);
-    }
-    if (courseMatch) {
-      filtered = filtered.filter(
-        (r) => r.courseCode.toLowerCase() === courseMatch[0].toLowerCase()
-      );
+    if (sem) {
+      // 🔹 Only semester-based filtering for now
+      filtered = coursesBySemester.find((r) => r.id === sem)?.courses;
     }
 
-    // Run fuzzy search
-    const fuseResults = fuse.search(input);
-    const fuzzyMatched = fuseResults.map((r) => r.item);
-
-    // Final result = intersection of filters + fuzzy OR fallback to fuzzy
-    setResults(filtered.length ? filtered : fuzzyMatched);
     console.log(filtered);
+
+    setResults(filtered);
+    console.log(results);
   };
 
   return (
-    <div className="h-full flex flex-col gap-2">
-      <div className="relative pl-2 bg-white rounded-lg flex gap-2 items-center border border-gray-300 text-text-primary">
+    <div className="h-full flex flex-col gap-2 relative">
+      {/* Search Bar */}
+      <div className="relative pl-2 bg-white rounded-lg flex gap-2 items-center border border-gray-300 text-text-primary px-2">
         <img src={searchLogo} className="w-4 brightness-60" />
         <input
           type="text"
@@ -79,6 +77,7 @@ const SearchBar = () => {
           onChange={handleSearch}
           className="w-full py-2 pl-2"
         />
+
         {/* Active filter badges */}
         {filters.length > 0 && (
           <div className="hidden lg:flex gap-2">
@@ -106,6 +105,8 @@ const SearchBar = () => {
             })}
           </div>
         )}
+
+        {/* Filter dropdown */}
         <div
           onMouseEnter={() => setFilterDropdown(true)}
           onMouseLeave={() => setFilterDropdown(false)}
@@ -147,12 +148,9 @@ const SearchBar = () => {
             </div>
           )}
         </div>
-        <button className={`rounded cursor-pointer p-2 px-6 bg-emerald-300`}>
-          Search
-        </button>
-        <div className="absolute top-full left-0 h-50 w-full bg-white hidden"></div>
       </div>
-      {/* Active filter badges */}
+
+      {/* Active filter badges (mobile) */}
       {filters.length > 0 && (
         <div className="flex gap-2 lg:hidden">
           {filters.map((f) => {
@@ -177,6 +175,19 @@ const SearchBar = () => {
               </span>
             );
           })}
+        </div>
+      )}
+
+      {/* Results dropdown */}
+      {results.length > 0 && (
+        <div className="absolute max-h-60 overflow-y-auto w-full bg-white border border-gray-300 top-full mt-2 rounded-md p-2 text-sm">
+          <ul>
+            {results.map((item, index) => (
+              <li key={index}>
+                {item.courseCode} {item.courseTitle}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>
