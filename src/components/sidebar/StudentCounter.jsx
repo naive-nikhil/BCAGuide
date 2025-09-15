@@ -35,7 +35,7 @@ const StudentCounter = () => {
         alt="Scholarship Hat Logo"
         className="w-4 -mt-[2px] brightness-25"
       />
-      Students Counter - {count}
+      Students Counter - {count} Visits
     </section>
   );
 };

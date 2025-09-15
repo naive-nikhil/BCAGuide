@@ -1,40 +1,7 @@
 import { useState, useEffect } from "react";
 import searchLogo from "../assets/search.png";
+import filterLogo from "../assets/filter.png";
 import Fuse from "fuse.js";
-
-function parseQuery(query) {
-  const lower = query.toLowerCase();
-
-  // detect type/category
-  let type = null;
-  if (lower.includes("previous")) type = "paper";
-  if (lower.includes("assignment")) type = "assignment";
-  // (add more mappings as needed)
-
-  // detect course code (regex for BCSxxx, MCSxxx, ECOxx, etc.)
-  const courseMatch = lower.match(/(bcs|mcs|eco)\d{2,3}/i);
-  const courseCode = courseMatch ? courseMatch[0].toUpperCase() : null;
-
-  // detect year (4 digits between 1990-2099)
-  const yearMatch = lower.match(/\b(19|20)\d{2}\b/);
-  const year = yearMatch ? parseInt(yearMatch[0]) : null;
-
-  return { type, courseCode, year };
-}
-
-function searchResources(resources, query) {
-  const { type, courseCode, year } = parseQuery(query);
-
-  return resources.filter((res) => {
-    let ok = true;
-
-    if (type) ok = ok && res.type === type;
-    if (courseCode) ok = ok && res.courseCode === courseCode;
-    if (year) ok = ok && res.year === year;
-
-    return ok;
-  });
-}
 
 import { resources } from "../data/flat_data";
 
@@ -52,6 +19,8 @@ const SearchBar = () => {
     const input = e.target.value;
     setQuery(input);
 
+    console.log(input);
+
     if (!input.trim()) {
       setResults(resources);
       return;
@@ -63,12 +32,16 @@ const SearchBar = () => {
 
     let filtered = resources;
 
+    console.log(yearMatch);
+
+    console.log(courseMatch);
+
     if (yearMatch) {
-      filtered = filtered.filter((r) => r.year === parseInt(yearMatch[0]));
+      filtered = filtered.filter((r) => r.year === yearMatch[0]);
     }
     if (courseMatch) {
       filtered = filtered.filter(
-        (r) => r.course.toLowerCase() === courseMatch[0].toLowerCase()
+        (r) => r.courseCode.toLowerCase() === courseMatch[0].toLowerCase()
       );
     }
 
@@ -82,7 +55,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="relative pl-2 bg-white rounded-lg flex items-center border border-gray-300 text-text-primary">
+    <div className="relative pl-2 bg-white rounded-lg flex gap-2 items-center border border-gray-300 text-text-primary">
       <img src={searchLogo} className="w-4 brightness-60" />
       <input
         type="text"
@@ -91,6 +64,27 @@ const SearchBar = () => {
         onChange={handleSearch}
         className="w-full py-2 pl-2"
       />
+      <div className="relative">
+        <img src={filterLogo} className="w-4 brightness-60 cursor-pointer" />
+        <div className="absolute top-[calc(100%+18px)] flex flex-col p-3 rounded-md right-0 w-fit bg-white border border-gray-300 rounded-tr-none z-99999 text-sm">
+          <label htmlFor="" className="text-nowrap flex items-center gap-2">
+            <input type="checkbox" name="" id="" />
+            Previous Year Question Papers
+          </label>
+          <label htmlFor="" className="text-nowrap  flex items-center gap-2">
+            <input type="checkbox" name="" id="" />
+            Assignments
+          </label>
+          <label htmlFor="" className="text-nowrap  flex items-center gap-2">
+            <input type="checkbox" name="" id="" />
+            Study Materials
+          </label>
+          <label htmlFor="" className="text-nowrap  flex items-center gap-2">
+            <input type="checkbox" name="" id="" />
+            Notes
+          </label>
+        </div>
+      </div>
       <button className={`rounded cursor-pointer p-2 px-6 bg-emerald-300`}>
         Search
       </button>
