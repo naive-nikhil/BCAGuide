@@ -5,176 +5,137 @@ import Fuse from "fuse.js";
 
 import { resources, coursesBySemester } from "../data/flat_data";
 
-// 🔹 Normalize query variations like "sem 1", "semester one"
-const normalizeQuery = (query) => {
-  let q = query.toLowerCase().trim();
-  q = q.replace(/\bsem\b/g, "semester");
-  q = q.replace(/\b1st\b|\bone\b|\bi\b/g, "1");
-  q = q.replace(/\b2nd\b|\btwo\b|\bii\b/g, "2");
-  q = q.replace(/\b3rd\b|\bthree\b|\biii\b/g, "3");
-  q = q.replace(/\bfour\b|\biv\b/g, "4");
-  q = q.replace(/\bfive\b|\bv\b/g, "5");
-  q = q.replace(/\bsix\b|\bvi\b/g, "6");
-  return q;
-};
-
-const detectSemester = (query) => {
-  const normalized = normalizeQuery(query);
-  console.log(normalized);
-  const match = normalized.match(/semester\s*(\d)/);
-  console.log(match);
-  return match ? parseInt(match[1]) : null;
+const labels = {
+  paper: "PYQs",
+  assignment: "Assignments",
+  material: "Materials",
+  notes: "Notes",
 };
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
+  const [placeholder, setPlaceholder] = useState(
+    "Papers, Assignments, Materials & Notes"
+  );
   const [results, setResults] = useState([]);
-  const [filters, setFilters] = useState([]);
-  const [filterDropdown, setFilterDropdown] = useState(false);
-
-  const handleToggle = (filterName) => {
-    setFilters((prev) =>
-      prev.includes(filterName)
-        ? prev.filter((f) => f !== filterName)
-        : [...prev, filterName]
-    );
-  };
+  const [filter, setFilter] = useState();
 
   const handleSearch = (e) => {
     const input = e.target.value;
     setQuery(input);
 
-    if (!input.trim()) {
-      setResults([]);
-      return;
+    const normalize = (input) => input.toLowerCase().trim();
+    const normalizeCourseCode = (str) =>
+      str
+        .replace(/[-\s]/g, "")
+        .toUpperCase()
+        .replace(/^([A-Z]{3})(\d{2})$/, "$10$2");
+
+    if (normalize(input).includes("paper")) {
+      setFilter("paper");
+      setPlaceholder("Search by Course Code, Title or Semester");
+      setQuery("");
+    } else if (normalize(input).includes("assignment")) {
+      setFilter("assignment");
+      setQuery("");
+    } else if (normalize(input).includes("material")) {
+      setFilter("material");
+      setQuery("");
+    } else if (normalize(input).includes("note")) {
+      setFilter("notes");
+      setQuery("");
     }
 
-    const sem = detectSemester(input);
-    let filtered = [];
+    // Once filter is set, search inside that category
+    if (filter) {
+      let filteredResults = resources.filter((r) => r.type === filter);
 
-    console.log(sem);
+      console.log(filteredResults);
 
-    if (sem) {
-      // 🔹 Only semester-based filtering for now
-      filtered = coursesBySemester.find((r) => r.id === sem)?.courses;
+      // Match by Course Code (e.g. BCS011, bcs-11, bcs 11)
+      const courseMatch = input.match(/[a-z]{3}\s?-?\d{2,3}/i);
+      console.log(courseMatch);
+      if (courseMatch) {
+        const code = normalizeCourseCode(courseMatch[0]);
+        console.log(code);
+        filteredResults = filteredResults.filter((r) => r.courseCode === code);
+
+        console.log(filteredResults);
+      }
+
+      // Match by Semester (sem 1, semester one, sem one, etc.)
+      const semMatch = input.match(
+        /sem(ester)?\s?(one|two|three|four|five|six|[1-6])/i
+      );
+      if (semMatch) {
+        const mapSem = {
+          one: 1,
+          two: 2,
+          three: 3,
+          four: 4,
+          five: 5,
+          six: 6,
+        };
+        const semKey = semMatch[2]?.toLowerCase() || semMatch[0];
+        const semNum = mapSem[semKey] || parseInt(semKey, 10);
+        filteredResults = filteredResults.filter((r) => r.semester === semNum);
+      }
+
+      // Match by Course Title (fuzzy contains check)
+      if (input.length > 2) {
+        filteredResults = filteredResults.filter((r) =>
+          normalize(r.courseTitle).includes(normalize(input))
+        );
+      }
+
+      setResults(filteredResults);
     }
-
-    console.log(filtered);
-
-    setResults(filtered);
-    console.log(results);
   };
 
   return (
-    <div className="h-full flex flex-col gap-2 relative">
+    <div className="h-full flex flex-col gap-2 relative" tabIndex={0}>
       {/* Search Bar */}
       <div className="relative pl-2 bg-white rounded-lg flex gap-2 items-center border border-gray-300 text-text-primary px-2">
         <img src={searchLogo} className="w-4 brightness-60" />
-        <input
-          type="text"
-          placeholder="Search for resources"
-          value={query}
-          onChange={handleSearch}
-          className="w-full py-2 pl-2"
-        />
-
         {/* Active filter badges */}
-        {filters.length > 0 && (
+        {filter && (
           <div className="hidden lg:flex gap-2">
-            {filters.map((f) => {
-              const labels = {
-                pyqs: "PYQs",
-                assignments: "Assignments",
-                materials: "Materials",
-                notes: "Notes",
-              };
-              return (
-                <span
-                  key={f}
-                  className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full text-xs flex items-center gap-2"
-                >
-                  {labels[f]}
-                  <button
-                    className="text-red-500 hover:text-red-700"
-                    onClick={() => handleToggle(f)}
-                  >
-                    ✕
-                  </button>
-                </span>
-              );
-            })}
-          </div>
-        )}
-
-        {/* Filter dropdown */}
-        <div
-          onMouseEnter={() => setFilterDropdown(true)}
-          onMouseLeave={() => setFilterDropdown(false)}
-          className="h-10 relative flex items-center justify-center"
-        >
-          <div className="flex items-center gap-1 p-2 py-1 rounded-full bg-violet-100">
-            <img
-              src={filterLogo}
-              className="max-w-2 brightness-10 cursor-pointer"
-            />
-            <span className="text-xs select-none">Filters</span>
-          </div>
-
-          {filterDropdown && (
-            <div className="absolute top-full flex flex-col pt-2 gap-1 p-2 rounded-b-md right-0 w-fit bg-white border border-gray-300 z-50 text-sm">
-              {["pyqs", "assignments", "materials", "notes"].map((key) => {
-                const labels = {
-                  pyqs: "Previous Year Question Papers",
-                  assignments: "Assignments",
-                  materials: "Study Materials",
-                  notes: "Notes",
-                };
-                return (
-                  <label
-                    key={key}
-                    htmlFor={key}
-                    className="text-nowrap flex items-center gap-2 cursor-pointer"
-                  >
-                    <input
-                      type="checkbox"
-                      id={key}
-                      checked={filters.includes(key)}
-                      onChange={() => handleToggle(key)}
-                    />
-                    {labels[key]}
-                  </label>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Active filter badges (mobile) */}
-      {filters.length > 0 && (
-        <div className="flex gap-2 lg:hidden">
-          {filters.map((f) => {
-            const labels = {
-              pyqs: "PYQs",
-              assignments: "Assignments",
-              materials: "Materials",
-              notes: "Notes",
-            };
-            return (
-              <span
-                key={f}
-                className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full text-xs flex items-center gap-2"
-              >
-                {labels[f]}
+            {
+              <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full text-xs flex items-center gap-2">
+                {labels[filter]}
                 <button
                   className="text-red-500 hover:text-red-700"
-                  onClick={() => handleToggle(f)}
+                  onClick={() => setFilter("")}
                 >
                   ✕
                 </button>
               </span>
-            );
-          })}
+            }
+          </div>
+        )}
+        <input
+          type="text"
+          placeholder={placeholder}
+          value={query}
+          onChange={handleSearch}
+          className="w-full py-2 pl-2"
+        />
+      </div>
+
+      {/* Active filter badges */}
+      {filter && (
+        <div className="flex lg:hidden gap-2">
+          {
+            <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full text-xs flex items-center gap-2">
+              {labels[filter]}
+              <button
+                className="text-red-500 hover:text-red-700"
+                onClick={() => setFilter("")}
+              >
+                ✕
+              </button>
+            </span>
+          }
         </div>
       )}
 
