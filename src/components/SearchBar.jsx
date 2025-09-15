@@ -105,7 +105,7 @@ const SearchBar = () => {
         </div>
       )}
       <div className="relative w-full max-w-3">
-        <img src={filterLogo} className="brightness-70 cursor-pointer" />
+        <img src={filterLogo} className="brightness-40 cursor-pointer" />
         {/* Filter dropdown */}
         <div className="absolute top-[calc(100%+18px)] flex flex-col gap-1 p-2 rounded-md right-0 w-fit bg-white border border-gray-300 rounded-tr-none z-50 text-sm">
           {["pyqs", "assignments", "materials", "notes"].map((key) => {
