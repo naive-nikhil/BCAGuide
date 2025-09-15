@@ -116,7 +116,7 @@ const SearchBar = () => {
               src={filterLogo}
               className="max-w-2 brightness-10 cursor-pointer"
             />
-            <span className="text-xs">Filters</span>
+            <span className="text-xs select-none">Filters</span>
           </div>
 
           {filterDropdown && (
