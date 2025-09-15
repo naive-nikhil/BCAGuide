@@ -67,20 +67,29 @@ const SearchBar = () => {
       <div className="relative">
         <img src={filterLogo} className="w-4 brightness-60 cursor-pointer" />
         <div className="absolute top-[calc(100%+18px)] flex flex-col p-3 rounded-md right-0 w-fit bg-white border border-gray-300 rounded-tr-none z-99999 text-sm">
-          <label htmlFor="" className="text-nowrap flex items-center gap-2">
-            <input type="checkbox" name="" id="" />
+          <label htmlFor="pyqs" className="text-nowrap flex items-center gap-2">
+            <input type="checkbox" name="pyqs" id="pyqs" />
             Previous Year Question Papers
           </label>
-          <label htmlFor="" className="text-nowrap  flex items-center gap-2">
-            <input type="checkbox" name="" id="" />
+          <label
+            htmlFor="assignments"
+            className="text-nowrap  flex items-center gap-2"
+          >
+            <input type="checkbox" name="assignments" id="assignments" />
             Assignments
           </label>
-          <label htmlFor="" className="text-nowrap  flex items-center gap-2">
-            <input type="checkbox" name="" id="" />
+          <label
+            htmlFor="materials"
+            className="text-nowrap  flex items-center gap-2"
+          >
+            <input type="checkbox" name="materials" id="materials" />
             Study Materials
           </label>
-          <label htmlFor="" className="text-nowrap  flex items-center gap-2">
-            <input type="checkbox" name="" id="" />
+          <label
+            htmlFor="notes"
+            className="text-nowrap  flex items-center gap-2"
+          >
+            <input type="checkbox" name="notes" id="notes" />
             Notes
           </label>
         </div>
