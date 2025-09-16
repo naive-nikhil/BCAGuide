@@ -47,16 +47,15 @@ const SearchBar = () => {
       courseTitle: title,
     }));
 
-    if (code) {
-      console.log(code);
-      const filtered = allCourses.filter((course) =>
-        course.courseCode.startsWith(code)
-      );
+    const filtered = allCourses.filter(
+      (course) =>
+        course.courseCode.startsWith(code) ||
+        course.courseTitle.toLowerCase().includes(input)
+    );
 
-      console.log(filtered);
+    console.log(filtered);
 
-      setResults(filtered);
-    }
+    setResults(filtered);
 
     const normalize = (input) => input.toLowerCase().trim();
 
