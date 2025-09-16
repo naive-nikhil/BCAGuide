@@ -12,6 +12,12 @@ const labels = {
   notes: "Notes",
 };
 
+const urls = {
+  paper: "/previous-year-question-papers",
+  assignment: "/assignments/2024-25",
+  material: "/study-material",
+};
+
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [placeholder, setPlaceholder] = useState(
@@ -23,6 +29,34 @@ const SearchBar = () => {
   const handleSearch = (e) => {
     const input = e.target.value;
     setQuery(input);
+
+    if (!input) {
+      setResults([]);
+      return;
+    }
+
+    const courseMatch =
+      (input.match(/[a-z]*\s?-?/i)?.[0].replace(/[-\s]/g, "") || "") +
+      "0" +
+      (Number(input.match(/\d+/)?.[0]) || "");
+
+    const code = courseMatch.toUpperCase();
+
+    const allCourses = Object.entries(coursesByCode).map(([code, title]) => ({
+      courseCode: code,
+      courseTitle: title,
+    }));
+
+    if (code) {
+      console.log(code);
+      const filtered = allCourses.filter((course) =>
+        course.courseCode.startsWith(code)
+      );
+
+      console.log(filtered);
+
+      setResults(filtered);
+    }
 
     const normalize = (input) => input.toLowerCase().trim();
 
@@ -45,19 +79,20 @@ const SearchBar = () => {
     if (filter) {
       let filteredResults = resources.filter((r) => r.type === filter);
 
-      const courseMatch =
-        (input.match(/[a-z]*\s?-?/i)?.[0].replace(/[-\s]/g, "") || "") +
-        "0" +
-        (Number(input.match(/\d+/)?.[0]) || "");
-
       console.log(courseMatch);
+      console.log(input.match(/\d+/));
+
       if (courseMatch) {
-        const code = courseMatch.toUpperCase();
+        const url = urls[filter] + `/${courseMatch}`;
         console.log(code);
+
+        console.log(url);
+
         filteredResults = [
           {
             courseCode: code,
             courseTitle: coursesByCode[code],
+            link: url,
           },
         ];
         console.log(filteredResults);
@@ -123,11 +158,11 @@ const SearchBar = () => {
       {/* Results dropdown */}
       {results.length > 0 && (
         <div className="absolute max-h-60 overflow-y-auto w-full bg-white border border-gray-300 top-full mt-2 rounded-md p-2 text-sm">
-          <ul>
+          <ul className="flex flex-col">
             {results.map((item, index) => (
-              <li key={index}>
+              <a href={item.link} key={index}>
                 {item.courseCode} {item.courseTitle}
-              </li>
+              </a>
             ))}
           </ul>
         </div>
