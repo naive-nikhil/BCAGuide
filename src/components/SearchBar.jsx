@@ -100,7 +100,7 @@ const SearchBar = () => {
                       setCategoryDropdown(false);
                       setFilter(label[0]);
                     }}
-                    className="px-2 py-1 rounded bg-black/5 cursor-pointer"
+                    className="px-2 py-1 rounded bg-black/3 cursor-pointer"
                   >
                     {label[1]}
                   </li>
