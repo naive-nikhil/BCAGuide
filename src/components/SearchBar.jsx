@@ -20,11 +20,11 @@ const urls = {
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
-  const [placeholder, setPlaceholder] = useState(
-    "Papers, Assignments, Materials & Notes"
-  );
+  const [placeholder, setPlaceholder] = useState("Select Category First");
   const [results, setResults] = useState([]);
-  const [filter, setFilter] = useState();
+  const [filter, setFilter] = useState("paper");
+
+  const [categoryDropdown, setCategoryDropdown] = useState(false);
 
   const handleSearch = (e) => {
     const input = e.target.value;
@@ -49,11 +49,9 @@ const SearchBar = () => {
 
     const filtered = allCourses.filter(
       (course) =>
-        course.courseCode.startsWith(code) ||
+        course.courseCode.includes(code) ||
         course.courseTitle.toLowerCase().includes(input)
     );
-
-    console.log(filtered);
 
     setResults(filtered);
 
@@ -73,32 +71,6 @@ const SearchBar = () => {
       setFilter("notes");
       setQuery("");
     }
-
-    // Once filter is set, search inside that category
-    if (filter) {
-      let filteredResults = resources.filter((r) => r.type === filter);
-
-      console.log(courseMatch);
-      console.log(input.match(/\d+/));
-
-      if (courseMatch) {
-        const url = urls[filter] + `/${courseMatch}`;
-        console.log(code);
-
-        console.log(url);
-
-        filteredResults = [
-          {
-            courseCode: code,
-            courseTitle: coursesByCode[code],
-            link: url,
-          },
-        ];
-        console.log(filteredResults);
-      }
-
-      setResults(filteredResults);
-    }
   };
 
   return (
@@ -108,21 +80,33 @@ const SearchBar = () => {
         <img src={searchLogo} className="w-4 brightness-60" />
         {/* Active filter badges */}
         {filter && (
-          <div className="hidden lg:flex gap-2">
-            {
-              <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full text-xs flex items-center gap-2">
-                {labels[filter]}
-                <button
-                  className="text-red-500 hover:text-red-700"
-                  onClick={() => {
-                    setFilter("");
-                    setPlaceholder("Papers, Assignments, Materials & Notes");
-                  }}
-                >
-                  ✕
-                </button>
-              </span>
-            }
+          <div
+            onMouseEnter={() => setCategoryDropdown(true)}
+            onMouseLeave={() => setCategoryDropdown(false)}
+            className="flex flex-col relative mt-1"
+          >
+            <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full text-xs flex items-center gap-2">
+              {labels[filter]}
+              <button className="text-red-500 hover:text-red-700 scale-130 cursor-pointer">
+                ▾
+              </button>
+            </span>
+            <div className="w-full h-1 bg-transparent"></div>
+            {categoryDropdown && (
+              <ul className="absolute top-full p-1 gap-1 bg-emerald-100 text-emerald-700 text-xs flex flex-col rounded">
+                {Object.entries(labels).map((label) => (
+                  <li
+                    onClick={() => {
+                      setCategoryDropdown(false);
+                      setFilter(label[0]);
+                    }}
+                    className="px-2 py-1 rounded bg-black/5 cursor-pointer"
+                  >
+                    {label[1]}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         )}
         <input
@@ -133,26 +117,6 @@ const SearchBar = () => {
           className="w-full py-2 pl-2"
         />
       </div>
-
-      {/* Active filter badges */}
-      {filter && (
-        <div className="flex lg:hidden gap-2">
-          {
-            <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full text-xs flex items-center gap-2">
-              {labels[filter]}
-              <button
-                className="text-red-500 hover:text-red-700"
-                onClick={() => {
-                  setFilter("");
-                  setPlaceholder("Papers, Assignments, Materials & Notes");
-                }}
-              >
-                ✕
-              </button>
-            </span>
-          }
-        </div>
-      )}
 
       {/* Results dropdown */}
       {results.length > 0 && (
