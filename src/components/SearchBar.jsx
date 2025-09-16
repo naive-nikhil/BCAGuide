@@ -3,7 +3,7 @@ import searchLogo from "../assets/search.png";
 import filterLogo from "../assets/filter.png";
 import Fuse from "fuse.js";
 
-import { resources, coursesBySemester } from "../data/flat_data";
+import { resources, coursesBySemester, coursesByCode } from "../data/flat_data";
 
 const labels = {
   paper: "PYQs",
@@ -25,11 +25,6 @@ const SearchBar = () => {
     setQuery(input);
 
     const normalize = (input) => input.toLowerCase().trim();
-    const normalizeCourseCode = (str) =>
-      str
-        .replace(/[-\s]/g, "")
-        .toUpperCase()
-        .replace(/^([A-Z]{3})(\d{2})$/, "$10$2");
 
     if (normalize(input).includes("paper")) {
       setFilter("paper");
@@ -50,42 +45,22 @@ const SearchBar = () => {
     if (filter) {
       let filteredResults = resources.filter((r) => r.type === filter);
 
-      console.log(filteredResults);
+      const courseMatch =
+        (input.match(/[a-z]*\s?-?/i)?.[0].replace(/[-\s]/g, "") || "") +
+        "0" +
+        (Number(input.match(/\d+/)?.[0]) || "");
 
-      // Match by Course Code (e.g. BCS011, bcs-11, bcs 11)
-      const courseMatch = input.match(/[a-z]{3}\s?-?\d{2,3}/i);
       console.log(courseMatch);
       if (courseMatch) {
-        const code = normalizeCourseCode(courseMatch[0]);
+        const code = courseMatch.toUpperCase();
         console.log(code);
-        filteredResults = filteredResults.filter((r) => r.courseCode === code);
-
+        filteredResults = [
+          {
+            courseCode: code,
+            courseTitle: coursesByCode[code],
+          },
+        ];
         console.log(filteredResults);
-      }
-
-      // Match by Semester (sem 1, semester one, sem one, etc.)
-      const semMatch = input.match(
-        /sem(ester)?\s?(one|two|three|four|five|six|[1-6])/i
-      );
-      if (semMatch) {
-        const mapSem = {
-          one: 1,
-          two: 2,
-          three: 3,
-          four: 4,
-          five: 5,
-          six: 6,
-        };
-        const semKey = semMatch[2]?.toLowerCase() || semMatch[0];
-        const semNum = mapSem[semKey] || parseInt(semKey, 10);
-        filteredResults = filteredResults.filter((r) => r.semester === semNum);
-      }
-
-      // Match by Course Title (fuzzy contains check)
-      if (input.length > 2) {
-        filteredResults = filteredResults.filter((r) =>
-          normalize(r.courseTitle).includes(normalize(input))
-        );
       }
 
       setResults(filteredResults);
@@ -105,7 +80,10 @@ const SearchBar = () => {
                 {labels[filter]}
                 <button
                   className="text-red-500 hover:text-red-700"
-                  onClick={() => setFilter("")}
+                  onClick={() => {
+                    setFilter("");
+                    setPlaceholder("Papers, Assignments, Materials & Notes");
+                  }}
                 >
                   ✕
                 </button>
@@ -130,7 +108,10 @@ const SearchBar = () => {
               {labels[filter]}
               <button
                 className="text-red-500 hover:text-red-700"
-                onClick={() => setFilter("")}
+                onClick={() => {
+                  setFilter("");
+                  setPlaceholder("Papers, Assignments, Materials & Notes");
+                }}
               >
                 ✕
               </button>
