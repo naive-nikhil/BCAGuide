@@ -27,27 +27,35 @@ const SearchBar = () => {
   const placeholder = `Search ${filter}s by course code or title`;
   const url = urls[filter];
 
-  const allCourses = Object.entries(coursesByCode).map(([code, title]) => ({
-    courseCode: code,
-    courseTitle: title,
+const allCourses = useMemo(
+  () =>
+    Object.entries(coursesByCode).map(([code, title]) => ({
+      courseCode: code,
+      courseTitle: title,
+    })),
+  []
+);
+
+const fuse = useMemo(
+  () =>
+    new Fuse(allCourses, {
+      keys: ["courseCode", "courseTitle"],
+      threshold: 0.3,
+    }),
+  [allCourses]
+);
+
+const handleSearch = (e) => {
+  const input = e.target.value;
+  if (!input) return setResults([]);
+  setQuery(input);
+
+  const filtered = fuse.search(query).map(({ item }) => ({
+    ...item,
+    link: `${url}/${item.courseCode.toLowerCase()}`,
   }));
-
-  const fuse = new Fuse(allCourses, {
-    keys: ["courseCode", "courseTitle"],
-    threshold: 0.3,
-  });
-
-  const handleSearch = useCallback((e) => {
-    const input = e.target.value;
-    setQuery(input);
-    if (!query) return setResults([]);
-
-    const filtered = fuse.search(query).map(({ item }) => ({
-      ...item,
-      link: `${url}/${item.courseCode.toLowerCase()}`,
-    }));
-    setResults(filtered);
-  });
+  setResults(filtered);
+};
 
   return (
     <div className="h-full flex flex-col gap-2 relative" tabIndex={0}>
