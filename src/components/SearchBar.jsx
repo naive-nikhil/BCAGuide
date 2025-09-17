@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import searchLogo from "../assets/search.png";
 import Fuse from "fuse.js";
 
@@ -20,37 +20,34 @@ const urls = {
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
-  const [placeholder, setPlaceholder] = useState("Select Category First");
   const [results, setResults] = useState([]);
   const [filter, setFilter] = useState("paper");
-  const [url, setUrl] = useState("");
-
   const [categoryDropdown, setCategoryDropdown] = useState(false);
 
-  const handleSearch = (e) => {
+  const placeholder = `Search ${filter}s by course code or title`;
+  const url = urls[filter];
+
+  const allCourses = Object.entries(coursesByCode).map(([code, title]) => ({
+    courseCode: code,
+    courseTitle: title,
+  }));
+
+  const fuse = new Fuse(allCourses, {
+    keys: ["courseCode", "courseTitle"],
+    threshold: 0.3,
+  });
+
+  const handleSearch = useCallback((e) => {
     const input = e.target.value;
     setQuery(input);
-
     if (!query) return setResults([]);
-    const allCourses = Object.entries(coursesByCode).map(([code, title]) => ({
-      courseCode: code,
-      courseTitle: title,
-    }));
-    const fuse = new Fuse(allCourses, {
-      keys: ["courseCode", "courseTitle"],
-      threshold: 0.3,
-    });
+
     const filtered = fuse.search(query).map(({ item }) => ({
       ...item,
       link: `${url}/${item.courseCode.toLowerCase()}`,
     }));
     setResults(filtered);
-  };
-
-  useEffect(() => {
-    setPlaceholder(`Search ${filter}s by course code or title`);
-    setUrl(`${urls[filter]}`);
-  }, [filter]);
+  });
 
   return (
     <div className="h-full flex flex-col gap-2 relative" tabIndex={0}>
@@ -119,6 +116,13 @@ const SearchBar = () => {
               </Link>
             ))}
           </ul>
+        </div>
+      )}
+      {query && results.length === 0 && (
+        <div className="absolute max-h-42 overflow-y-auto flex flex-col w-full bg-white border border-gray-300 top-full mt-2 rounded-md p-1 text-sm z-2 text-center">
+          <span className="bg-black/1 hover:bg-black/3 rounded cursor-pointer py-1 px-2">
+            No results found
+          </span>
         </div>
       )}
     </div>
