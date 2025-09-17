@@ -73,7 +73,7 @@ npm run build
 ## 👨‍💻 Author
 
 **Nikhil Patel**  
-- 🌐 [Portfolio](naive-nikhil.github.io)
+- 🌐 [Portfolio](https://naive-nikhil.github.io/)
 - 💼 [LinkedIn](https://www.linkedin.com/in/nikhil-p-7483ab135/)  
 - 🐙 [GitHub](https://github.com/naive-nikhil)  
 
