@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import searchLogo from "../assets/search.png";
 import filterLogo from "../assets/filter.png";
 import Fuse from "fuse.js";
@@ -9,13 +9,13 @@ const labels = {
   paper: "PYQs",
   assignment: "Assignments",
   material: "Materials",
-  notes: "Notes",
+  note: "Notes",
 };
 
 const urls = {
   paper: "/previous-year-question-papers",
   assignment: "/assignments/2024-25",
-  material: "/study-material",
+  material: "/study-materials",
 };
 
 const SearchBar = () => {
@@ -23,6 +23,7 @@ const SearchBar = () => {
   const [placeholder, setPlaceholder] = useState("Select Category First");
   const [results, setResults] = useState([]);
   const [filter, setFilter] = useState("paper");
+  const [url, setUrl] = useState("");
 
   const [categoryDropdown, setCategoryDropdown] = useState(false);
 
@@ -47,31 +48,24 @@ const SearchBar = () => {
       courseTitle: title,
     }));
 
-    const filtered = allCourses.filter(
-      (course) =>
-        course.courseCode.includes(code) ||
-        course.courseTitle.toLowerCase().includes(input)
-    );
+    const filtered = allCourses
+      .filter(
+        (course) =>
+          course.courseCode.includes(code) ||
+          course.courseTitle.toLowerCase().includes(input)
+      )
+      .map((c) => ({ ...c, link: `${url}/${c.courseCode.toLowerCase()}` }));
+
+    console.log(filtered);
 
     setResults(filtered);
-
-    const normalize = (input) => input.toLowerCase().trim();
-
-    if (normalize(input).includes("paper")) {
-      setFilter("paper");
-      setPlaceholder("Search by Course Code, Title or Semester");
-      setQuery("");
-    } else if (normalize(input).includes("assignment")) {
-      setFilter("assignment");
-      setQuery("");
-    } else if (normalize(input).includes("material")) {
-      setFilter("material");
-      setQuery("");
-    } else if (normalize(input).includes("note")) {
-      setFilter("notes");
-      setQuery("");
-    }
+    console.log(url);
   };
+
+  useEffect(() => {
+    setPlaceholder(`Search ${filter}s by Course Code or Title`);
+    setUrl(`${urls[filter]}`);
+  }, [filter]);
 
   return (
     <div className="h-full flex flex-col gap-2 relative" tabIndex={0}>
@@ -93,9 +87,10 @@ const SearchBar = () => {
             </span>
             <div className="w-full h-1 bg-transparent"></div>
             {categoryDropdown && (
-              <ul className="absolute top-full p-1 gap-1 bg-emerald-100 text-emerald-700 text-xs flex flex-col rounded">
-                {Object.entries(labels).map((label) => (
+              <ul className="absolute top-full p-1 gap-1 bg-emerald-100 text-emerald-700 text-xs flex flex-col rounded z-2">
+                {Object.entries(labels).map((label, index) => (
                   <li
+                    key={index}
                     onClick={() => {
                       setCategoryDropdown(false);
                       setFilter(label[0]);
@@ -120,11 +115,18 @@ const SearchBar = () => {
 
       {/* Results dropdown */}
       {results.length > 0 && (
-        <div className="absolute max-h-60 overflow-y-auto w-full bg-white border border-gray-300 top-full mt-2 rounded-md p-2 text-sm">
-          <ul className="flex flex-col">
+        <div className="absolute max-h-42 overflow-y-auto w-full bg-white border border-gray-300 top-full mt-2 rounded-md p-1 text-sm z-2">
+          <ul className="flex flex-col gap-1">
             {results.map((item, index) => (
-              <a href={item.link} key={index}>
-                {item.courseCode} {item.courseTitle}
+              <a
+                href={item.link}
+                key={index}
+                className="bg-black/2 hover:bg-black/4 rounded cursor-pointer py-1 px-2"
+              >
+                <span className="text-violet-700 py-1 px-2 bg-violet-100 rounded-full text-xs">
+                  {item.courseCode}
+                </span>{" "}
+                {item.courseTitle}
               </a>
             ))}
           </ul>
