@@ -46,7 +46,7 @@ const Home = () => {
       <img
         src={heroImg}
         className="h-full w-full object-cover object-bottom bg-violet-100"
-        alt="Image representing a wooden block on table with text 'Do What You Love' written on it."
+        alt="Image representing a wooden block on table with text 'Do What You Love' written on it"
       />
     </>
   );
