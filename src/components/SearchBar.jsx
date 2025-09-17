@@ -47,10 +47,10 @@ const SearchBar = () => {
 
   const handleSearch = (e) => {
     const input = e.target.value;
-    if (!input) return setResults([]);
     setQuery(input);
+    if (!input) return setResults([]);
 
-    const filtered = fuse.search(query).map(({ item }) => ({
+    const filtered = fuse.search(input).map(({ item }) => ({
       ...item,
       link: `${url}/${item.courseCode.toLowerCase()}`,
     }));
@@ -67,6 +67,7 @@ const SearchBar = () => {
           <div
             onMouseEnter={() => setCategoryDropdown(true)}
             onMouseLeave={() => setCategoryDropdown(false)}
+            onClick={() => setCategoryDropdown(!categoryDropdown)}
             className="flex flex-col relative mt-1"
           >
             <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full text-xs flex items-center gap-2">
@@ -77,7 +78,7 @@ const SearchBar = () => {
             </span>
             <div className="w-full h-1 bg-transparent"></div>
             {categoryDropdown && (
-              <ul className="absolute top-full p-1 gap-1 bg-emerald-100 text-emerald-700 text-xs flex flex-col rounded z-2">
+              <ul className="absolute top-full p-1 gap-1 bg-emerald-100 text-emerald-700 text-xs flex flex-col rounded z-10">
                 {Object.entries(labels).map((label, index) => (
                   <li
                     key={index}
