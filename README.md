@@ -20,8 +20,12 @@ Deployed on [Netlify](https://bcaguide.netlify.app).
 
 👉 **Live Site:** [bcaguide.netlify.app](https://bcaguide.netlify.app)  
 
-![App Screenshot](https://res.cloudinary.com/dinzuxodt/image/upload/Screenshot_2025-09-17_135719_tqqoro.png)
-![App Screenshot](https://res.cloudinary.com/dinzuxodt/image/upload/Screenshot_2025-09-17_135708_meouvw.png)   
+## Screenshots
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dinzuxodt/image/upload/Screenshot_2025-09-17_135719_tqqoro.png" alt="App Screenshot" width="45%" />
+  <img src="https://res.cloudinary.com/dinzuxodt/image/upload/Screenshot_2025-09-17_135708_meouvw.png" alt="App Screenshot" width="45%" />
+</p> 
 
 ---
 
