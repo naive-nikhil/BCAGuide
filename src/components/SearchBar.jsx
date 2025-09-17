@@ -63,7 +63,7 @@ const SearchBar = () => {
   };
 
   useEffect(() => {
-    setPlaceholder(`Search ${filter}s by Course Code or Title`);
+    setPlaceholder(`Search ${filter}s by course code or title`);
     setUrl(`${urls[filter]}`);
   }, [filter]);
 
@@ -121,7 +121,7 @@ const SearchBar = () => {
               <a
                 href={item.link}
                 key={index}
-                className="bg-black/2 hover:bg-black/4 rounded cursor-pointer py-1 px-2"
+                className="bg-black/1 hover:bg-black/3 rounded cursor-pointer py-1 px-2"
               >
                 <span className="text-violet-700 py-1 px-2 bg-violet-100 rounded-full text-xs">
                   {item.courseCode}
