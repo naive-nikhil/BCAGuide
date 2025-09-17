@@ -20,8 +20,7 @@ Deployed on [Netlify](https://bcaguide.netlify.app).
 
 👉 **Live Site:** [bcaguide.netlify.app](https://bcaguide.netlify.app)  
 
-![App Screenshot](https://dummyimage.com/1000x500/eeeeee/000000&text=BCA+Guide+App+Screenshot)  
-*(Replace this with your own screenshot)*
+![App Screenshot](https://res.cloudinary.com/dinzuxodt/image/upload/Screenshot_2025-09-17_135719_tqqoro.png)  
 
 ---
 
