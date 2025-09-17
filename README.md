@@ -74,8 +74,8 @@ npm run build
 
 **Nikhil Patel**  
 - 🌐 [Portfolio](naive-nikhil.github.io)
-- 💼 [LinkedIn](#)  
-- 🐙 [GitHub](#)  
+- 💼 [LinkedIn](https://www.linkedin.com/in/nikhil-p-7483ab135/)  
+- 🐙 [GitHub](https://github.com/naive-nikhil)  
 
 ---
 
