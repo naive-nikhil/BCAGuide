@@ -119,7 +119,7 @@ const Table = () => {
 
             <p className="text-sm text-gray-400 mt-1">
               Issued By - {notification.issuedBy} •{" "}
-              <span className="text-emerald-500 text-nowrap text-heading">
+              <span className="text-emerald-500 text-nowrap">
                 {notification.date}
               </span>
             </p>
