@@ -75,10 +75,4 @@ npm run build
 **Nikhil Patel**  
 - 🌐 [Portfolio](https://naive-nikhil.github.io/)
 - 💼 [LinkedIn](https://www.linkedin.com/in/nikhil-p-7483ab135/)  
-- 🐙 [GitHub](https://github.com/naive-nikhil)  
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License** – feel free to use and modify it.
+- 🐙 [GitHub](https://github.com/naive-nikhil)
