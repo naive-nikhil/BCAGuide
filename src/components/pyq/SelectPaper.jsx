@@ -18,7 +18,7 @@ const SelectPaper = ({ courseCode, courseTitle }) => {
   return (
     <div className="relative">
       <Link
-        to="/previous-year-question-papers"
+        to={-1}
         className="absolute right-0 flex items-center justify-center w-8 h-8 bg-violet-200 border border-r-2 border-b-2 border-violet-300 rounded-full"
       >
         <img src={backIcon} className="w-4 h-auto brightness-20" alt="" />
