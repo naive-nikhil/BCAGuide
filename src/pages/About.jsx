@@ -21,11 +21,14 @@ const About = () => {
         <meta property="og:title" content="About Me | BCA Guide" />
         <meta
           property="og:description"
-          content="Discover the mission behind BCA Guide and how we help IGNOU students succeed."
+          content="Discover the mission behind BCA Guide and how we help IGNOU BCA students succeed."
         />
         <meta property="og:url" content="https://bcaguide.site/about-me" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://bcaguide.site/preview.jpg" />
+        <meta
+          property="og:image"
+          content="https://bcaguide.site/about-me-preview.png"
+        />
 
         {/* Twitter Cards */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -36,7 +39,7 @@ const About = () => {
         />
         <meta
           name="twitter:image"
-          content="https://bcaguide.site/preview.jpg"
+          content="https://bcaguide.site/about-me-preview.png"
         />
 
         {/* Canonical URL */}
