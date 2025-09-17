@@ -31,22 +31,8 @@ Deployed on [Netlify](https://bcaguide.netlify.app).
 ## 🛠️ Tech Stack
 
 - **Frontend:** [React](https://react.dev/), [React Router](https://reactrouter.com/), [Fuse.js](https://fusejs.io/)  
-- **Styling:** CSS / Tailwind (if applied)  
+- **Styling:** Tailwind CSS  
 - **Deployment:** [Netlify](https://www.netlify.com/)  
-
----
-
-## 📂 Project Structure
-
-```
-src/
-│── assets/          # Icons, images
-│── components/      # Reusable UI components
-│── data/            # Course code & title mappings
-│── pages/           # Multi-page routing views
-│── App.jsx          # Main React app
-│── main.jsx         # Entry point
-```
 
 ---
 
@@ -87,7 +73,7 @@ npm run build
 ## 👨‍💻 Author
 
 **Nikhil Patel**  
-- 🌐 [Portfolio](#) *(add your link here)*  
+- 🌐 [Portfolio](naive-nikhil.github.io)
 - 💼 [LinkedIn](#)  
 - 🐙 [GitHub](#)  
 
