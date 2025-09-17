@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import searchLogo from "../assets/search.png";
-import filterLogo from "../assets/filter.png";
 import Fuse from "fuse.js";
 
-import { resources, coursesBySemester, coursesByCode } from "../data/flat_data";
+import { coursesByCode } from "../data/flat_data";
+import { Link } from "react-router-dom";
 
 const labels = {
   paper: "PYQs",
@@ -31,35 +31,20 @@ const SearchBar = () => {
     const input = e.target.value;
     setQuery(input);
 
-    if (!input) {
-      setResults([]);
-      return;
-    }
-
-    const courseMatch =
-      (input.match(/[a-z]*\s?-?/i)?.[0].replace(/[-\s]/g, "") || "") +
-      "0" +
-      (Number(input.match(/\d+/)?.[0]) || "");
-
-    const code = courseMatch.toUpperCase();
-
+    if (!query) return setResults([]);
     const allCourses = Object.entries(coursesByCode).map(([code, title]) => ({
       courseCode: code,
       courseTitle: title,
     }));
-
-    const filtered = allCourses
-      .filter(
-        (course) =>
-          course.courseCode.includes(code) ||
-          course.courseTitle.toLowerCase().includes(input)
-      )
-      .map((c) => ({ ...c, link: `${url}/${c.courseCode.toLowerCase()}` }));
-
-    console.log(filtered);
-
+    const fuse = new Fuse(allCourses, {
+      keys: ["courseCode", "courseTitle"],
+      threshold: 0.3,
+    });
+    const filtered = fuse.search(query).map(({ item }) => ({
+      ...item,
+      link: `${url}/${item.courseCode.toLowerCase()}`,
+    }));
     setResults(filtered);
-    console.log(url);
   };
 
   useEffect(() => {
@@ -118,8 +103,12 @@ const SearchBar = () => {
         <div className="absolute max-h-42 overflow-y-auto w-full bg-white border border-gray-300 top-full mt-2 rounded-md p-1 text-sm z-2">
           <ul className="flex flex-col gap-1">
             {results.map((item, index) => (
-              <a
-                href={item.link}
+              <Link
+                to={item.link}
+                onClick={() => {
+                  setQuery("");
+                  setResults([]);
+                }}
                 key={index}
                 className="bg-black/1 hover:bg-black/3 rounded cursor-pointer py-1 px-2"
               >
@@ -127,7 +116,7 @@ const SearchBar = () => {
                   {item.courseCode}
                 </span>{" "}
                 {item.courseTitle}
-              </a>
+              </Link>
             ))}
           </ul>
         </div>
