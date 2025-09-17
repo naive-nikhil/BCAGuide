@@ -1,4 +1,4 @@
-# 📘 BCA Guide – React Web App
+# 📘 BCAGuide – React Web App
 
 A **React-based student resource portal** for **IGNOU BCA students**, providing access to **previous year question papers, assignments, study materials, and notes** in one place.  
 Deployed on [Netlify](https://bcaguide.netlify.app).

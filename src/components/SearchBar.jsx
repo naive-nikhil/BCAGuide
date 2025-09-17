@@ -116,7 +116,7 @@ const SearchBar = () => {
                   setResults([]);
                 }}
                 key={index}
-                className="bg-black/1 hover:bg-black/3 rounded cursor-pointer py-1 px-2"
+                className="bg-black/1 hover:bg-black/3 rounded cursor-pointer py-1 px-2 line-clamp-1"
               >
                 <span className="text-violet-700 py-1 px-2 bg-violet-100 rounded-full text-xs">
                   {item.courseCode}
