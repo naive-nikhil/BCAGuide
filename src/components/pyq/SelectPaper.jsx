@@ -60,7 +60,7 @@ const SelectPaper = ({ courseCode, courseTitle }) => {
             >
               {paperTitle} {paper.year}
               <p className="ml-auto">
-              { paper.paperLink !== "#"? <span className="text-emerald-400">✓</span>: "✗"}
+              { paper.paperLink !== "#"? <span className="text-emerald-400">✓</span>: <span className="text-red-400">✗</span>}
               </p>
             </Link>
           ))}

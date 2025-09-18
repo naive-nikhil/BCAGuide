@@ -1,17 +1,13 @@
-import FeaturedCarousel from "../components/FeaturedCarousel";
 import { useParams } from "react-router-dom";
 import SemesterList from "../components/carousel/SemesterList";
 import Carousel from "../components/Carousel";
 import CoursesPage from "../components/carousel/CoursesPage";
 import Download from "../components/pyq/Download";
-import { useAppContext } from "../context/AppContext";
-import semesters from "../data/data.json";
 
 import { resources, coursesByCode } from "../data/flat_data";
 
 const Assignments = () => {
   const { cycle, code } = useParams();
-  const { selectedSemester, selectedCourse } = useAppContext();
 
   const courseCode = code?.toUpperCase();
   const courseTitle = coursesByCode[courseCode];

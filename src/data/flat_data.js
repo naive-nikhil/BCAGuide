@@ -9,7 +9,7 @@ export const resources = [
     session: "june",
     year: "2012",
     paperLink:
-      "https://res.cloudinary.com/dinzuxodt/image/upload/BCS011-June-2012_pp41hs.pdf",
+      "#",
     solutionLink: "#",
   },
   {
