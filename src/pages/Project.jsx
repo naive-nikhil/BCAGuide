@@ -66,6 +66,7 @@ const Project = () => {
       <h1 className="text-xl text-gray-700">
         Project Synopsis & Report [BCSP064]
       </h1>
+      <p className="py-1 px-2 rounded-md bg-amber-500">Last date for submission of Project Report for the proposals submitted between 1st April & 30th June is 30th September</p>
       <Carousel sidebarComponent={<StepList />} page={ActiveStepComponent} />
     </>
   );
