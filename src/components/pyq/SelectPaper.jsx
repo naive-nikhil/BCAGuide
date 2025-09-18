@@ -13,8 +13,6 @@ const SelectPaper = ({ courseCode, courseTitle }) => {
       resource.session === session
   );
 
-  console.log(coursePapers)
-
   const paperTitle = [...session][0].toUpperCase() + session.slice(1);
 
   return (
