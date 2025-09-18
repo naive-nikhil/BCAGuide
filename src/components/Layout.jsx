@@ -14,6 +14,7 @@ const Layout = () => {
             <SearchBar />
           </div>
           <div className="lg:h-[calc(100vh-132px)] flex flex-col gap-4">
+            <h2 className="bg-red-500 py-1 px-2 rounded-md text-white">This website is currently in development! Sorry for the inconvenience. Content is being uploaded regularly but will take some time. It is a initiative by me, and I'm alone in solving each and every paper manually and then upload it.</h2> 
             <section className="h-full lg:h-[calc(calc(100vh-164px)/2)] overflow-hidden flex flex-col gap-2 rounded-md">
               <Outlet />
             </section>
