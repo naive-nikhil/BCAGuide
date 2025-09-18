@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../firebase";
-import EnterData from "../EnterData";
 import { useAppContext } from "../../context/AppContext";
 
 const Form = ({ onLogin }) => {
@@ -26,8 +25,6 @@ const Form = ({ onLogin }) => {
     }
   };
 
-  console.log(formData.password);
-
   const handleLogin = async (e) => {
     e.preventDefault();
   };
@@ -48,7 +45,6 @@ const Form = ({ onLogin }) => {
           formData.password
         );
         setUser(userCred.user);
-        console.log("Login Successfull");
       } catch (err) {
         console.log(err);
       }

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Best practice: Charset and Viewport should come first for faster parsing -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>BCAGuide - IGNOU Papers & Resources</title>
 
     <meta
@@ -37,13 +41,17 @@
     />
 
     <link rel="canonical" href="https://bcaguide.site/" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-
   </head>
   <body class="bg-stone-50 text-gray-700">
     <div id="root"></div>
+    <noscript>
+      <h1>Welcome to BCAGuide – IGNOU Papers & Resources</h1>
+      <p>
+        Access free IGNOU BCA previous year question papers, assignments, study materials, and other essential resources for all semesters. Our JavaScript-based website provides an interactive experience. Please enable JavaScript to view the full site.
+      </p>
+    </noscript>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

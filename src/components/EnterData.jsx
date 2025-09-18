@@ -22,8 +22,6 @@ const EnterData = () => {
   });
   const { setUser } = useAppContext();
 
-  console.log(resources.length);
-
   const handleLogout = async () => {
     await signOut(auth);
     setUser(null);
@@ -69,7 +67,6 @@ const EnterData = () => {
       });
 
       const result = await response.json();
-      console.log(result);
       alert(result.message);
       setFormData({
         type: "",
