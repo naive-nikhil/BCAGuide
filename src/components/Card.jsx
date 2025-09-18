@@ -13,7 +13,7 @@ const Card = ({
 }) => {
   const accent = ACCENTS[index % ACCENTS.length];
   return (
-    <div className="relative min-w-80 flex flex-col justify-between p-2 border border-gray-300 rounded cursor-pointer group h-full">
+    <div className="relative min-w-80 flex flex-col justify-between p-2 border border-gray-300 rounded cursor-pointer group h-full max-h-100">
       <div
         className={`relative overflow-hidden h-50 rounded border border-gray-300 ${accent.card}`}
       >
