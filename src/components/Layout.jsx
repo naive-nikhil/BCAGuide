@@ -18,7 +18,7 @@ const Layout = () => {
             <section className="h-full lg:h-[calc(calc(100vh-164px)/2)] overflow-hidden flex flex-col gap-2 rounded-md">
               <Outlet />
             </section>
-            <section className="h-[calc(calc(100vh-164px)/2)] overflow-hidden">
+            <section className="max-h-fit lg:h-[calc(calc(100vh-164px)/2)] overflow-hidden">
               <FeaturedCarousel />
             </section>
           </div>
