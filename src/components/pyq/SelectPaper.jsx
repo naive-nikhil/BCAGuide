@@ -13,6 +13,8 @@ const SelectPaper = ({ courseCode, courseTitle }) => {
       resource.session === session
   );
 
+  console.log(coursePapers)
+
   const paperTitle = [...session][0].toUpperCase() + session.slice(1);
 
   return (
@@ -54,9 +56,12 @@ const SelectPaper = ({ courseCode, courseTitle }) => {
             <Link
               to={`${paperTitle}/${paper.year}`}
               key={index}
-              className="border p-2 border-gray-200 hover:-translate-y-1 transition-all duration-300 ease rounded border-b-3 text-blue-600 cursor-pointer"
+              className="border p-2 flex border-gray-200 hover:-translate-y-1 transition-all duration-300 ease rounded border-b-3 text-blue-600 cursor-pointer"
             >
               {paperTitle} {paper.year}
+              <p className="ml-auto">
+              { paper.paperLink !== "#"? <span className="text-emerald-400">✓</span>: "✗"}
+              </p>
             </Link>
           ))}
       </ul>
