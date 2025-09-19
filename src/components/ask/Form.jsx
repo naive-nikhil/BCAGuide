@@ -23,7 +23,7 @@ const Form = () => {
     e.preventDefault();
 
     if (isAdmin) {
-      // Lazy-load Firebase Auth only when admin submits
+      // Lazy-load Firebase Auth only for admin
       const { auth } = await import("../../firebase");
       const { signInWithEmailAndPassword } = await import("firebase/auth");
 
@@ -36,10 +36,8 @@ const Form = () => {
         setUser(userCred.user);
       } catch (err) {
         console.log(err);
-        alert("Login failed!");
       }
     } else {
-      // Regular user: send WhatsApp message immediately
       const phone = "918178455863";
       const message = `Hello
 Name - ${formData.name}.
@@ -57,7 +55,7 @@ This message is sent from BCAGuide`;
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-2 w-full lg:max-w-100 p-2 bg-white text-gray-700 rounded shadow"
+      className="flex flex-col gap-2 w-full lg:max-w-100 p-2 bg-white text-gray-700 relative"
     >
       <input
         type="text"
@@ -77,7 +75,6 @@ This message is sent from BCAGuide`;
         onChange={handleChange}
         required
       />
-
       {isAdmin ? (
         <input
           type="password"
@@ -91,17 +88,16 @@ This message is sent from BCAGuide`;
       ) : (
         <textarea
           name="doubt"
+          className="border border-b-2 border-emerald-400 rounded-md p-2 h-full resize-none antialiased"
           placeholder="Ask Doubt"
-          className="border border-b-2 border-emerald-400 rounded-md p-2 h-24 resize-none antialiased"
           value={formData.doubt}
           onChange={handleChange}
           required
-        />
+        ></textarea>
       )}
-
       <input
         type="submit"
-        value={isAdmin ? "Login" : "Send Message"}
+        value={`${isAdmin ? "Login" : "Send Message"}`}
         className="bg-emerald-600 text-white p-2 cursor-pointer rounded-md"
       />
     </form>
