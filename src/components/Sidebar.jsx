@@ -1,5 +1,4 @@
 import QR from "../assets/QR.png";
-import studentLogo from "../assets/student.png";
 import StudentCounter from "./sidebar/StudentCounter";
 
 const links = [
