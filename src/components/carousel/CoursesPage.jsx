@@ -28,7 +28,7 @@ const CoursesPage = ({ sectionDesc, baseUrl }) => {
   
   const metaDescription = `Access IGNOU ${sectionDesc.toLowerCase()} for ${
     semesterTitle || "all semesters"
-  }. Find question papers, solved assignments, and study notes organized for easy access. ${
+  }. Find solved previous year question papers, solved assignments, and study notes organized for easy access. ${
     baseUrl?.includes("assignments")
       ? "Current session: " + selectedSession
       : ""
