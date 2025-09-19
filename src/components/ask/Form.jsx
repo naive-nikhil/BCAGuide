@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { auth } from "../../firebase";
 import { useAppContext } from "../../context/AppContext";
 
-const Form = ({ onLogin }) => {
+const Form = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,27 +15,18 @@ const Form = ({ onLogin }) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    // Trigger hidden login panel if name is "admin"
-    if (name === "name" && value.toLowerCase() === "admin") {
-      setIsAdmin(true);
-    } else if (name === "name" && value.toLowerCase() !== "admin") {
-      setIsAdmin(false);
-    }
-  };
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-  };
-
-  const handleLogout = async () => {
-    await signOut(auth);
-    setUser(null);
+    if (name === "name" && value.toLowerCase() === "admin") setIsAdmin(true);
+    else if (name === "name") setIsAdmin(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (isAdmin) {
+      // Lazy-load Firebase Auth only when admin submits
+      const { auth } = await import("../../firebase");
+      const { signInWithEmailAndPassword } = await import("firebase/auth");
+
       try {
         const userCred = await signInWithEmailAndPassword(
           auth,
@@ -47,8 +36,10 @@ const Form = ({ onLogin }) => {
         setUser(userCred.user);
       } catch (err) {
         console.log(err);
+        alert("Login failed!");
       }
     } else {
+      // Regular user: send WhatsApp message immediately
       const phone = "918178455863";
       const message = `Hello
 Name - ${formData.name}.
@@ -66,7 +57,7 @@ This message is sent from BCAGuide`;
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-2 w-full lg:max-w-100 p-2 bg-white text-gray-700 relative"
+      className="flex flex-col gap-2 w-full lg:max-w-100 p-2 bg-white text-gray-700 rounded shadow"
     >
       <input
         type="text"
@@ -86,6 +77,7 @@ This message is sent from BCAGuide`;
         onChange={handleChange}
         required
       />
+
       {isAdmin ? (
         <input
           type="password"
@@ -99,16 +91,17 @@ This message is sent from BCAGuide`;
       ) : (
         <textarea
           name="doubt"
-          className="border border-b-2 border-emerald-400 rounded-md p-2 h-full resize-none antialiased"
           placeholder="Ask Doubt"
+          className="border border-b-2 border-emerald-400 rounded-md p-2 h-24 resize-none antialiased"
           value={formData.doubt}
           onChange={handleChange}
           required
-        ></textarea>
+        />
       )}
+
       <input
         type="submit"
-        value={`${isAdmin ? "Login" : "Send Message"}`}
+        value={isAdmin ? "Login" : "Send Message"}
         className="bg-emerald-600 text-white p-2 cursor-pointer rounded-md"
       />
     </form>
