@@ -6,6 +6,7 @@ const Home = () => {
     <>
       <Helmet>
         <title>BCAGuide - IGNOU Papers, Assignments & Resources</title>
+        <link rel="preload" as="image" href={heroImg} type="image/webp" />
       </Helmet>
       <img
         src={heroImg}
