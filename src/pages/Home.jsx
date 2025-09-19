@@ -6,6 +6,7 @@ const Home = () => {
       <Helmet>
         <title>BCAGuide - IGNOU Papers, Assignments & Resources</title>
       </Helmet>
+      <h1>Hello 👋</h1>
       <img
         src="/hero.webp"
         className="h-full w-full object-cover object-bottom bg-violet-100"
