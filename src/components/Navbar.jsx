@@ -17,7 +17,7 @@ const menu = [
         link: "previous-year-question-papers",
       },
       { title: "Assignments", link: "assignments/2024-25" },
-      { title: "Study Materials", link: "study-materials" },
+      { title: "Study Materials & Notes", link: "study-materials" },
       {
         title: "Project Synopsis & Report",
         link: "project-synopsis-and-report",

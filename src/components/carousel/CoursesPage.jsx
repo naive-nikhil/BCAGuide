@@ -4,6 +4,7 @@ import { useState } from "react";
 import downIcon from "../../assets/down.png";
 
 import { coursesBySemester } from "../../data/flat_data";
+import { Helmet } from "react-helmet";
 
 const CoursesPage = ({ sectionDesc, baseUrl }) => {
   const { selectedSemester } = useAppContext();
@@ -20,8 +21,26 @@ const CoursesPage = ({ sectionDesc, baseUrl }) => {
     (item) => item.id === Number(selectedSemester)
   )?.courses;
 
+  // inside CoursesPage
+  const metaTitle = `${sectionDesc} for ${
+    semesterTitle || "All Semesters"
+    } | BCAGuide - IGNOU`;
+  
+  const metaDescription = `Access IGNOU ${sectionDesc.toLowerCase()} for ${
+    semesterTitle || "all semesters"
+  }. Find question papers, solved assignments, and study notes organized for easy access. ${
+    baseUrl?.includes("assignments")
+      ? "Current session: " + selectedSession
+      : ""
+  }`;
+
   return (
     <div className="w-full [&_h2]:cursor-pointer flex flex-col gap-4 relative">
+      <Helmet>
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDescription} />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       {baseUrl && baseUrl.includes("assignments") && (
         <div className="text-gray-700 cursor-pointer select-none relative lg:absolute top-0 right-0">
           <h2

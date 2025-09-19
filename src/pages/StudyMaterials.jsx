@@ -19,7 +19,7 @@ const StudyMaterials = () => {
   let page = null;
   if (!courseCode) {
     page = (
-      <CoursesPage sectionDesc="Study Materials" baseUrl={"/study-materials"} />
+      <CoursesPage sectionDesc="Study Materials & Notes" baseUrl={"/study-materials"} />
     );
   } else if (courseCode) {
     page = (

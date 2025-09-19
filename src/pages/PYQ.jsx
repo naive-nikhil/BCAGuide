@@ -5,6 +5,8 @@ import CoursesPage from "../components/carousel/CoursesPage";
 import SelectPaper from "../components/pyq/SelectPaper";
 import Download from "../components/pyq/Download";
 
+import { Helmet } from "react-helmet";
+
 import { resources, coursesByCode } from "../data/flat_data";
 
 const PYQ = () => {
