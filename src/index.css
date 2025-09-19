@@ -3,12 +3,20 @@
 
 @font-face {
   font-family: 'MyFont Rg';
-  src: url('/fonts/myfont.otf') format('opentype');
+  src: url('/fonts/myfont.woff2') format('woff2'),
+      url('/fonts/myfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'MyFont Md';
-  src: url('/fonts/myfontmd.otf') format('opentype');
+  src: url('/fonts/myfontmd.woff2') format('woff2'),
+      url('/fonts/myfontmd.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @theme {

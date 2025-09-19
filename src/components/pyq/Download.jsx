@@ -1,16 +1,41 @@
 import { Link, useLocation } from "react-router-dom";
 import backIcon from "../../assets/back.png";
 import bcs012June2024 from "../../assets/BCS012_JUNE2024.jpg";
+import { Helmet } from "react-helmet";
 
 const DownloadPaper = ({ courseCode, courseTitle, type, year, link }) => {
   const location = useLocation();
+
+  // Determine type dynamically based on URL if not passed
+  const pageType = location.pathname.includes("previous")
+    ? "Previous Year Question Paper"
+    : location.pathname.includes("assignments")
+    ? "Solved Assignment"
+    : "Study Material";
+
+  // Dynamic meta tags
+  const metaTitle = `Download ${courseCode} ${pageType} ${
+    year ? `[${year}]` : ""
+  } – BCAGuide - IGNOU`;
+
+  const metaDescription = `Download IGNOU BCA ${courseCode} (${courseTitle}) ${pageType.toLowerCase()} ${
+    year ? `for ${year}` : ""
+  }. Free PDF access for students preparing for exams.`;
+
   const label = location.pathname.includes("previous")
     ? "Paper"
     : location.pathname.includes("assignments")
     ? "Assignment"
     : "Material";
+
   return (
     <div className="relative h-full">
+      <Helmet>
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDescription} />
+        <link rel="canonical" href={window.location.href} />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       <div className="flex flex-col lg:flex-row justify-between gap-2 h-full">
         <div className="flex-1 flex flex-col justify-between">
           <Link
