@@ -1,14 +1,11 @@
 import Card from "../components/Card";
-import bcs012June2024 from "../assets/BCS012_JUNE2024.jpg";
 import bcs054June2024 from "../assets/BCS054_JUNE2024.webp";
 
 const cards = [
-  { img: bcs012June2024 },
-  { img: bcs054June2024 },
-  { img: bcs012June2024 },
   { img: bcs054June2024 },
   { img: bcs054June2024 },
-  { img: bcs012June2024 },
+  { img: bcs054June2024 },
+  { img: bcs054June2024 },
   { img: bcs054June2024 },
 ];
 
