@@ -1,5 +1,3 @@
-import heroImg from "../assets/hero.webp";
-
 const Carousel = ({ sidebarComponent, page }) => {
   return (
     <div className="flex w-full justify-between overflow-hidden rounded-md h-fit">
@@ -13,7 +11,7 @@ const Carousel = ({ sidebarComponent, page }) => {
 
       <div className="relative hidden 2xl:block overflow-hidden w-80 h-150">
         <img
-          src={heroImg}
+          src="/hero.webp"
           alt="Image representing a wooden block on table with text 'Do What You Love' written on it."
           className="absolute w-full h-full object-cover -top-50"
         />

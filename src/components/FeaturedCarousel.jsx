@@ -1,12 +1,11 @@
 import Card from "../components/Card";
-import bcs054June2024 from "../assets/BCS054_JUNE2024.webp";
 
 const cards = [
-  { img: bcs054June2024 },
-  { img: bcs054June2024 },
-  { img: bcs054June2024 },
-  { img: bcs054June2024 },
-  { img: bcs054June2024 },
+  { img: "/samplePaper.webp" },
+  { img: "/samplePaper.webp" },
+  { img: "/samplePaper.webp" },
+  { img: "/samplePaper.webp" },
+  { img: "/samplePaper.webp" },
 ];
 
 const FeaturedCarousel = () => {
