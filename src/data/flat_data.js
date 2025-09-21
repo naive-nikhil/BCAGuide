@@ -315,7 +315,7 @@ export const resources = [
     semester: "1",
     courseCode: "BCS011",
     courseTitle: "Computer Basics And PC Software",
-    materialLink: "#",
+    materialLink: "https://res.cloudinary.com/dinzuxodt/image/upload/bcs11_vy36c0.pdf",
   },
   {
     id: "BCS011-Block 2",
