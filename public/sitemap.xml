@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  <!-- This is a clean sitemap with valid whitespace. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home -->
   <url>
     <loc>https://bcaguide.site/</loc>
-    <lastmod>2025-09-17T09:29:26+00:00</lastmod>
-    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  <!-- Add all your other URLs here in the same format -->
+
+  <!-- Static pages -->
+  <url>
+    <loc>https://bcaguide.site/about-me</loc>
+  </url>
+  <url>
+    <loc>https://bcaguide.site/previous-year-question-papers</loc>
+  </url>
+  <url>
+    <loc>https://bcaguide.site/assignments</loc>
+  </url>
+  <url>
+    <loc>https://bcaguide.site/study-materials</loc>
+  </url>
+  <url>
+    <loc>https://bcaguide.site/project-synopsis-and-report</loc>
+  </url>
+  <url>
+    <loc>https://bcaguide.site/ask-doubts</loc>
+  </url>
+  <url>
+    <loc>https://bcaguide.site/notifications</loc>
+  </url>
+
+  <!-- Optional: if you have a manageable number of course codes, include them -->
+  <!-- Example -->
+  <url>
+    <loc>https://bcaguide.site/previous-year-question-papers/BCS031</loc>
+  </url>
+  <url>
+    <loc>https://bcaguide.site/study-materials/BCS031</loc>
+  </url>
+  <url>
+    <loc>https://bcaguide.site/assignments/june2024/BCS031</loc>
+  </url>
+
 </urlset>
