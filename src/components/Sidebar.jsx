@@ -56,7 +56,7 @@ const Sidebar = () => {
               >
                 {link.label}
               </a>
-              <p className="mt-1 text-gray-400 text-sm line-clamp-none lg:line-clamp-2">
+              <p className="mt-1 text-gray-500 text-sm line-clamp-none lg:line-clamp-2">
                 {link.description}
               </p>
             </li>
@@ -69,7 +69,7 @@ const Sidebar = () => {
           Made With Love ❤️ <br />
           by a fellow IGNOU BCA Student
         </p>
-        <p className="text-sm text-gray-400 mt-1">
+        <p className="text-sm text-gray-500 mt-1">
           The Platform is 100% Free (No Ads)
         </p>
         <div className="mt-2 w-40">
