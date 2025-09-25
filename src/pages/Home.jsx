@@ -7,6 +7,7 @@ const Home = () => {
         <title>BCAGuide - IGNOU Papers, Assignments & Resources</title>
       </Helmet>
       <img
+        fetchPriority="high"
         src="/hero.webp"
         className="h-full w-full object-cover object-bottom bg-violet-100"
         alt="Image representing a wooden block on table with text 'Do What You Love' written on it"
