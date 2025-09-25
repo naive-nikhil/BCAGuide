@@ -73,7 +73,7 @@ const Sidebar = () => {
           The Platform is 100% Free (No Ads)
         </p>
         <div className="mt-2 w-40">
-          <img src={QR} alt="QR Code" className="w-full h-full mt-1" />
+          <img src={QR} alt="QR Code" className="w-full h-full mt-1"/>
         </div>
       </section>
     </aside>

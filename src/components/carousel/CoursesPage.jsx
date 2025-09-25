@@ -56,6 +56,7 @@ const CoursesPage = ({ sectionDesc, baseUrl }) => {
                 openSessionSelect ? "rotate-180" : ""
               }`}
               width={12}
+              alt="Down Icon"
             />
           </h2>
           {openSessionSelect && (

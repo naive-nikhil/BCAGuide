@@ -1,4 +1,4 @@
-import profilePic from "../../assets/profile.jpg";
+import profilePic from "../../assets/profile.webp";
 
 const AboutMe = () => {
   return (
@@ -6,7 +6,7 @@ const AboutMe = () => {
       <div
         className={`w-full lg:max-w-100 lg:h-full h-95 overflow-hidden flex items-center justify-center rounded-md lg:hidden`}
       >
-        <img src={profilePic} className="object-cover max-w-512 h-full" />
+        <img src={profilePic} className="object-cover max-w-512 h-full" alt="Profile Pic of the Website Developer" />
       </div>
       <h2 className="text-xl">
         Hi, I'm Nikhil 👋 [an Ex-BCA Student from IGNOU]

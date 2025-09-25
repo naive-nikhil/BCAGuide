@@ -41,7 +41,7 @@ const DownloadPaper = ({ courseCode, courseTitle, type, year, link }) => {
             to={-1}
             className="absolute lg:relative right-0 flex items-center justify-center w-8 h-8 bg-violet-200 border border-r-2 border-b-2 border-violet-300 rounded-full"
           >
-            <img src={backIcon} className="w-4 h-auto brightness-20" alt="" />
+            <img src={backIcon} className="w-4 h-auto brightness-20" alt="Back Icon" />
           </Link>
           <div>
             <h1 className="text-lg flex items-center gap-2">
@@ -61,6 +61,7 @@ const DownloadPaper = ({ courseCode, courseTitle, type, year, link }) => {
             <img
               src="/samplePaper.webp"
               className="absolute -rotate-25 shadow-2xl right-0 -bottom-12 h-140 min-w-[400px] aspect-auto translate-y-[280px] translate-x-[140px] group-hover:scale-105 transition-transform duration-300 ease-in-out"
+              alt="Question Paper First Page Preview"
             />
           </div>
           <div className="flex lg:flex-row w-full gap-1">

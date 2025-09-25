@@ -20,6 +20,7 @@ const Card = ({
         <img
           src={img}
           className="absolute object-cover -rotate-25 shadow-2xl right-0 -bottom-4 translate-y-1/2 translate-x-1/3 group-hover:scale-105 transition-transform duration-300 ease-in-out"
+          alt="Question Paper First Page Preview"
         />
       </div>
       <div className="mt-4 flex flex-col justify-end">

@@ -102,6 +102,7 @@ const Navbar = () => {
         src={menuIcon}
         className="brightness-10 w-6 lg:hidden"
         onClick={() => setMobileNavState(!mobileNavState)}
+        alt="Menu Icon"
       />
 
       {/* Nav Menu For Mobile Screen */}

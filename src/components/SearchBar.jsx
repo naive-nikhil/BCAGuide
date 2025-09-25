@@ -61,7 +61,7 @@ const SearchBar = () => {
     <div className="h-full flex flex-col gap-2 relative" tabIndex={0}>
       {/* Search Bar */}
       <div className="relative pl-2 bg-white rounded-lg flex gap-2 items-center border border-gray-300 text-text-primary px-2">
-        <img src={searchLogo} className="w-4 brightness-60" />
+        <img src={searchLogo} className="w-4 brightness-60" alt="Search Icon" />
         {/* Active filter badges */}
         {filter && (
           <div
